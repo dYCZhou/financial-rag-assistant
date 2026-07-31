@@ -1,0 +1,18 @@
+{
+  "document_id": "300750_2024",
+  "evaluation_set": "data/evaluation/300750_2024_evaluation_questions.csv",
+  "frozen_before_first_retrieval_run": true,
+  "frozen_on": "2026-07-31",
+  "question_count": 15,
+  "sha256": "4e6d437ec2793334559c8920656c08f4866f0b7e6dc937f7f7e6eaf2aa6e7a5d",
+  "labeling_method": "人工依据宁德时代2024年度报告逐题标注参考答案、单位、统计口径、PDF物理页和证据原文",
+  "coverage": {
+    "general_financial_facts": 7,
+    "battery_business_specific_facts": 8
+  },
+  "constraints": [
+    "冻结后不得为提高检索指标修改问题、参考答案或标准证据页",
+    "检索与重排代码不得读取question_id、reference_answer或evidence_pages",
+    "新增有效替代证据页只能在独立人工审计报告中记录，不回写冻结集"
+  ]
+}

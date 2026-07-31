@@ -1,0 +1,36 @@
+{
+  "document_id": "300750_2024",
+  "evaluation_set_sha256": "4e6d437ec2793334559c8920656c08f4866f0b7e6dc937f7f7e6eaf2aa6e7a5d",
+  "machine_report": "reports/300750_2024_deepseek_rag_evaluation.json",
+  "reviewed_on": "2026-07-31",
+  "review_method": "逐题核对冻结参考答案、答案事实、单位、统计口径和引用PDF物理页",
+  "summary": {
+    "reviewed_questions": 15,
+    "factually_correct": 15,
+    "citation_supported": 15,
+    "pipeline_errors": 0,
+    "manual_accuracy": 1.0
+  },
+  "cases": [
+    {"question_id": "CATL2024_Q01", "verdict": "correct"},
+    {"question_id": "CATL2024_Q02", "verdict": "correct"},
+    {"question_id": "CATL2024_Q03", "verdict": "correct"},
+    {"question_id": "CATL2024_Q04", "verdict": "correct"},
+    {"question_id": "CATL2024_Q05", "verdict": "correct"},
+    {"question_id": "CATL2024_Q06", "verdict": "correct"},
+    {"question_id": "CATL2024_Q07", "verdict": "correct"},
+    {"question_id": "CATL2024_Q08", "verdict": "correct"},
+    {"question_id": "CATL2024_Q09", "verdict": "correct"},
+    {"question_id": "CATL2024_Q10", "verdict": "correct"},
+    {"question_id": "CATL2024_Q11", "verdict": "correct"},
+    {"question_id": "CATL2024_Q12", "verdict": "correct"},
+    {
+      "question_id": "CATL2024_Q13",
+      "verdict": "correct",
+      "note": "答案准确给出冻结口径的剩余待分配现金分红19975746623.17元和每10股45.53元，并额外区分含已提前实施特别分红的全年合计口径。"
+    },
+    {"question_id": "CATL2024_Q14", "verdict": "correct"},
+    {"question_id": "CATL2024_Q15", "verdict": "correct"}
+  ],
+  "proxy_metric_note": "机器代理准确率26.67%主要因参考答案使用元、模型按年报原始单位千元或换算为亿元表达，以及参考答案包含排名连续年数而问题只问市占率；人工复核不以字符串和数字全量匹配替代事实判断。"
+}

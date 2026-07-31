@@ -213,7 +213,7 @@ def evaluate(
             for method in strategy["methods"]
         ),
         "limitations": [
-            "当前只评估比亚迪2025年单份年报",
+            f"当前报告只评估{document_id}对应的冻结问题集",
             "评估检索证据页命中，不评估最终答案正确性",
             "通用财务术语扩展不读取参考答案、question_id或标准证据页",
         ],

@@ -1,0 +1,862 @@
+{
+  "document_id": "300750_2024",
+  "generated_at": "2026-07-31T08:32:13.276030+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/300750_2024_evaluation_questions.csv",
+  "question_count": 15,
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 0.2667,
+    "answer_accuracy_proxy": 0.2667,
+    "average_latency_seconds": 2.624,
+    "median_latency_seconds": 2.152,
+    "max_latency_seconds": 8.947,
+    "failed_question_ids": [
+      "CATL2024_Q01",
+      "CATL2024_Q02",
+      "CATL2024_Q03",
+      "CATL2024_Q04",
+      "CATL2024_Q05",
+      "CATL2024_Q06",
+      "CATL2024_Q07",
+      "CATL2024_Q10",
+      "CATL2024_Q11",
+      "CATL2024_Q14",
+      "CATL2024_Q15"
+    ]
+  },
+  "cases": [
+    {
+      "question_id": "CATL2024_Q01",
+      "question": "宁德时代2024年的营业收入是多少？",
+      "question_type": "financial_fact",
+      "difficulty": "easy",
+      "reference_answer": "营业收入362012554000元同比下降9.70%",
+      "gold_evidence_pages": [
+        9,
+        19,
+        111,
+        119,
+        196
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年度营业收入为362,012,554千元，较上年下降9.70%[证据1][证据2][证据3][证据5]。该数据为合并口径的本期发生额，单位为千元[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00167",
+        "300750_2024_baseline_00166",
+        "300750_2024_baseline_00283",
+        "300750_2024_baseline_00025",
+        "300750_2024_baseline_00024"
+      ],
+      "citation_pages": [
+        18,
+        19,
+        20,
+        111,
+        112,
+        196,
+        197
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "362012554000",
+        "9.7%"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "3",
+        "362012554",
+        "5",
+        "9.7%"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 8.947,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q02",
+      "question": "宁德时代2024年归母净利润及同比变化是多少？",
+      "question_type": "financial_fact",
+      "difficulty": "easy",
+      "reference_answer": "归母净利润50744682000元同比增长15.01%",
+      "gold_evidence_pages": [
+        9,
+        120,
+        196
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年归属于上市公司股东的净利润为507.45亿元（即50,744,682千元），同比增长15.01%[证据1][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00007",
+        "300750_2024_baseline_00008",
+        "300750_2024_baseline_00087",
+        "300750_2024_baseline_00021"
+      ],
+      "citation_pages": [
+        9,
+        10,
+        17,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "50744682000",
+        "15.01%"
+      ],
+      "answer_numbers": [
+        "1",
+        "15.01%",
+        "2024",
+        "4",
+        "507.45",
+        "50744682"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.864,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q03",
+      "question": "宁德时代2024年经营活动产生的现金流量净额是多少？同比如何变化？",
+      "question_type": "cash_flow",
+      "difficulty": "medium",
+      "reference_answer": "经营活动产生的现金流量净额96990345000元同比增长4.49%",
+      "gold_evidence_pages": [
+        9,
+        25,
+        123,
+        202
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年经营活动产生的现金流量净额为96,990,345千元，同比增长4.49%[证据2][证据5]。该数据为合并口径的发生额，单位为公司年报财务附注报表单位千元[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00183",
+        "300750_2024_baseline_00034",
+        "300750_2024_baseline_00181",
+        "300750_2024_baseline_00290",
+        "300750_2024_baseline_00007"
+      ],
+      "citation_pages": [
+        9,
+        24,
+        25,
+        122,
+        123,
+        124,
+        202,
+        203
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "96990345000",
+        "4.49%"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "3",
+        "4.49%",
+        "5",
+        "96990345"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.355,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q04",
+      "question": "宁德时代2024年的研发费用是多少？同比增长多少？",
+      "question_type": "research_and_development",
+      "difficulty": "easy",
+      "reference_answer": "研发费用18606756000元同比增长1.37%",
+      "gold_evidence_pages": [
+        24,
+        119
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年研发费用为18,606,756千元，同比增长1.37%[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00018",
+        "300750_2024_baseline_00032",
+        "300750_2024_baseline_00011",
+        "300750_2024_baseline_00010",
+        "300750_2024_baseline_00029"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        12,
+        15,
+        16,
+        22,
+        23,
+        24
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "18606756000",
+        "1.37%"
+      ],
+      "answer_numbers": [
+        "1.37%",
+        "18606756",
+        "2",
+        "2024"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.917,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q05",
+      "question": "宁德时代2024年动力电池系统收入是多少？占营业收入比重和同比变化分别是多少？",
+      "question_type": "business_segment",
+      "difficulty": "medium",
+      "reference_answer": "动力电池系统收入253041337000元占营业收入69.90%同比下降11.29%",
+      "gold_evidence_pages": [
+        19
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年动力电池系统收入为253,041,337千元，占营业收入比重为69.90%，同比变化为下降11.29%[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00024",
+        "300750_2024_baseline_00025",
+        "300750_2024_baseline_00034",
+        "300750_2024_baseline_00167"
+      ],
+      "citation_pages": [
+        18,
+        19,
+        20,
+        24,
+        25,
+        111,
+        112
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "253041337000",
+        "69.9%",
+        "11.29%"
+      ],
+      "answer_numbers": [
+        "1",
+        "11.29%",
+        "2",
+        "2024",
+        "253041337",
+        "69.9%"
+      ],
+      "reference_number_recall": 0.6667,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.963,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q06",
+      "question": "宁德时代2024年储能电池系统的营业收入和毛利率分别是多少？",
+      "question_type": "business_segment",
+      "difficulty": "medium",
+      "reference_answer": "储能电池系统营业收入57290460000元毛利率26.84%",
+      "gold_evidence_pages": [
+        20
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年储能电池系统的营业收入为57,290,460千元，毛利率为26.84%[证据2][证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00167",
+        "300750_2024_baseline_00025",
+        "300750_2024_baseline_00283",
+        "300750_2024_baseline_00325",
+        "300750_2024_baseline_00024"
+      ],
+      "citation_pages": [
+        18,
+        19,
+        20,
+        111,
+        112,
+        196,
+        197,
+        226,
+        227
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "57290460000",
+        "26.84%"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "26.84%",
+        "5",
+        "57290460"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.949,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q07",
+      "question": "宁德时代2024年境外收入是多少？占营业收入的比重是多少？",
+      "question_type": "geographic_revenue",
+      "difficulty": "medium",
+      "reference_answer": "境外收入110335509000元占营业收入30.48%",
+      "gold_evidence_pages": [
+        19
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年境外收入为110,335,509千元，占当期营业收入的比重为30.48%[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00024",
+        "300750_2024_baseline_00025",
+        "300750_2024_baseline_00034",
+        "300750_2024_baseline_00167",
+        "300750_2024_baseline_00008"
+      ],
+      "citation_pages": [
+        9,
+        10,
+        18,
+        19,
+        20,
+        24,
+        25,
+        111,
+        112
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "110335509000",
+        "30.48%"
+      ],
+      "answer_numbers": [
+        "1",
+        "110335509",
+        "2",
+        "2024",
+        "30.48%"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.655,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q08",
+      "question": "宁德时代2024年电池系统销售量是多少？同比增长多少？",
+      "question_type": "operating_metric",
+      "difficulty": "easy",
+      "reference_answer": "电池系统销售量475GWh同比增长21.79%",
+      "gold_evidence_pages": [
+        21
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年电池系统销售量为475GWh，同比增长21.79%[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00021",
+        "300750_2024_baseline_00028",
+        "300750_2024_baseline_00027",
+        "300750_2024_baseline_00126",
+        "300750_2024_baseline_00018"
+      ],
+      "citation_pages": [
+        15,
+        16,
+        17,
+        20,
+        21,
+        22,
+        80,
+        81
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "475",
+        "21.79%"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "21.79%",
+        "475"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.59,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q09",
+      "question": "宁德时代2024年电池系统产能、在建产能、产能利用率和产量分别是多少？",
+      "question_type": "operating_metric",
+      "difficulty": "hard",
+      "reference_answer": "电池系统产能676GWh在建产能219GWh产能利用率76.33%产量516GWh",
+      "gold_evidence_pages": [
+        21
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，宁德时代2024年电池系统的相关数据如下：\n\n- **产能**：676 GWh [证据1][证据2]\n- **在建产能**：219 GWh [证据1][证据2]\n- **产能利用率**：76.33% [证据1][证据2]\n- **产量**：516 GWh [证据1][证据2]\n\n以上数据均为宁德时代新能源科技股份有限公司2024年度数据，单位为GWh [证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00027",
+        "300750_2024_baseline_00028",
+        "300750_2024_baseline_00166",
+        "300750_2024_baseline_00126",
+        "300750_2024_baseline_00075"
+      ],
+      "citation_pages": [
+        20,
+        21,
+        22,
+        51,
+        52,
+        80,
+        81,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "676",
+        "219",
+        "76.33%",
+        "516"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "219",
+        "516",
+        "676",
+        "76.33%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.272,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q10",
+      "question": "根据SNE Research数据宁德时代2024年全球动力电池市占率是多少？",
+      "question_type": "industry_position",
+      "difficulty": "medium",
+      "reference_answer": "全球动力电池市占率37.9%且连续8年使用量排名全球第一",
+      "gold_evidence_pages": [
+        12
+      ],
+      "status": "answered",
+      "answer": "根据SNE Research数据，宁德时代2024年全球动力电池市占率为37.9%[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00012",
+        "300750_2024_baseline_00018",
+        "300750_2024_baseline_00011",
+        "300750_2024_baseline_00126",
+        "300750_2024_baseline_00010"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        12,
+        15,
+        16,
+        80,
+        81
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "37.9%",
+        "8"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "37.9%"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.152,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q11",
+      "question": "根据SNE Research数据宁德时代2024年全球储能电池市占率是多少？",
+      "question_type": "industry_position",
+      "difficulty": "medium",
+      "reference_answer": "全球储能电池市占率36.5%且连续4年出货量排名全球第一",
+      "gold_evidence_pages": [
+        12
+      ],
+      "status": "answered",
+      "answer": "根据SNE Research数据，宁德时代2024年全球储能电池市占率为36.5%[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00011",
+        "300750_2024_baseline_00018",
+        "300750_2024_baseline_00012",
+        "300750_2024_baseline_00126",
+        "300750_2024_baseline_00015"
+      ],
+      "citation_pages": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        80,
+        81
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "36.5%",
+        "4"
+      ],
+      "answer_numbers": [
+        "2024",
+        "3",
+        "36.5%"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.929,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q12",
+      "question": "截至2024年末宁德时代拥有多少项专利及专利申请？境内和境外分别多少项？",
+      "question_type": "research_and_development",
+      "difficulty": "medium",
+      "reference_answer": "专利及专利申请合计43354项其中境内25439项境外17915项",
+      "gold_evidence_pages": [
+        16
+      ],
+      "status": "answered",
+      "answer": "截至2024年末，宁德时代拥有专利及专利申请合计43,354项，其中境内25,439项，境外17,915项[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00019",
+        "300750_2024_baseline_00160",
+        "300750_2024_baseline_00119",
+        "300750_2024_baseline_00117",
+        "300750_2024_baseline_00276"
+      ],
+      "citation_pages": [
+        16,
+        73,
+        74,
+        75,
+        76,
+        106,
+        107,
+        192
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "43354",
+        "25439",
+        "17915"
+      ],
+      "answer_numbers": [
+        "1",
+        "17915",
+        "2024",
+        "25439",
+        "43354"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.456,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q13",
+      "question": "宁德时代2024年度利润分配预案计划派发多少现金分红？每10股派发多少？",
+      "question_type": "dividend",
+      "difficulty": "medium",
+      "reference_answer": "现金分红总额19975746623.17元每10股派发45.53元含税",
+      "gold_evidence_pages": [
+        3,
+        59,
+        220
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，宁德时代2024年度利润分配预案计划派发的现金分红情况如下：\n\n- **每10股派发现金分红**：45.53元（含税，取小数点后两位并四舍五入）[证据1][证据2][证据5]。\n- **现金分红总额**：本次剩余待分配的年度现金分红及特别现金分红金额为19,975,746,623.17元[证据2][证据5]；若含已提前实施的特别现金分红，合计拟分配额为25,372,340,791.99元（含税）[证据2][证据3]。\n- **分配基数**：以可参与分配的股本4,387,403,387股为基数[证据2][证据3][证据5]。\n- **其他**：2024年度不实施资本公积金转增股本，不送红股[证据1][证据2][证据5]。\n\n以上均为2024年度利润分配预案（尚需提交公司2024年年度股东会审议）[证据1][证据2][证据5]，非已实施方案。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00088",
+        "300750_2024_baseline_00087",
+        "300750_2024_baseline_00086",
+        "300750_2024_baseline_00085",
+        "300750_2024_baseline_00316"
+      ],
+      "citation_pages": [
+        57,
+        58,
+        59,
+        60,
+        219,
+        220
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "19975746623.17",
+        "10",
+        "45.53"
+      ],
+      "answer_numbers": [
+        "1",
+        "10",
+        "19975746623.17",
+        "2",
+        "2024",
+        "25372340791.99",
+        "3",
+        "4387403387",
+        "45.53",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 3.394,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q14",
+      "question": "宁德时代2024年末合并口径货币资金余额是多少？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "合并口径货币资金期末余额303511993000元",
+      "gold_evidence_pages": [
+        26,
+        114
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年末合并口径货币资金余额为303,511,993千元（期末余额，合并资产负债表口径）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00170",
+        "300750_2024_baseline_00290",
+        "300750_2024_baseline_00291",
+        "300750_2024_baseline_00292",
+        "300750_2024_baseline_00164"
+      ],
+      "citation_pages": [
+        109,
+        110,
+        113,
+        114,
+        202,
+        203,
+        204,
+        205
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "303511993000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "303511993"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.582,
+      "error": null
+    },
+    {
+      "question_id": "CATL2024_Q15",
+      "question": "宁德时代2024年末合并口径存货账面价值是多少？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "合并口径存货期末账面价值59835533000元",
+      "gold_evidence_pages": [
+        26,
+        114
+      ],
+      "status": "answered",
+      "answer": "宁德时代2024年末合并口径存货账面价值为59,835,533千元[证据2]。该数值为合并资产负债表中“存货”项目的期末余额，属于合并口径的期末账面价值（扣除存货跌价准备后的列报金额）[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2024_baseline_00249",
+        "300750_2024_baseline_00170",
+        "300750_2024_baseline_00322",
+        "300750_2024_baseline_00165",
+        "300750_2024_baseline_00035"
+      ],
+      "citation_pages": [
+        25,
+        26,
+        110,
+        111,
+        113,
+        114,
+        172,
+        224,
+        225
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "59835533000"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "59835533"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.33,
+      "error": null
+    }
+  ]
+}
