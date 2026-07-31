@@ -28,6 +28,7 @@ FINANCIAL_ALIASES = {
     "现金流": "现金流量",
     "分红": "现金红利利润分配",
     "海外": "境外出口",
+    "占总收入": "占营业收入比重",
     "汽车相关业务": "汽车汽车相关产品及其他产品业务",
     "手机部件业务": "手机部件组装及其他产品业务",
 }
@@ -54,6 +55,8 @@ FINANCIAL_CONCEPT_COMPONENTS = {
     "汽车相关业务": ("汽车", "相关产品", "收入"),
     "手机部件业务": ("手机部件", "收入"),
     "经营现金流": ("经营活动", "现金流量净额"),
+    "存货余额": ("存货", "账面价值"),
+    "实际提供的担保": ("本公司", "子公司", "实际提供", "担保"),
 }
 
 
@@ -88,6 +91,20 @@ def expand_query(query: str) -> str:
         for alias, formal in FINANCIAL_ALIASES.items()
         if alias in query and formal not in query
     ]
+    additions.extend(
+        component
+        for concept, components in FINANCIAL_CONCEPT_COMPONENTS.items()
+        if concept in query
+        for component in components
+        if component not in query
+    )
+    if "拟" in query and "分红" in query:
+        year_match = re.search(r"(20\d{2})年", query)
+        additions.append(
+            f"{year_match.group(1)}年度利润分配预案"
+            if year_match
+            else "年度利润分配预案"
+        )
     return " ".join([query, *additions])
 
 
@@ -183,6 +200,37 @@ def _multi_metric_score(query: str, text: str) -> float:
     return max([requested_score, *component_scores], default=0.0)
 
 
+def _intent_alignment_score(query: str, text: str) -> float:
+    """Reward evidence whose period, scope and table semantics match the question."""
+    signals: list[float] = []
+    if "年末" in query or "余额" in query:
+        signals.append(float(bool(re.search(r"年末|12\s*月\s*31\s*日|期末", text))))
+    if "拟" in query or "预案" in query:
+        signals.append(float("预案" in text))
+        target_year = re.search(r"(20\d{2})年", query)
+        disclosed_years = {
+            value
+            for value in re.findall(r"(20\d{2})年度利润分配", text)
+        }
+        if (
+            target_year
+            and disclosed_years
+            and target_year.group(1) not in disclosed_years
+        ):
+            return -1.0
+        if re.search(r"实施完毕|已实施", text):
+            return -1.0
+    if "占" in query or "比例" in query or "比重" in query:
+        signals.append(float(bool(re.search(r"占.*(?:比例|比重)|\d+(?:\.\d+)?%", text))))
+    if "公司为子公司" in query or "实际提供的担保" in query:
+        signals.append(float(bool(re.search(r"本公司为其?子公司实际提供的担保", text))))
+    if "营业收入" in query:
+        signals.append(float(bool(re.search(r"营业收入(?:合计)?（?元）?", text))))
+    if not signals:
+        return 0.0
+    return sum(signals) / len(signals)
+
+
 def rerank_hits(
     query: str,
     hits: list[dict[str, object]],
@@ -208,18 +256,21 @@ def rerank_hits(
         phrase_score = phrase_matches / max(len(phrases), 1)
         numeric_score = _metric_value_score(query, text) if wants_numeric else 0.0
         multi_metric_score = _multi_metric_score(query, text)
+        intent_alignment_score = _intent_alignment_score(query, text)
         rerank_score = (
             rrf_weight * float(item.get("rrf_score", item.get("score", 0.0)))
             + coverage_weight * coverage
             + phrase_weight * phrase_score
             + numeric_weight * numeric_score
             + phrase_weight * multi_metric_score
+            + phrase_weight * intent_alignment_score
         )
         item["pre_rerank_rank"] = int(item.get("rank", original_rank))
         item["term_coverage"] = round(coverage, 6)
         item["phrase_score"] = round(phrase_score, 6)
         item["numeric_score"] = numeric_score
         item["multi_metric_score"] = round(multi_metric_score, 6)
+        item["intent_alignment_score"] = round(intent_alignment_score, 6)
         item["rerank_score"] = round(rerank_score, 8)
         reranked.append(item)
     reranked.sort(

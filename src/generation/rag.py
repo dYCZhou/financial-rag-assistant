@@ -46,6 +46,7 @@ class Citation:
     source_url: str
     quote: str
     retrieval_score: float
+    unit_context: str | None = None
 
 
 @dataclass(frozen=True)
@@ -93,6 +94,9 @@ def load_generation_config(path: Path = DEFAULT_CONFIG) -> dict[str, object]:
         "top_k": int(generation.get("top_k", 5)),
         "max_citations": int(generation.get("max_citations", 3)),
         "max_quote_chars": int(generation.get("max_quote_chars", 500)),
+        "citation_relative_score_threshold": float(
+            generation.get("citation_relative_score_threshold", 0.7)
+        ),
         "min_term_coverage": float(generation.get("min_term_coverage", 0.08)),
     }
     if config["strategy"] not in {"baseline", "structured"}:
@@ -103,6 +107,8 @@ def load_generation_config(path: Path = DEFAULT_CONFIG) -> dict[str, object]:
         raise ValueError("max_quote_chars不得小于100")
     if not 0 <= config["min_term_coverage"] <= 1:
         raise ValueError("min_term_coverage必须位于0和1之间")
+    if not 0 <= config["citation_relative_score_threshold"] <= 1:
+        raise ValueError("citation_relative_score_threshold必须位于0和1之间")
     return config
 
 
@@ -124,12 +130,17 @@ def quote_around_query(text: str, question: str, max_chars: int) -> str:
     compact = re.sub(r"\s+", " ", text).strip()
     if len(compact) <= max_chars:
         return compact
-    positions = [
-        compact.find(term)
+    matched_terms = [
+        (term, compact.find(term))
         for term in _salient_terms(question)
         if compact.find(term) >= 0
     ]
-    center = min(positions) if positions else 0
+    # Generic period words often occur before the requested table row.
+    center = (
+        sorted(matched_terms, key=lambda item: (-len(item[0]), item[1]))[0][1]
+        if matched_terms
+        else 0
+    )
     start = max(0, center - max_chars // 4)
     end = min(len(compact), start + max_chars)
     start = max(0, end - max_chars)
@@ -144,10 +155,19 @@ def citations_from_hits(
     question: str,
     max_citations: int,
     max_quote_chars: int,
+    unit_context_by_page: dict[int, str] | None = None,
+    relative_score_threshold: float = 0.0,
 ) -> list[Citation]:
     citations: list[Citation] = []
     seen_chunks: set[str] = set()
+    best_score = float(hits[0]["score"]) if hits else 0.0
     for hit in hits:
+        if (
+            citations
+            and best_score > 0
+            and float(hit["score"]) < best_score * relative_score_threshold
+        ):
+            continue
         chunk_id = str(hit["chunk_id"])
         if chunk_id in seen_chunks:
             continue
@@ -167,6 +187,14 @@ def citations_from_hits(
                     str(hit["text"]), question, max_chars=max_quote_chars
                 ),
                 retrieval_score=float(hit["score"]),
+                unit_context=next(
+                    (
+                        unit_context_by_page[page]
+                        for page in [int(value) for value in hit["pdf_pages"]]
+                        if unit_context_by_page and page in unit_context_by_page
+                    ),
+                    None,
+                ),
             )
         )
         if len(citations) >= max_citations:
@@ -179,6 +207,7 @@ def build_grounded_prompt(question: str, citations: list[Citation]) -> str:
         (
             f"[证据{citation.citation_id}] 公司：{citation.company}；"
             f"年度：{citation.report_year}；PDF页码：{citation.pdf_pages}\n"
+            f"{f'单位上下文：{citation.unit_context}。' if citation.unit_context else ''}\n"
             f"{citation.quote}"
         )
         for citation in citations
@@ -187,9 +216,10 @@ def build_grounded_prompt(question: str, citations: list[Citation]) -> str:
 1. 只能使用下方证据，不得使用外部知识或猜测。
 2. 每个事实结论后标注对应证据编号，如[证据1]。
 3. 数值必须同时说明公司、年度和单位；证据未给出单位时不得自行补充。
-4. 多条证据冲突时明确说明冲突，不得自行选择。
+4. 先区分合并口径与母公司口径、期末余额与发生额、当年预案与往年已实施方案；只有相同口径的数值不一致才属于冲突。
 5. 证据不足以回答时只回答“现有证据不足，无法回答该问题”。
 6. 不提供投资建议、估值、股价预测或买卖建议。
+7. 资产负债表问题只问“余额”而未明确“账面余额/原值”时，回答合并口径的期末账面价值（扣除减值准备后的列报金额），并说明该口径。
 
 问题：{question}
 
@@ -233,6 +263,28 @@ class RagPipeline:
         self.config_path = config_path
         self.db_dir = db_dir
         self.chunks_dir = chunks_dir
+
+    def _unit_context_by_page(self, stock_code: str, report_year: int) -> dict[int, str]:
+        """Propagate an explicit report-wide financial-statement unit declaration."""
+        parsed_path = (
+            ROOT / "data" / "parsed" / f"{stock_code}_{report_year}_pages.jsonl"
+        )
+        if not parsed_path.exists():
+            return {}
+        context: str | None = None
+        contexts: dict[int, str] = {}
+        with parsed_path.open(encoding="utf-8") as stream:
+            for line in stream:
+                page = json.loads(line)
+                text = str(page.get("text", ""))
+                match = re.search(
+                    r"财务附注中报表的单位为[：:]\s*([^\s，。；]+)", text
+                )
+                if match:
+                    context = f"财务附注报表单位为{match.group(1)}"
+                if context:
+                    contexts[int(page["pdf_page"])] = context
+        return contexts
 
     def _default_generator(self) -> AnswerGenerator:
         if str(self.config.get("provider", "evidence_only")) != "deepseek":
@@ -309,6 +361,12 @@ class RagPipeline:
             question=question,
             max_citations=int(self.config["max_citations"]),
             max_quote_chars=int(self.config["max_quote_chars"]),
+            unit_context_by_page=self._unit_context_by_page(
+                stock_code, report_year
+            ),
+            relative_score_threshold=float(
+                self.config["citation_relative_score_threshold"]
+            ),
         )
         prompt = build_grounded_prompt(question, citations)
         answer = self.generator.generate(

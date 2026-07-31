@@ -5,6 +5,7 @@ from src.generation.rag import (
     EvidenceOnlyGenerator,
     RagPipeline,
     build_grounded_prompt,
+    citations_from_hits,
     quote_around_query,
 )
 
@@ -108,8 +109,41 @@ def test_grounded_prompt_contains_constraints_and_evidence() -> None:
     assert "营业收入100元" in prompt
 
 
+def test_prompt_carries_inherited_financial_statement_unit() -> None:
+    hit = _hit()
+    citation = citations_from_hits(
+        [hit],
+        question="研发投入是多少？",
+        max_citations=1,
+        max_quote_chars=500,
+        unit_context_by_page={39: "财务附注报表单位为千元"},
+    )[0]
+    prompt = build_grounded_prompt("研发投入是多少？", [citation])
+    assert citation.unit_context == "财务附注报表单位为千元"
+    assert "单位上下文：财务附注报表单位为千元" in prompt
+
+
+def test_citation_selection_drops_large_relevance_gap() -> None:
+    strong = _hit()
+    weak = dict(_hit(), chunk_id="weak", score=0.05)
+    citations = citations_from_hits(
+        [strong, weak],
+        question="研发投入是多少？",
+        max_citations=3,
+        max_quote_chars=500,
+        relative_score_threshold=0.7,
+    )
+    assert [item.chunk_id for item in citations] == [strong["chunk_id"]]
+
+
 def test_quote_window_keeps_query_neighbourhood() -> None:
     text = "开头" * 200 + "研发投入金额为100元" + "结尾" * 200
     quote = quote_around_query(text, "研发投入是多少？", max_chars=120)
     assert len(quote) <= 122
     assert "研发投入" in quote
+
+
+def test_quote_window_prefers_specific_metric_over_earlier_period_word() -> None:
+    text = "2025年末" + "无关内容" * 150 + "存货余额为138元" + "结尾" * 150
+    quote = quote_around_query(text, "2025年末存货余额是多少？", max_chars=120)
+    assert "存货余额为138元" in quote

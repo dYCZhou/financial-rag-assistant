@@ -1,6 +1,6 @@
 {
   "document_id": "002594_2025",
-  "generated_at": "2026-07-31T06:32:21.499935+00:00",
+  "generated_at": "2026-07-31T06:57:42.472220+00:00",
   "provider": "deepseek",
   "model": "deepseek-v4-flash",
   "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/evaluation_questions_template.csv",
@@ -14,19 +14,17 @@
   "summary": {
     "requested_questions": 15,
     "completed_questions": 15,
-    "answered_questions": 12,
-    "refused_questions": 3,
+    "answered_questions": 15,
+    "refused_questions": 0,
     "api_or_pipeline_errors": 0,
-    "citation_page_hit_rate": 0.8,
-    "full_reference_number_recall_rate": 0.5714,
-    "answer_accuracy_proxy": 0.5333,
-    "average_latency_seconds": 3.234,
-    "median_latency_seconds": 1.962,
-    "max_latency_seconds": 11.856,
+    "citation_page_hit_rate": 0.9333,
+    "full_reference_number_recall_rate": 0.7143,
+    "answer_accuracy_proxy": 0.6667,
+    "average_latency_seconds": 4.567,
+    "median_latency_seconds": 1.953,
+    "max_latency_seconds": 19.737,
     "failed_question_ids": [
-      "BYD2025_Q01",
       "BYD2025_Q04",
-      "BYD2025_Q08",
       "BYD2025_Q10",
       "BYD2025_Q11",
       "BYD2025_Q13",
@@ -43,21 +41,41 @@
       "gold_evidence_pages": [
         11
       ],
-      "status": "refused",
-      "answer": "现有证据不足，无法回答该问题。",
-      "refusal_reason": "generator_evidence_insufficient",
-      "citation_ids": [],
-      "citation_chunk_ids": [],
-      "citation_pages": [],
-      "citation_page_hit": false,
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪2025年的营业收入为803,964,958,000.00元[证据2]。该数据同时出现在合并口径的财务摘要中[证据2]，并在分部报告的对外交易收入合计中得以印证（803,964,958千元，单位：千元）[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2025_baseline_00010",
+        "002594_2025_baseline_00011",
+        "002594_2025_baseline_00371"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        251,
+        252,
+        253
+      ],
+      "citation_page_hit": true,
       "reference_numbers": [
         "803964958000"
       ],
-      "answer_numbers": [],
-      "reference_number_recall": 0.0,
+      "answer_numbers": [
+        "2",
+        "2025",
+        "3",
+        "803964958",
+        "803964958000"
+      ],
+      "reference_number_recall": 1.0,
       "reference_text_match": null,
-      "answer_accuracy_proxy": false,
-      "elapsed_seconds": 11.856,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 11.504,
       "error": null
     },
     {
@@ -117,7 +135,7 @@
         5
       ],
       "status": "answered",
-      "answer": "根据现有证据，公司2025年度拟向股东分红的具体方案存在冲突，需分别说明：\n\n- 证据1和证据2显示，公司于2025年审议并通过了2024年度利润分配方案：以总股本3,039,065,855股为基数，向全体股东每10股派发现金红利人民币39.74元（含税），现金红利总额约为人民币12,077,248千元，每10股送红股8股，以资本公积金每10股转增12股[证据1][证据2]。该方案已于2025年7月29日实施完毕[证据1]。\n\n- 证据3显示，公司经董事会审议通过的利润分配预案为：以9,117,197,565为基数，向全体股东每10股派发现金红利3.58元（含税），送红股0股（含税），不以公积金转增股本[证据3]。\n\n上述证据中，证据1和证据2描述的是2024年度利润分配方案（于2025年实施），而证据3描述的是另一项利润分配预案，两者在基数、每股分红金额、送股及转增安排上均不一致，且证据未明确证据3对应的具体年度或方案性质。现有证据不足以确定公司2025年度拟向股东分红的唯一方案，无法回答该问题。",
+      "answer": "根据现有证据，公司2025年度利润分配预案为：以9,117,197,565股为基数，向全体股东每10股派发现金红利3.58元（含税），送红股0股（含税），不以公积金转增股本[证据2]。该预案已经公司第八届董事会第二十二次会议审议通过，尚需提交2025年度股东会审议[证据3]。\n\n注意：证据1中提及的“每10股派人民币39.74元现金（含税），每10股送红股8股，以资本公积金每10股转增12股”及“现金红利总额约为人民币12,077,248千元”等描述，经核对，其实施公告日期为2025年7月22日，实施日期为2025年7月29日，属于2024年度利润分配方案的实施情况，并非2025年度预案[证据1]。",
       "refusal_reason": null,
       "citation_ids": [
         1,
@@ -126,15 +144,14 @@
       ],
       "citation_chunk_ids": [
         "002594_2025_baseline_00128",
-        "002594_2025_baseline_00195",
-        "002594_2025_baseline_00005"
+        "002594_2025_baseline_00005",
+        "002594_2025_baseline_00129"
       ],
       "citation_pages": [
         5,
         6,
         71,
-        72,
-        105
+        72
       ],
       "citation_page_hit": true,
       "reference_numbers": [
@@ -150,10 +167,10 @@
         "2",
         "2024",
         "2025",
+        "22",
         "29",
         "3",
         "3.58",
-        "3039065855",
         "39.74",
         "7",
         "8",
@@ -162,7 +179,7 @@
       "reference_number_recall": 1.0,
       "reference_text_match": null,
       "answer_accuracy_proxy": true,
-      "elapsed_seconds": 3.388,
+      "elapsed_seconds": 19.737,
       "error": null
     },
     {
@@ -361,22 +378,40 @@
         29,
         252
       ],
-      "status": "refused",
-      "answer": "现有证据不足，无法回答该问题。",
-      "refusal_reason": "generator_evidence_insufficient",
-      "citation_ids": [],
-      "citation_chunk_ids": [],
-      "citation_pages": [],
-      "citation_page_hit": false,
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪2025年境外收入为310,740,988,000.00元，占总收入比重为38.65%[证据2][证据3]。该数据为合并口径下的发生额，单位为元，年度为2025年[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2025_baseline_00040",
+        "002594_2025_baseline_00041",
+        "002594_2025_baseline_00042"
+      ],
+      "citation_pages": [
+        28,
+        29,
+        30
+      ],
+      "citation_page_hit": true,
       "reference_numbers": [
         "310740988000",
         "38.65%"
       ],
-      "answer_numbers": [],
-      "reference_number_recall": 0.0,
+      "answer_numbers": [
+        "2",
+        "2025",
+        "3",
+        "310740988000",
+        "38.65%"
+      ],
+      "reference_number_recall": 1.0,
       "reference_text_match": null,
-      "answer_accuracy_proxy": false,
-      "elapsed_seconds": 9.909,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.892,
       "error": null
     },
     {
@@ -472,21 +507,41 @@
         41,
         123
       ],
-      "status": "refused",
-      "answer": "现有证据不足，无法回答该问题。",
-      "refusal_reason": "generator_evidence_insufficient",
-      "citation_ids": [],
-      "citation_chunk_ids": [],
-      "citation_pages": [],
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪2025年末存货的合并口径期末账面价值为138,420,580千元（即扣除跌价准备后的列报金额）[证据1]。该数据来自比亚迪股份有限公司2025年度财务附注，报表单位为千元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2025_baseline_00289",
+        "002594_2025_baseline_00294",
+        "002594_2025_baseline_00293"
+      ],
+      "citation_pages": [
+        173,
+        174,
+        175,
+        177,
+        178,
+        179,
+        180
+      ],
       "citation_page_hit": false,
       "reference_numbers": [
         "138420580000"
       ],
-      "answer_numbers": [],
+      "answer_numbers": [
+        "1",
+        "138420580",
+        "2025"
+      ],
       "reference_number_recall": 0.0,
       "reference_text_match": null,
       "answer_accuracy_proxy": false,
-      "elapsed_seconds": 1.118,
+      "elapsed_seconds": 13.982,
       "error": null
     },
     {
@@ -552,7 +607,7 @@
         213
       ],
       "status": "answered",
-      "answer": "2025年与日常活动相关的政府补助金额为12,468,373[证据1][证据2]。该金额来自比亚迪股份有限公司2025年年报“其他收益”项目下的“与日常活动相关的政府补助”明细[证据1][证据2]。证据中未明确该金额的单位，因此无法补充单位信息[证据1][证据2]。",
+      "answer": "2025年与日常活动相关的政府补助金额为12,468,373千元[证据1][证据2]。该金额为比亚迪股份有限公司2025年合并利润表“其他收益”项下“与日常活动相关的政府补助”的发生额，单位依据财务附注为千元[证据1][证据2]。",
       "refusal_reason": null,
       "citation_ids": [
         1,
@@ -585,7 +640,7 @@
       "reference_number_recall": 0.0,
       "reference_text_match": null,
       "answer_accuracy_proxy": false,
-      "elapsed_seconds": 1.967,
+      "elapsed_seconds": 1.745,
       "error": null
     },
     {
@@ -598,21 +653,15 @@
         249
       ],
       "status": "answered",
-      "answer": "根据现有证据，关于公司为子公司实际提供的担保金额存在两个不同数值：\n\n- [证据1]显示：于2025年12月31日，本公司为其子公司实际提供的担保为人民币84,864,506千元（2024年12月31日：人民币37,826,863千元）。\n- [证据2]显示：报告期末对子公司实际担保余额合计（C4）为148,230（单位未在证据中明确给出）。\n\n两条证据数值不一致，且[证据2]未明确单位，存在冲突，无法自行选择。",
+      "answer": "公司为子公司实际提供的担保金额为人民币84,864,506千元（2024年12月31日：人民币37,826,863千元）[证据1]。该金额为2025年12月31日时点数据，单位为千元，公司为比亚迪股份有限公司[证据1]。",
       "refusal_reason": null,
       "citation_ids": [
-        1,
-        2,
-        3
+        1
       ],
       "citation_chunk_ids": [
-        "002594_2025_baseline_00367",
-        "002594_2025_baseline_00169",
-        "002594_2025_baseline_00168"
+        "002594_2025_baseline_00367"
       ],
       "citation_pages": [
-        91,
-        92,
         248,
         249
       ],
@@ -623,19 +672,16 @@
       "answer_numbers": [
         "1",
         "12",
-        "148230",
-        "2",
         "2024",
         "2025",
         "31",
         "37826863",
-        "4",
         "84864506"
       ],
       "reference_number_recall": 0.0,
       "reference_text_match": null,
       "answer_accuracy_proxy": false,
-      "elapsed_seconds": 2.7,
+      "elapsed_seconds": 2.063,
       "error": null
     },
     {

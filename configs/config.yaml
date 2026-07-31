@@ -28,7 +28,8 @@ chunking:
 retrieval:
   top_k: 5
   use_metadata_filter: true
-  candidate_pool: 30
+  # 年报同一指标会在正文、附注和母公司报表中反复出现，扩大候选池后再做口径重排。
+  candidate_pool: 120
   bm25_k1: 1.5
   bm25_b: 0.75
   rrf_k: 10
@@ -56,5 +57,7 @@ generation:
   strategy: baseline
   top_k: 5
   max_citations: 3
-  max_quote_chars: 500
+  citation_relative_score_threshold: 0.7
+  # 财务表格的表头、目标行和合计行可能相距较远，保留足够上下文避免截断单位或账面价值。
+  max_quote_chars: 800
   min_term_coverage: 0.08

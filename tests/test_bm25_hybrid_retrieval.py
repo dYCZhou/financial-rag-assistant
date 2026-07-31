@@ -6,6 +6,7 @@ import pytest
 
 from src.retrieval.bm25 import load_strategy_chunks, search_bm25, tokenize
 from src.retrieval.hybrid import (
+    expand_query,
     load_retrieval_config,
     reciprocal_rank_fusion,
     rerank_hits,
@@ -127,6 +128,32 @@ def test_reranker_promotes_term_and_numeric_match() -> None:
     reranked = rerank_hits("营业收入是多少？", hits)
     assert reranked[0]["chunk_id"] == "B"
     assert reranked[0]["pre_rerank_rank"] == 2
+
+
+def test_query_expansion_adds_table_semantics_for_balance() -> None:
+    expanded = expand_query("2025年末存货余额是多少？")
+    assert "账面价值" in expanded
+
+
+def test_reranker_penalizes_implemented_plan_for_proposal_question() -> None:
+    hits = [
+        {
+            "rank": 1,
+            "chunk_id": "old",
+            "rrf_score": 0.1,
+            "score": 0.1,
+            "text": "2024年度利润分配方案已实施完毕。",
+        },
+        {
+            "rank": 2,
+            "chunk_id": "proposal",
+            "rrf_score": 0.09,
+            "score": 0.09,
+            "text": "2025年度利润分配预案为每10股派发现金红利。",
+        },
+    ]
+    reranked = rerank_hits("公司2025年度拟如何分红？", hits)
+    assert reranked[0]["chunk_id"] == "proposal"
 
 
 def test_retrieval_config_validation(tmp_path: Path) -> None:
