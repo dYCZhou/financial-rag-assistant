@@ -1,0 +1,16 @@
+document_id,company_name,company_short_name,stock_code,report_year,publish_date,report_type,source_url,local_path,file_name,file_hash,file_size,page_count,is_text_pdf,parse_status,notes
+002594_2023,比亚迪股份有限公司,比亚迪,002594,2023,,年度报告全文,,data/raw_pdf/002594_比亚迪_2023_annual_report.pdf,002594_比亚迪_2023_annual_report.pdf,,,,,pending,待下载并核验
+002594_2024,比亚迪股份有限公司,比亚迪,002594,2024,,年度报告全文,,data/raw_pdf/002594_比亚迪_2024_annual_report.pdf,002594_比亚迪_2024_annual_report.pdf,,,,,pending,待下载并核验
+002594_2025,比亚迪股份有限公司,比亚迪,002594,2025,2026-03-28,年度报告全文,https://static.cninfo.com.cn/finalpage/2026-03-28/1225045351.PDF,data/raw_pdf/002594_比亚迪_2025_annual_report.pdf,002594_比亚迪_2025_annual_report.pdf,710d8b2e08e37ba521f1c4071d2c3e2369d3cadabc21a45073215d9f72138b0b,7533972,268,true,retrieval_baseline_evaluated,15题字符向量小测完成：固定切分Recall@5=26.67%；优化切分Recall@5=13.33%；检索质量未通过
+300750_2023,宁德时代新能源科技股份有限公司,宁德时代,300750,2023,,年度报告全文,,data/raw_pdf/300750_宁德时代_2023_annual_report.pdf,300750_宁德时代_2023_annual_report.pdf,,,,,pending,待下载并核验
+300750_2024,宁德时代新能源科技股份有限公司,宁德时代,300750,2024,,年度报告全文,,data/raw_pdf/300750_宁德时代_2024_annual_report.pdf,300750_宁德时代_2024_annual_report.pdf,,,,,pending,待下载并核验
+300750_2025,宁德时代新能源科技股份有限公司,宁德时代,300750,2025,,年度报告全文,,data/raw_pdf/300750_宁德时代_2025_annual_report.pdf,300750_宁德时代_2025_annual_report.pdf,,,,,pending,待下载并核验
+600519_2023,贵州茅台酒股份有限公司,贵州茅台,600519,2023,,年度报告全文,,data/raw_pdf/600519_贵州茅台_2023_annual_report.pdf,600519_贵州茅台_2023_annual_report.pdf,,,,,pending,待下载并核验
+600519_2024,贵州茅台酒股份有限公司,贵州茅台,600519,2024,,年度报告全文,,data/raw_pdf/600519_贵州茅台_2024_annual_report.pdf,600519_贵州茅台_2024_annual_report.pdf,,,,,pending,待下载并核验
+600519_2025,贵州茅台酒股份有限公司,贵州茅台,600519,2025,,年度报告全文,,data/raw_pdf/600519_贵州茅台_2025_annual_report.pdf,600519_贵州茅台_2025_annual_report.pdf,,,,,pending,待下载并核验
+000333_2023,美的集团股份有限公司,美的集团,000333,2023,,年度报告全文,,data/raw_pdf/000333_美的集团_2023_annual_report.pdf,000333_美的集团_2023_annual_report.pdf,,,,,pending,待下载并核验
+000333_2024,美的集团股份有限公司,美的集团,000333,2024,,年度报告全文,,data/raw_pdf/000333_美的集团_2024_annual_report.pdf,000333_美的集团_2024_annual_report.pdf,,,,,pending,待下载并核验
+000333_2025,美的集团股份有限公司,美的集团,000333,2025,,年度报告全文,,data/raw_pdf/000333_美的集团_2025_annual_report.pdf,000333_美的集团_2025_annual_report.pdf,,,,,pending,待下载并核验
+600941_2023,中国移动有限公司,中国移动,600941,2023,,年度报告全文,,data/raw_pdf/600941_中国移动_2023_annual_report.pdf,600941_中国移动_2023_annual_report.pdf,,,,,pending,待下载并核验
+600941_2024,中国移动有限公司,中国移动,600941,2024,,年度报告全文,,data/raw_pdf/600941_中国移动_2024_annual_report.pdf,600941_中国移动_2024_annual_report.pdf,,,,,pending,待下载并核验
+600941_2025,中国移动有限公司,中国移动,600941,2025,,年度报告全文,,data/raw_pdf/600941_中国移动_2025_annual_report.pdf,600941_中国移动_2025_annual_report.pdf,,,,,pending,待下载并核验

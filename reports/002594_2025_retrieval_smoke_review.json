@@ -1,0 +1,31 @@
+{
+  "document_id": "002594_2025",
+  "review_type": "manual_smoke_review",
+  "embedding_model": "local-character-ngram-v1",
+  "purpose": "验证ChromaDB索引、过滤、查询和引用链路，不用于宣称正式语义检索效果",
+  "questions": [
+    {
+      "question": "2025年营业收入是多少？",
+      "baseline_top3_pass": false,
+      "structured_top3_pass": false,
+      "conclusion": "未稳定召回核心财务表证据"
+    },
+    {
+      "question": "比亚迪海外市场和出口业务表现如何？",
+      "baseline_top3_pass": false,
+      "structured_top3_pass": true,
+      "structured_correct_rank": 2,
+      "evidence_pdf_page": 25,
+      "conclusion": "优化索引召回正确证据，但排名仍需改善"
+    },
+    {
+      "question": "研发投入和研发人员情况如何？",
+      "baseline_top3_pass": false,
+      "structured_top3_pass": false,
+      "conclusion": "未稳定召回目标证据"
+    }
+  ],
+  "pipeline_acceptance": "passed",
+  "retrieval_quality_acceptance": "failed",
+  "next_action": "建立10至15题带标准证据页的小测，接入正式中文语义Embedding并同题比较"
+}

@@ -1,0 +1,32 @@
+{
+  "document_id": "002594_2025",
+  "review_status": "passed",
+  "reviewed_sample_count": 6,
+  "reviewed_pdf_pages": [1, 6, 15, 46, 123, 268],
+  "checks": {
+    "page_image_matches_extracted_text": true,
+    "report_identity_correct": true,
+    "toc_structure_readable": true,
+    "body_reading_order_acceptable": true,
+    "financial_table_labels_units_values_traceable": true,
+    "flagged_pages_are_explained": true
+  },
+  "flagged_page_findings": [
+    {
+      "pdf_page": 1,
+      "finding": "封面，仅包含公司、报告年度和日期，短页合理"
+    },
+    {
+      "pdf_page": 46,
+      "finding": "无重大资产及股权出售的短说明页，短页合理"
+    },
+    {
+      "pdf_page": 268,
+      "finding": "董事会签署末页，短页合理"
+    }
+  ],
+  "limitations": [
+    "表格已线性化为文本，保留了本次抽查页的项目、单位和两期数值关系，但不承诺所有复杂表格均可无损还原",
+    "本结论只覆盖比亚迪2025年报及本次代表性抽样，其他年报仍需独立验收"
+  ]
+}

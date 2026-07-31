@@ -1,0 +1,42 @@
+project:
+  name: financial-rag-assistant
+  report_years: [2023, 2024, 2025]
+
+paths:
+  raw_pdf: data/raw_pdf
+  manifest: data/manifests/annual_reports_manifest.csv
+  parsed: data/parsed
+  chunks: data/chunks
+  evaluation: data/evaluation
+  chroma_db: chroma_db
+  logs: logs
+
+parsing:
+  primary_parser: pymupdf
+  table_parser: pdfplumber
+  min_page_text_chars: 50
+
+chunking:
+  baseline_chunk_size: 800
+  baseline_chunk_overlap: 150
+  structured_target_chars: 800
+  structured_max_chars: 1000
+  structured_overlap_chars: 150
+  structured_max_unit_chars: 400
+  # 只是实验起点，最终参数必须由检索评估决定。
+
+retrieval:
+  top_k: 5
+  use_metadata_filter: true
+
+embedding:
+  baseline_model: local-character-ngram-v1
+  semantic_model: BAAI/bge-small-zh-v1.5
+  semantic_revision: 7999e1d3359715c523056ef9478215996d62a620
+  baseline_dimensions: 768
+  semantic_dimensions: 512
+  # 正式模型是否采用，必须由冻结检索题集决定。
+
+generation:
+  refuse_without_evidence: true
+  provide_investment_advice: false

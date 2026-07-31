@@ -1,0 +1,18 @@
+{
+  "document_id": "002594_2025",
+  "generated_at": "2026-07-31T01:56:43.335176+00:00",
+  "collection_name": "annual_reports_baseline_v1",
+  "strategy": "baseline",
+  "embedding_model": "local-character-ngram-v1",
+  "embedding_type": "offline_character_ngram_hashing_baseline",
+  "dimensions": 768,
+  "indexed_chunks": 384,
+  "company": "比亚迪股份有限公司",
+  "stock_code": "002594",
+  "report_year": 2025,
+  "db_path": "/workspace/scratch/9a54eb083a43/financial-rag-assistant/chroma_db",
+  "limitations": [
+    "用于验证索引和检索管线，不等同于正式中文语义模型",
+    "检索质量必须通过同题Top-K评估后再下结论"
+  ]
+}

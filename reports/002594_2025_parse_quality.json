@@ -1,0 +1,40 @@
+{
+  "document_id": "002594_2025",
+  "generated_at": "2026-07-31T01:04:33.200668+00:00",
+  "source_file": "002594_比亚迪_2025_annual_report.pdf",
+  "page_count": 268,
+  "manifest_page_count": 268,
+  "total_char_count": 225347,
+  "average_chars_per_page": 840.85,
+  "pages_with_printed_page": 266,
+  "pages_with_known_chapter": 264,
+  "repeated_margin_lines_removed": [
+    "比亚迪股份有限公司2025 年年度报告全文"
+  ],
+  "quality_flag_counts": {
+    "short_page": 3
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 25
+    },
+    {
+      "pdf_page": 46,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 32
+    },
+    {
+      "pdf_page": 268,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 39
+    }
+  ]
+}
