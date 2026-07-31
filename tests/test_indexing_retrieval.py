@@ -73,3 +73,52 @@ def test_build_and_filtered_search(tmp_path: Path) -> None:
     )
     assert hits[0]["pdf_pages"] == [1]
     assert "营业收入" in hits[0]["text"]
+
+
+def test_building_second_document_preserves_first_document(tmp_path: Path) -> None:
+    chunks_dir = tmp_path / "chunks"
+    chunks_dir.mkdir()
+    for year, text in [(2024, "2024年营业收入。"), (2025, "2025年营业收入。")]:
+        record = {
+            "chunk_id": f"000001_{year}_baseline_00000",
+            "document_id": f"000001_{year}",
+            "strategy": "fixed_char",
+            "company": "测试公司",
+            "stock_code": "000001",
+            "report_year": year,
+            "report_type": "年度报告全文",
+            "chapter": "财务指标",
+            "pdf_page_start": 1,
+            "pdf_page_end": 1,
+            "pdf_pages": [1],
+            "text": text,
+            "source_file": f"{year}.pdf",
+            "source_url": f"https://example.com/{year}.pdf",
+        }
+        (chunks_dir / f"000001_{year}_baseline_chunks.jsonl").write_text(
+            json.dumps(record, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        build_index(
+            document_id=f"000001_{year}",
+            strategy="baseline",
+            chunks_dir=chunks_dir,
+            db_dir=tmp_path / "db",
+            reports_dir=tmp_path / "reports",
+            dimensions=64,
+            embedding_model="character",
+        )
+
+    for year in (2024, 2025):
+        hits = search(
+            "营业收入",
+            strategy="baseline",
+            db_dir=tmp_path / "db",
+            top_k=5,
+            stock_code="000001",
+            report_year=year,
+            dimensions=64,
+            embedding_model="character",
+        )
+        assert len(hits) == 1
+        assert hits[0]["report_year"] == year

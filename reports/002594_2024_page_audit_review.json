@@ -1,0 +1,11 @@
+{
+  "document_id": "002594_2024",
+  "review_status": "accepted",
+  "reviewed_samples": 6,
+  "conclusion": "封面、目录、正文、财务表格和短页均与PDF图像一致，文本顺序可读，财务表格单位与关键数字可对应。",
+  "short_page_findings": [
+    "PDF第1页为正常封面",
+    "PDF第131页为不适用的优先股章节短页",
+    "PDF第290页为董事长签署页"
+  ]
+}

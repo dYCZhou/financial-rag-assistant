@@ -1,7 +1,9 @@
 import json
 from pathlib import Path
 
-from src.parsing.audit_pages import select_samples
+import fitz
+
+from src.parsing.audit_pages import render_page, select_samples
 
 
 def record(
@@ -42,3 +44,21 @@ def test_select_samples_covers_required_categories_and_flagged_pages() -> None:
     assert {"cover", "table_of_contents", "body_text", "financial_table"} <= categories
     assert 5 in pages
     assert len(pages) == len(set(pages))
+
+
+def test_render_page_falls_back_to_pymupdf(
+    tmp_path: Path, monkeypatch
+) -> None:
+    pdf_path = tmp_path / "sample.pdf"
+    with fitz.open() as document:
+        page = document.new_page()
+        page.insert_text((72, 72), "annual report")
+        document.save(pdf_path)
+
+    monkeypatch.setattr("src.parsing.audit_pages.shutil.which", lambda _: None)
+    output_dir = tmp_path / "images"
+    output_dir.mkdir()
+    output = render_page(pdf_path, 1, output_dir)
+
+    assert output.name == "page_0001.png"
+    assert output.stat().st_size > 0

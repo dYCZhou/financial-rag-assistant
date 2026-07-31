@@ -10,6 +10,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
+import fitz
+
 from src.parsing.parse_report import DEFAULT_MANIFEST, ROOT, load_manifest_row
 
 
@@ -128,9 +130,21 @@ def select_samples(
 
 def render_page(pdf_path: Path, pdf_page: int, output_dir: Path) -> Path:
     executable = shutil.which("pdftoppm")
-    if not executable:
-        raise RuntimeError("缺少 pdftoppm，无法生成页面视觉抽查图")
     prefix = output_dir / f"page_{pdf_page:04d}"
+    output = prefix.with_suffix(".png")
+    if not executable:
+        # PyMuPDF is already a project dependency, so a missing Poppler binary
+        # should not block the human-review workflow.
+        with fitz.open(pdf_path) as document:
+            if not 1 <= pdf_page <= document.page_count:
+                raise ValueError(f"PDF页码越界：{pdf_page}")
+            page = document.load_page(pdf_page - 1)
+            pixmap = page.get_pixmap(matrix=fitz.Matrix(110 / 72, 110 / 72))
+            pixmap.save(output)
+        if not output.exists() or output.stat().st_size == 0:
+            raise RuntimeError(f"第{pdf_page}页未生成有效PNG")
+        return output
+
     command = [
         executable,
         "-f", str(pdf_page),
@@ -144,7 +158,6 @@ def render_page(pdf_path: Path, pdf_page: int, output_dir: Path) -> Path:
     completed = subprocess.run(command, capture_output=True, text=True)
     if completed.returncode != 0:
         raise RuntimeError(f"第{pdf_page}页渲染失败：{completed.stderr.strip()}")
-    output = prefix.with_suffix(".png")
     if not output.exists() or output.stat().st_size == 0:
         raise RuntimeError(f"第{pdf_page}页未生成有效PNG")
     return output

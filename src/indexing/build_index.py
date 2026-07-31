@@ -106,18 +106,30 @@ def build_index(
     db_dir.mkdir(parents=True, exist_ok=True)
     client = chromadb.PersistentClient(path=str(db_dir))
     collection_name = collection_name_for(strategy, embedding_model)
+    collection_metadata = {
+        "hnsw:space": "cosine",
+        "embedding_model": embedder.name(),
+        "dimensions": actual_dimensions,
+    }
     try:
-        client.delete_collection(collection_name)
+        collection = client.get_collection(collection_name)
+        existing_metadata = collection.metadata or {}
+        if (
+            existing_metadata.get("embedding_model") != embedder.name()
+            or int(existing_metadata.get("dimensions", -1)) != actual_dimensions
+        ):
+            raise ValueError(
+                f"现有Collection {collection_name} 的Embedding配置不一致"
+            )
+        # Re-indexing one report must not erase other companies or years.
+        collection.delete(where={"document_id": document_id})
+    except ValueError:
+        raise
     except Exception:
-        pass
-    collection = client.create_collection(
-        name=collection_name,
-        metadata={
-            "hnsw:space": "cosine",
-            "embedding_model": embedder.name(),
-            "dimensions": actual_dimensions,
-        },
-    )
+        collection = client.create_collection(
+            name=collection_name,
+            metadata=collection_metadata,
+        )
     for start in range(0, len(chunks), batch_size):
         batch = chunks[start:start + batch_size]
         documents = [str(item["text"]) for item in batch]
@@ -127,8 +139,13 @@ def build_index(
             metadatas=[metadata_for(item) for item in batch],
             embeddings=embedder.embed_documents(documents),
         )
-    if collection.count() != len(chunks):
-        raise RuntimeError("Chroma记录数与Chunk数量不一致")
+    indexed_document = collection.get(
+        where={"document_id": document_id},
+        include=[],
+    )
+    indexed_document_count = len(indexed_document["ids"])
+    if indexed_document_count != len(chunks):
+        raise RuntimeError("当前文档的Chroma记录数与Chunk数量不一致")
 
     reports_dir.mkdir(parents=True, exist_ok=True)
     report_path = reports_dir / (
@@ -147,7 +164,8 @@ def build_index(
         ),
         "embedding_backend": embedding_model,
         "dimensions": actual_dimensions,
-        "indexed_chunks": collection.count(),
+        "indexed_chunks": indexed_document_count,
+        "collection_total_chunks": collection.count(),
         "company": str(chunks[0]["company"]),
         "stock_code": str(chunks[0]["stock_code"]),
         "report_year": int(chunks[0]["report_year"]),
