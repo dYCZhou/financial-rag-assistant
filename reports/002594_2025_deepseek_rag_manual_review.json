@@ -1,0 +1,55 @@
+{
+  "document_id": "002594_2025",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "source_report": "reports/002594_2025_deepseek_rag_evaluation.json",
+  "review_type": "manual_preliminary_review",
+  "summary": {
+    "question_count": 15,
+    "fully_correct": 9,
+    "fully_correct_rate": 0.6,
+    "partial_or_incomplete": 3,
+    "refused": 3,
+    "answered_with_gold_page_citation": 12,
+    "answered_question_count": 12,
+    "answered_gold_page_citation_rate": 1.0
+  },
+  "fully_correct_question_ids": [
+    "BYD2025_Q02",
+    "BYD2025_Q04",
+    "BYD2025_Q05",
+    "BYD2025_Q06",
+    "BYD2025_Q07",
+    "BYD2025_Q09",
+    "BYD2025_Q10",
+    "BYD2025_Q12",
+    "BYD2025_Q15"
+  ],
+  "partial_or_incomplete": [
+    {
+      "question_id": "BYD2025_Q03",
+      "reason": "包含正确的2025年度分红预案，但混入已实施的2024年度方案并最终表示无法确定"
+    },
+    {
+      "question_id": "BYD2025_Q13",
+      "reason": "提取到12468373，但因上下文单位不清而未给出千元或换算后的元，答案不完整"
+    },
+    {
+      "question_id": "BYD2025_Q14",
+      "reason": "包含正确的84864506千元，但将另一种担保统计口径视为冲突，没有直接回答"
+    }
+  ],
+  "refused_question_ids": [
+    "BYD2025_Q01",
+    "BYD2025_Q08",
+    "BYD2025_Q11"
+  ],
+  "conclusions": [
+    "真实DeepSeek调用链路和引用编号校验已跑通",
+    "已回答问题均至少引用一条标准证据页，但引用命中不等于答案完全正确",
+    "当前生成质量未达到可宣称完成的水平",
+    "失败主要来自正确证据未进入生成上下文、表格单位丢失和相近统计口径混淆",
+    "通用财务概念组件匹配将检索Recall@5提升到86.67%，并修复分业务收入回答",
+    "下一轮应增加表格单位、指标口径和完整证据覆盖处理"
+  ]
+}

@@ -28,6 +28,16 @@ chunking:
 retrieval:
   top_k: 5
   use_metadata_filter: true
+  candidate_pool: 30
+  bm25_k1: 1.5
+  bm25_b: 0.75
+  rrf_k: 10
+  rrf_vector_weight: 0.25
+  rrf_bm25_weight: 1.0
+  rerank_rrf_weight: 1.0
+  rerank_coverage_weight: 0.08
+  rerank_phrase_weight: 0.12
+  rerank_numeric_weight: 0.04
 
 embedding:
   baseline_model: local-character-ngram-v1
@@ -38,5 +48,13 @@ embedding:
   # 正式模型是否采用，必须由冻结检索题集决定。
 
 generation:
+  provider: deepseek
+  model: deepseek-v4-flash
+  base_url: https://api.deepseek.com
   refuse_without_evidence: true
   provide_investment_advice: false
+  strategy: baseline
+  top_k: 5
+  max_citations: 3
+  max_quote_chars: 500
+  min_term_coverage: 0.08

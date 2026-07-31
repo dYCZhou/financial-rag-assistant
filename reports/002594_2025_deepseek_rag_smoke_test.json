@@ -1,0 +1,34 @@
+{
+  "document_id": "002594_2025",
+  "generated_at": "2026-07-31T06:18:38Z",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "thinking_mode": "disabled",
+  "question": "比亚迪2025年投入了多少研发资金，占营业收入比例是多少？",
+  "status": "answered",
+  "answer": "比亚迪2025年研发投入金额为63,441,379,000.00元，占营业收入比例为7.89%[证据1][证据2]。",
+  "citations": [
+    {
+      "citation_id": 1,
+      "chunk_id": "002594_2025_baseline_00069",
+      "pdf_pages": [39, 40]
+    },
+    {
+      "citation_id": 2,
+      "chunk_id": "002594_2025_baseline_00068",
+      "pdf_pages": [39]
+    }
+  ],
+  "checks": {
+    "answer_matches_evidence": true,
+    "citation_ids_valid": true,
+    "company_year_unit_present": true,
+    "api_key_recorded": false
+  },
+  "elapsed_seconds": 16.893,
+  "limitations": [
+    "当前只完成一个真实可回答问题的烟雾测试",
+    "尚未完成答案正确性、引用完整性、拒答准确率和延迟的正式题集评估",
+    "端到端耗时包含本地BGE检索、混合重排和DeepSeek生成"
+  ]
+}

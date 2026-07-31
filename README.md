@@ -10,9 +10,11 @@
 - 阶段 1：数据验收与自动登记工具已完成；比亚迪 2025 年报已登记
 - 阶段 2：页面级解析与抽查工具已完成；比亚迪 2025 年报已通过人工确认
 - 阶段 3：固定长度与章节＋段落感知切分均已实现并完成结构对比
-- 阶段 4：ChromaDB双索引与可追溯检索已跑通；已接入正式中文语义
-  Embedding 并完成15题冻结小测，但 Recall@5 仍未达到80%验收线
-- 阶段 5—7：尚未实现
+- 阶段 4：ChromaDB双索引、BGE、中文BM25、加权RRF混合召回和通用重排
+  已跑通；固定切分在15题冻结小测上达到 Recall@5=80% 验收线
+- 阶段 5：证据结构、引用、受限Prompt、越界拒答和低相关证据拒答已实现；
+  当前默认只返回 `evidence_only`，尚未接入和验收LLM生成
+- 阶段 6—7：尚未实现
 
 不要因为目录和文件已经存在，就把对应模块写进简历成果。只有通过验收的功能才算完成。
 
@@ -188,11 +190,13 @@ python -m src.retrieval.search "海外市场和出口业务表现如何？" \
 结论是“索引管线通过，字符检索质量未通过”。
 
 正式中文语义模型采用固定版本的 `BAAI/bge-small-zh-v1.5`，生成512维
-向量。CPU环境先安装PyTorch CPU版，再安装其余依赖：
+向量。项目使用Python 3.11，且NumPy固定为1.26系列以兼容当前CPU版
+PyTorch。建立隔离环境并安装依赖：
 
 ```bash
-pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
-pip install -r requirements.txt
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
 建立两套语义索引：
@@ -210,14 +214,23 @@ python -m src.indexing.build_index \
 每题记录标准公司、年度、参考答案、PDF物理证据页和证据原文。运行：
 
 ```bash
-python -m src.evaluation.evaluate_retrieval
+HF_HUB_OFFLINE=1 python -m src.evaluation.evaluate_hybrid_retrieval
 ```
 
-产出 `reports/002594_2025_retrieval_evaluation.json`，分别报告固定切分与
-优化切分的 Recall@3、Recall@5 和 MRR@5。Recall@K衡量正确证据是否进入
-前K条，MRR衡量正确证据首次出现的排名。当前验收阈值为Recall@5至少80%；
-若字符向量未达标，应保留失败结果并替换正式中文语义Embedding，不得改题
-或放宽标准证据页来制造通过。
+产出 `reports/002594_2025_hybrid_retrieval_evaluation.json`，同口径比较
+BGE、BM25、加权RRF混合召回和混合召回＋通用重排。Recall@K衡量正确证据
+是否进入前K条，MRR衡量正确证据首次出现的排名。验收阈值为Recall@5至少80%。
+
+单独运行BM25或混合检索：
+
+```bash
+python -m src.retrieval.bm25 "营业收入是多少？" \
+  --strategy baseline --stock-code 002594 --report-year 2025
+
+HF_HUB_OFFLINE=1 python -m src.retrieval.hybrid "研发投入是多少？" \
+  --strategy baseline --chunks-dir data/chunks \
+  --stock-code 002594 --report-year 2025 --rerank
+```
 
 冻结15题实测结果：
 
@@ -227,11 +240,95 @@ python -m src.evaluation.evaluate_retrieval
 | 字符n-gram | 章节＋段落 | 13.33% | 13.33% | 0.1000 |
 | BGE中文语义 | 固定长度 | 46.67% | 53.33% | 0.4500 |
 | BGE中文语义 | 章节＋段落 | 26.67% | 46.67% | 0.2689 |
+| 中文BM25＋术语扩展 | 固定长度 | 80.00% | 80.00% | 0.7222 |
+| 加权RRF混合召回 | 固定长度 | 66.67% | 80.00% | 0.7000 |
+| 混合召回＋通用重排 | 固定长度 | 73.33% | 80.00% | 0.7056 |
 
-BGE让固定切分Recall@5提高26.66个百分点、结构化切分提高33.34个百分点，
-证明语义模型有效，但两套索引仍未达到80%阈值。失败题主要集中在财务表格、
-同类指标密集页面和简写/全称差异。下一步不能直接进入RAG生成，而应增加
-关键词与向量混合召回，并对Top-K候选做重排；否则LLM只会把错误证据说得更流畅。
+固定切分的三种增强方案均达到80%验收线，但没有超过验收线；营业收入、
+存货和分业务收入三题仍未进入Top-5。正确Chunk位于30条候选池中，主要问题是
+财务摘要和表格中同名指标密集，排序区分度不足。结构化切分的最佳Recall@5
+仍为66.67%，因此当前生产候选继续采用固定切分。单文档原型可以进入受证据
+约束的阶段5，但必须保留拒答、引用和失败题回归，不能把80%解释为全部问题可靠。
+
+## 阶段 5：受证据约束的 RAG
+
+阶段5核心链路已经实现：
+
+- 使用固定切分的混合检索＋通用重排取得证据；
+- 返回公司、股票代码、年度、章节、PDF物理页码、原文和来源URL；
+- 投资建议、估值和股价预测类问题在检索前拒绝；
+- 无检索结果或关键词覆盖率过低时拒答；
+- Prompt要求每个事实引用证据，禁止补充证据外事实或缺失单位；
+- 生成接口与检索、引用逻辑解耦，便于后续替换LLM。
+
+当前没有配置LLM，因此默认状态为 `evidence_only`：系统只返回最相关的年报
+原文，不把模板摘录冒充生成答案。运行：
+
+```bash
+HF_HUB_OFFLINE=1 python -m src.generation.rag \
+  "比亚迪2025年投入了多少研发资金，占营收比例是多少？" \
+  --stock-code 002594 \
+  --report-year 2025
+```
+
+返回状态：
+
+- `answered`：已配置生成器，并生成受证据约束的答案；
+- `evidence_only`：未配置LLM，只返回带引用的原文；
+- `refused`：问题越界、没有证据或证据相关度不足。
+
+当前只完成了RAG核心工程和真实烟雾测试，尚未完成答案正确性、引用完整性和
+拒答准确率的正式题集评估，因此阶段5不能写成“生成质量已通过”。
+
+### DeepSeek 配置
+
+生成器已接入DeepSeek官方Chat Completions接口，默认使用
+`deepseek-v4-flash` 的非思考模式。旧模型别名 `deepseek-chat` 已进入停用
+阶段，因此不再作为默认值。
+
+```bash
+cp .env.example .env
+```
+
+在 `.env` 中填写：
+
+```dotenv
+DEEPSEEK_API_KEY=你的密钥
+LLM_BASE_URL=https://api.deepseek.com
+LLM_MODEL=deepseek-v4-flash
+```
+
+`.env` 已被Git忽略。没有密钥时系统自动降级到 `evidence_only`；配置密钥后，
+同一条RAG命令会调用DeepSeek并返回 `answered`。生成结果必须至少包含一个
+真实 `[证据N]`，且不得引用本次上下文中不存在的编号，否则系统拒绝返回。
+
+真实烟雾测试已完成：使用比亚迪2025年研发投入问题调用
+`deepseek-v4-flash`，返回研发投入63,441,379,000元、占营业收入7.89%，
+引用PDF第39—40页，端到端耗时16.893秒。结果保存在
+`reports/002594_2025_deepseek_rag_smoke_test.json`。这只证明真实调用链路
+跑通，不能替代正式答案评估。
+
+冻结15题真实DeepSeek初测也已完成：
+
+- 完全正确：9/15（60.00%）；
+- 部分正确或不完整：3/15；
+- 证据不足拒答：3/15；
+- 12个已回答问题全部至少引用一条标准证据页；
+- 当前检查点平均端到端耗时3.234秒，中位数1.962秒，最大11.856秒。
+
+拒答题为营业收入、境外收入和存货。部分正确题主要存在历史方案
+与拟议方案混淆、表格单位丢失、不同担保统计口径混淆。详细机器指标和人工
+初审分别保存在：
+
+- `reports/002594_2025_deepseek_rag_evaluation.json`
+- `reports/002594_2025_deepseek_rag_manual_review.json`
+
+因此当前结论是“DeepSeek真实链路通过，生成质量未通过”，不能进入阶段6
+产品化验收。
+
+在初测后增加通用财务概念组件匹配，将固定切分混合重排Recall@5从80.00%
+提升到86.67%，Recall@3提升到80.00%。分业务收入题由拒答变为正确回答；
+境外收入虽召回金额证据，但“占总收入38.65%”未完整进入上下文，仍保持拒答。
 
 每份 PDF 至少核验：
 
