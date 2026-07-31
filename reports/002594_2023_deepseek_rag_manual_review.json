@@ -1,0 +1,20 @@
+{
+  "document_id": "002594_2023",
+  "evaluation_set_sha256": "ccb9bf9ff799083b055f1479a83e4a47861187b7025ae1f3a9a0a13c14f3922f",
+  "machine_report": "reports/002594_2023_deepseek_rag_evaluation.json",
+  "review_scope": "15道冻结题的答案事实、单位、统计口径和引用页",
+  "summary": {
+    "reviewed_questions": 15,
+    "fully_correct": 15,
+    "incorrect": 0,
+    "refused": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0
+  },
+  "machine_proxy_notes": [
+    "Q10为无数字文本答案，人工确认“标准的无保留意见”语义完全一致",
+    "Q11、Q13和Q14以千元回答，和参考答案中的元为等价单位换算",
+    "Q12依据年报原文使用百万元近似披露，与精确金额口径一致"
+  ],
+  "conclusion": "比亚迪2023冻结15题检索和受证据约束RAG均通过人工验收；结合2024和2025结果，同公司三年度验证已完成。"
+}

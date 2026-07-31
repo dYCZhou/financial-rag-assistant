@@ -1,0 +1,14 @@
+{
+  "document_id": "002594_2023",
+  "evaluation_set": "data/evaluation/002594_2023_evaluation_questions.csv",
+  "question_count": 15,
+  "frozen_before_first_evaluation": true,
+  "sha256": "ccb9bf9ff799083b055f1479a83e4a47861187b7025ae1f3a9a0a13c14f3922f",
+  "label_source": "manual_review_of_annual_report_pdf_and_page_level_extraction",
+  "evidence_page_type": "pdf_physical_page",
+  "notes": [
+    "参考答案、单位、统计口径、可接受证据页和证据原文均来自比亚迪2023年度报告",
+    "首次检索评估后不得为提高指标修改题目、参考答案或证据页",
+    "通用检索改进不得读取question_id、reference_answer或evidence_pages"
+  ]
+}

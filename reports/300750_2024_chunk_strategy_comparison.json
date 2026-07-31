@@ -1,0 +1,29 @@
+{
+  "document_id": "300750_2024",
+  "generated_at": "2026-07-31T08:06:33.272956+00:00",
+  "source_page_count": 229,
+  "baseline": {
+    "strategy": "fixed_char",
+    "chunk_count": 328,
+    "chunks_crossing_pages": 254,
+    "chunks_crossing_chapters": 57,
+    "average_compact_char_count": 710.39
+  },
+  "structured": {
+    "strategy": "chapter_paragraph",
+    "chunk_count": 372,
+    "chunks_crossing_pages": 173,
+    "chunks_crossing_chapters": 0,
+    "average_compact_char_count": 701.16,
+    "natural_ending_rate": 0.3011
+  },
+  "differences": {
+    "chunk_count_change": 44,
+    "chunk_count_change_rate": 0.1341,
+    "cross_page_chunk_change": -81,
+    "cross_page_chunk_change_rate": -0.3189,
+    "cross_chapter_chunk_change": -57,
+    "cross_chapter_chunk_change_rate": -1.0
+  },
+  "conclusion_boundary": "结构指标只能说明Chunk边界更规整；是否提升语义检索命中率，必须在同一人工标注问题集上完成Top-K检索评估后判断。"
+}

@@ -1,0 +1,19 @@
+{
+  "document_id": "002594_2023",
+  "generated_at": "2026-07-31T07:55:16.842947+00:00",
+  "collection_name": "annual_reports_baseline_bge_v1",
+  "strategy": "baseline",
+  "embedding_model": "bge-small-zh-v1.5",
+  "embedding_type": "pretrained_chinese_semantic_embedding",
+  "embedding_backend": "bge",
+  "dimensions": 512,
+  "indexed_chunks": 424,
+  "collection_total_chunks": 1234,
+  "company": "比亚迪股份有限公司",
+  "stock_code": "002594",
+  "report_year": 2023,
+  "db_path": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/chroma_db",
+  "limitations": [
+    "检索质量必须通过同题Top-K评估后再下结论"
+  ]
+}

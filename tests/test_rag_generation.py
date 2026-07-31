@@ -147,3 +147,15 @@ def test_quote_window_prefers_specific_metric_over_earlier_period_word() -> None
     text = "2025年末" + "无关内容" * 150 + "存货余额为138元" + "结尾" * 150
     quote = quote_around_query(text, "2025年末存货余额是多少？", max_chars=120)
     assert "存货余额为138元" in quote
+
+
+def test_prompt_explains_default_meaning_of_year_over_year_change() -> None:
+    citation = citations_from_hits(
+        [_hit()],
+        question="经营现金流同比下降多少？",
+        max_citations=1,
+        max_quote_chars=500,
+    )[0]
+    prompt = build_grounded_prompt("经营现金流同比下降多少？", [citation])
+
+    assert "默认询问同比变动比例" in prompt

@@ -1,0 +1,110 @@
+{
+  "document_id": "002594_2023",
+  "generated_at": "2026-07-31T07:51:18.448537+00:00",
+  "source_file": "002594_比亚迪_2023_annual_report.pdf",
+  "page_count": 266,
+  "manifest_page_count": 266,
+  "total_char_count": 245300,
+  "average_chars_per_page": 922.18,
+  "pages_with_printed_page": 265,
+  "pages_with_known_chapter": 262,
+  "repeated_margin_lines_removed": [
+    "比亚迪股份有限公司2023 年年度报告全文"
+  ],
+  "quality_flag_counts": {
+    "short_page": 13
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 25
+    },
+    {
+      "pdf_page": 70,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 2
+    },
+    {
+      "pdf_page": 89,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 4
+    },
+    {
+      "pdf_page": 130,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 32
+    },
+    {
+      "pdf_page": 131,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 19
+    },
+    {
+      "pdf_page": 168,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 170,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 178,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 195,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 231,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 238,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 262,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 3
+    },
+    {
+      "pdf_page": 266,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 39
+    }
+  ]
+}

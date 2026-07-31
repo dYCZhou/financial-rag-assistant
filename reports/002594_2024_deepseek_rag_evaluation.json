@@ -1,0 +1,751 @@
+{
+  "document_id": "002594_2024",
+  "generated_at": "2026-07-31T07:45:51.317851+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/002594_2024_evaluation_questions.csv",
+  "question_count": 15,
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 0.6429,
+    "answer_accuracy_proxy": 0.6,
+    "average_latency_seconds": 2.996,
+    "median_latency_seconds": 2.044,
+    "max_latency_seconds": 9.619,
+    "failed_question_ids": [
+      "BYD2024_Q10",
+      "BYD2024_Q11",
+      "BYD2024_Q12",
+      "BYD2024_Q13",
+      "BYD2024_Q14",
+      "BYD2024_Q15"
+    ]
+  },
+  "cases": [
+    {
+      "question_id": "BYD2024_Q01",
+      "question": "比亚迪2024年的营业收入是多少？",
+      "question_type": "financial_fact",
+      "difficulty": "easy",
+      "reference_answer": "777102455000元",
+      "gold_evidence_pages": [
+        10,
+        24,
+        145
+      ],
+      "status": "answered",
+      "answer": "比亚迪2024年的营业收入为777,102,455,000.00元（即人民币7,771亿元），该数据来自合并财务报表口径，单位为元[证据1]。此外，证据2中分部报告显示2024年营业收入合计为777,102,455千元（单位：千元），与证据1数值一致（777,102,455,000元 = 777,102,455千元）[证据2]。审计报告亦提及2024年度合并财务报表中营业收入金额为人民币7,771亿元[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00010",
+        "002594_2024_baseline_00413",
+        "002594_2024_baseline_00257"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        136,
+        137,
+        272,
+        273,
+        274
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "777102455000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "3",
+        "7771",
+        "777102455",
+        "777102455000"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 9.619,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q02",
+      "question": "比亚迪2024年归母净利润同比变化如何？",
+      "question_type": "financial_fact",
+      "difficulty": "medium",
+      "reference_answer": "归母净利润40254346000元同比增长34.00%",
+      "gold_evidence_pages": [
+        11,
+        145
+      ],
+      "status": "answered",
+      "answer": "比亚迪2024年归属于上市公司股东的净利润为40,254,346,000.00元，2023年为30,040,811,000.00元，同比增长34.00%[证据1]。该数据为合并口径下的发生额，单位为元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00010",
+        "002594_2024_baseline_00011",
+        "002594_2024_baseline_00012"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        12
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "40254346000",
+        "34%"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "2024",
+        "30040811000",
+        "34%",
+        "40254346000"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.044,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q03",
+      "question": "公司2024年度拟如何向股东分红？",
+      "question_type": "governance_fact",
+      "difficulty": "medium",
+      "reference_answer": "每10股派发现金红利39.74元含税不送红股且不以公积金转增股本",
+      "gold_evidence_pages": [
+        5,
+        269
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，公司2024年度拟向股东分红的方案为：以3,039,065,855股为基数，向全体股东每10股派发现金红利39.74元（含税），送红股0股，不以公积金转增股本[证据3]。该方案已经公司第八届董事会第十六次会议审议通过，尚需提交2024年度股东会审议[证据2]。现金分红金额（含税）为12,077,248,000元，现金分红总额（含其他方式）为12,477,241,367元，其中以其他方式（如回购股份）现金分红金额为399,993,367元，现金分红总额（含其他方式）占利润分配总额的比例为100%[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00124",
+        "002594_2024_baseline_00125",
+        "002594_2024_baseline_00005"
+      ],
+      "citation_pages": [
+        4,
+        5,
+        6,
+        69,
+        70
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "10",
+        "39.74"
+      ],
+      "answer_numbers": [
+        "0",
+        "10",
+        "100%",
+        "12077248000",
+        "12477241367",
+        "2",
+        "2024",
+        "3",
+        "3039065855",
+        "39.74",
+        "399993367"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.319,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q04",
+      "question": "比亚迪2024年整车销量及同比增幅是多少？",
+      "question_type": "business_fact",
+      "difficulty": "medium",
+      "reference_answer": "整车销量4272145辆同比增长41.26%",
+      "gold_evidence_pages": [
+        22,
+        23
+      ],
+      "status": "answered",
+      "answer": "比亚迪2024年整车销量为4,272,145辆，同比增长41.26%[证据4]。该数据为合并口径下的快报销量，单位为辆[证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00000",
+        "002594_2024_baseline_00001",
+        "002594_2024_baseline_00019",
+        "002594_2024_baseline_00029",
+        "002594_2024_baseline_00086"
+      ],
+      "citation_pages": [
+        1,
+        2,
+        3,
+        14,
+        15,
+        22,
+        23,
+        48,
+        49
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "4272145",
+        "41.26%"
+      ],
+      "answer_numbers": [
+        "2024",
+        "4",
+        "41.26%",
+        "4272145"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 8.906,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q05",
+      "question": "公司2024年投入了多少研发资金，占营收比例是多少？",
+      "question_type": "rd_fact",
+      "difficulty": "medium",
+      "reference_answer": "研发投入54160964000元占营业收入6.97%",
+      "gold_evidence_pages": [
+        34
+      ],
+      "status": "answered",
+      "answer": "公司2024年研发投入金额为54,160,964,000.00元，占营业收入比例为6.97%[证据1]。该数据为比亚迪股份有限公司2024年年度数据，单位为元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00059",
+        "002594_2024_baseline_00058"
+      ],
+      "citation_pages": [
+        33,
+        34
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "54160964000",
+        "6.97%"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "54160964000",
+        "6.97%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.189,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q06",
+      "question": "比亚迪有多少研发人员，研发人员占员工比例多少？",
+      "question_type": "rd_fact",
+      "difficulty": "medium",
+      "reference_answer": "研发人员121598人占比12.55%",
+      "gold_evidence_pages": [
+        33,
+        34
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪2024年研发人员数量为121,598人，研发人员数量占比为12.55%[证据1]。该数据为比亚迪股份有限公司2024年度数据，单位为人（研发人员数量）和百分比（占比）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00058",
+        "002594_2024_baseline_00059",
+        "002594_2024_baseline_00404"
+      ],
+      "citation_pages": [
+        33,
+        34,
+        266
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "121598",
+        "12.55%"
+      ],
+      "answer_numbers": [
+        "1",
+        "12.55%",
+        "121598",
+        "2024"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.053,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q07",
+      "question": "前五大客户贡献了多少销售额，占年度销售额比例多少？",
+      "question_type": "customer_fact",
+      "difficulty": "hard",
+      "reference_answer": "前五名客户销售额142613553000元占年度销售总额18.35%",
+      "gold_evidence_pages": [
+        26,
+        27
+      ],
+      "status": "answered",
+      "answer": "前五大客户合计销售金额为142,613,553,000.00元，占年度销售总额比例为18.35%[证据1][证据2]。该数据为比亚迪股份有限公司2024年度数据，单位为元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00037",
+        "002594_2024_baseline_00038",
+        "002594_2024_baseline_00330"
+      ],
+      "citation_pages": [
+        26,
+        27,
+        194,
+        195,
+        196
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "142613553000",
+        "18.35%"
+      ],
+      "answer_numbers": [
+        "1",
+        "142613553000",
+        "18.35%",
+        "2",
+        "2024"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.017,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q08",
+      "question": "比亚迪2024年境外收入是多少，占总收入多少？",
+      "question_type": "business_fact",
+      "difficulty": "hard",
+      "reference_answer": "境外收入221884773000元占营业收入28.55%",
+      "gold_evidence_pages": [
+        24,
+        25
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪2024年境外收入为221,884,773,000.00元，占营业收入比重为28.55%[证据2]。该数据为合并口径的营业收入构成中的分地区数据，单位为元，年度为2024年[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00032",
+        "002594_2024_baseline_00033",
+        "002594_2024_baseline_00034"
+      ],
+      "citation_pages": [
+        24,
+        25
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "221884773000",
+        "28.55%"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "221884773000",
+        "28.55%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.857,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q09",
+      "question": "公司2024年末一共有多少名在职员工？",
+      "question_type": "workforce_fact",
+      "difficulty": "easy",
+      "reference_answer": "报告期末在职员工968872人",
+      "gold_evidence_pages": [
+        66
+      ],
+      "status": "answered",
+      "answer": "公司2024年末在职员工数量合计为968,872人[证据1]。该数据为报告期末在职员工的数量合计，单位为“人”[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00118"
+      ],
+      "citation_pages": [
+        65,
+        66
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "968872"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "968872"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.814,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q10",
+      "question": "审计机构对比亚迪2024年财务报表出具了什么意见？",
+      "question_type": "audit_fact",
+      "difficulty": "medium",
+      "reference_answer": "标准无保留意见",
+      "gold_evidence_pages": [
+        136
+      ],
+      "status": "answered",
+      "answer": "审计机构对比亚迪2024年财务报表出具了标准的无保留意见[证据1]。审计机构为安永华明会计师事务所（特殊普通合伙），审计报告签署日期为2025年3月24日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00256",
+        "002594_2024_baseline_00117",
+        "002594_2024_baseline_00128"
+      ],
+      "citation_pages": [
+        64,
+        65,
+        71,
+        72,
+        135,
+        136
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "2025",
+        "24",
+        "3"
+      ],
+      "reference_number_recall": null,
+      "reference_text_match": false,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.205,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q11",
+      "question": "比亚迪2024年末合并口径存货账面价值是多少？",
+      "question_type": "balance_sheet_fact",
+      "difficulty": "medium",
+      "reference_answer": "存货账面价值116036237000元",
+      "gold_evidence_pages": [
+        35,
+        142,
+        196
+      ],
+      "status": "answered",
+      "answer": "比亚迪2024年末合并口径存货账面价值为116,036,237千元，该数值为扣除存货跌价准备后的列报金额（账面价值）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00331",
+        "002594_2024_baseline_00330",
+        "002594_2024_baseline_00300"
+      ],
+      "citation_pages": [
+        171,
+        194,
+        195,
+        196,
+        197
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "116036237000"
+      ],
+      "answer_numbers": [
+        "1",
+        "116036237",
+        "2024"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.67,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q12",
+      "question": "汽车相关业务和手机部件业务分别贡献了多少收入？",
+      "question_type": "segment_fact",
+      "difficulty": "hard",
+      "reference_answer": "汽车相关业务收入617381935000元手机部件业务收入159608576000元",
+      "gold_evidence_pages": [
+        3,
+        24,
+        25
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，汽车相关业务和手机部件业务在2024年的收入如下：\n\n- **汽车、汽车相关产品及其他产品业务**：收入约人民币617,382百万元，同比增长27.70%，占总收入比例79.45%[证据2][证据3]。\n- **手机部件、组装及其他产品业务**：收入约人民币159,609百万元，同比增长34.60%，占总收入比例20.54%[证据2][证据3]。\n\n注：上述数据为比亚迪股份有限公司2024年度合并口径的营业收入（发生额），单位为人民百万元[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00367",
+        "002594_2024_baseline_00018",
+        "002594_2024_baseline_00001"
+      ],
+      "citation_pages": [
+        3,
+        14,
+        227,
+        228
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "617381935000",
+        "159608576000"
+      ],
+      "answer_numbers": [
+        "159609",
+        "2",
+        "20.54%",
+        "2024",
+        "27.7%",
+        "3",
+        "34.6%",
+        "617382",
+        "79.45%"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.596,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q13",
+      "question": "2024年与日常活动相关的政府补助金额是多少？",
+      "question_type": "financial_note_fact",
+      "difficulty": "hard",
+      "reference_answer": "10406200000元",
+      "gold_evidence_pages": [
+        232
+      ],
+      "status": "answered",
+      "answer": "2024年与日常活动相关的政府补助金额为10,406,200千元（合并口径，发生额）[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00371",
+        "002594_2024_baseline_00372",
+        "002594_2024_baseline_00307"
+      ],
+      "citation_pages": [
+        175,
+        176,
+        231,
+        232,
+        233,
+        234
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "10406200000"
+      ],
+      "answer_numbers": [
+        "1",
+        "10406200",
+        "2",
+        "2024"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.963,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q14",
+      "question": "2024年末公司为子公司实际提供的担保金额是多少？",
+      "question_type": "contingency_fact",
+      "difficulty": "hard",
+      "reference_answer": "37826863000元",
+      "gold_evidence_pages": [
+        268
+      ],
+      "status": "answered",
+      "answer": "2024年末，公司为子公司实际提供的担保金额为人民币37,826,863千元[证据1][证据2]。该金额为合并口径下的期末余额，单位依据财务附注报表单位为千元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00407",
+        "002594_2024_baseline_00406",
+        "002594_2024_baseline_00214"
+      ],
+      "citation_pages": [
+        112,
+        113,
+        114,
+        268,
+        269
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "37826863000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "37826863"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.847,
+      "error": null
+    },
+    {
+      "question_id": "BYD2024_Q15",
+      "question": "2024年经营活动产生的现金流量净额同比下降多少？",
+      "question_type": "cashflow_fact",
+      "difficulty": "hard",
+      "reference_answer": "经营活动现金流量净额133453873000元同比下降21.37%",
+      "gold_evidence_pages": [
+        11,
+        34,
+        149,
+        239
+      ],
+      "status": "answered",
+      "answer": "2024年经营活动产生的现金流量净额同比下降21.37%[证据1]。该比例由证据1直接给出，对应比亚迪股份有限公司2024年度合并口径数据。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2024_baseline_00060",
+        "002594_2024_baseline_00279",
+        "002594_2024_baseline_00278",
+        "002594_2024_baseline_00271",
+        "002594_2024_baseline_00378"
+      ],
+      "citation_pages": [
+        34,
+        35,
+        148,
+        149,
+        154,
+        155,
+        156,
+        238,
+        239,
+        240
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "133453873000",
+        "21.37%"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "21.37%"
+      ],
+      "reference_number_recall": 0.5,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.844,
+      "error": null
+    }
+  ]
+}

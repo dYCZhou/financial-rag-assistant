@@ -180,6 +180,12 @@ def evaluate(
     report_path: Path = DEFAULT_REPORT,
 ) -> dict[str, object]:
     questions = load_questions(questions_path)
+    document_ids = {
+        f"{row['target_stock_code']}_{row['target_year']}" for row in questions
+    }
+    document_id = (
+        next(iter(document_ids)) if len(document_ids) == 1 else "multi_document"
+    )
     strategies = [
         evaluate_strategy(
             questions,
@@ -192,7 +198,7 @@ def evaluate(
     ]
     threshold = 0.8
     report: dict[str, object] = {
-        "document_id": "002594_2025",
+        "document_id": document_id,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "evaluation_set": str(questions_path),
         "question_count": len(questions),

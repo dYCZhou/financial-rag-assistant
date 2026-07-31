@@ -144,8 +144,15 @@ def _write_checkpoint(
     questions_path: Path,
     cases: list[dict[str, object]],
 ) -> dict[str, object]:
+    questions = load_questions(questions_path)
+    document_ids = {
+        f"{row['target_stock_code']}_{row['target_year']}" for row in questions
+    }
+    document_id = (
+        next(iter(document_ids)) if len(document_ids) == 1 else "multi_document"
+    )
     report: dict[str, object] = {
-        "document_id": "002594_2025",
+        "document_id": document_id,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "provider": "deepseek",
         "model": "deepseek-v4-flash",

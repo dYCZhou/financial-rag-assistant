@@ -1,0 +1,796 @@
+{
+  "document_id": "002594_2023",
+  "generated_at": "2026-07-31T08:01:06.337060+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/002594_2023_evaluation_questions.csv",
+  "question_count": 15,
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 0.7143,
+    "answer_accuracy_proxy": 0.6667,
+    "average_latency_seconds": 2.764,
+    "median_latency_seconds": 2.113,
+    "max_latency_seconds": 10.677,
+    "failed_question_ids": [
+      "BYD2023_Q10",
+      "BYD2023_Q11",
+      "BYD2023_Q12",
+      "BYD2023_Q13",
+      "BYD2023_Q14"
+    ]
+  },
+  "cases": [
+    {
+      "question_id": "BYD2023_Q01",
+      "question": "比亚迪2023年的营业收入是多少？",
+      "question_type": "financial_fact",
+      "difficulty": "easy",
+      "reference_answer": "602315354000元",
+      "gold_evidence_pages": [
+        11,
+        19,
+        140
+      ],
+      "status": "answered",
+      "answer": "比亚迪2023年的营业收入为602,315,354,000.00元（人民币6,023亿元）[证据1][证据2][证据4]。该数据为比亚迪股份有限公司2023年度合并财务报表口径的营业收入发生额[证据1][证据2][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00011",
+        "002594_2023_baseline_00012",
+        "002594_2023_baseline_00411",
+        "002594_2023_baseline_00362",
+        "002594_2023_baseline_00256"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        132,
+        133,
+        210,
+        211,
+        252,
+        253
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "602315354000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2023",
+        "4",
+        "6023",
+        "602315354000"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 10.677,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q02",
+      "question": "比亚迪2023年归母净利润同比变化如何？",
+      "question_type": "financial_fact",
+      "difficulty": "medium",
+      "reference_answer": "归母净利润30040811000元同比增长80.72%",
+      "gold_evidence_pages": [
+        11,
+        140
+      ],
+      "status": "answered",
+      "answer": "比亚迪2023年归属于上市公司股东的净利润为30,040,811,000.00元，2022年为16,622,448,000.00元，本年比上年增减为80.72%[证据1]。因此，比亚迪2023年归母净利润同比增长80.72%[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00012",
+        "002594_2023_baseline_00013",
+        "002594_2023_baseline_00011"
+      ],
+      "citation_pages": [
+        10,
+        11,
+        12
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "30040811000",
+        "80.72%"
+      ],
+      "answer_numbers": [
+        "1",
+        "16622448000",
+        "2022",
+        "2023",
+        "30040811000",
+        "80.72%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.97,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q03",
+      "question": "公司2023年度拟如何向股东分红？",
+      "question_type": "governance_fact",
+      "difficulty": "medium",
+      "reference_answer": "每10股派发现金红利30.96元含税不送红股且不以公积金转增股本",
+      "gold_evidence_pages": [
+        5
+      ],
+      "status": "answered",
+      "answer": "公司2023年度拟向股东分红的预案为：以总股本2,911,142,855股为基数，向全体股东每10股派发现金红利人民币30.96元（含税），现金红利总额约为人民币9,012,243千元（如实施权益分派股权登记日公司总股本发生变动，公司拟维持分配总额不变，相应调整每股分配金额），不送红股，不以公积金转增股本[证据3]。该预案已经公司第八届董事会第六次会议审议通过，尚需提交公司2023年度股东大会审议[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00126",
+        "002594_2023_baseline_00127",
+        "002594_2023_baseline_00088",
+        "002594_2023_baseline_00006"
+      ],
+      "citation_pages": [
+        4,
+        5,
+        6,
+        45,
+        46,
+        65,
+        66
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "10",
+        "30.96"
+      ],
+      "answer_numbers": [
+        "10",
+        "2",
+        "2023",
+        "2911142855",
+        "3",
+        "30.96",
+        "9012243"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.692,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q04",
+      "question": "比亚迪2023年整车销量及同比增幅是多少？",
+      "question_type": "business_fact",
+      "difficulty": "medium",
+      "reference_answer": "整车销量3024417辆同比增长67.79%",
+      "gold_evidence_pages": [
+        18
+      ],
+      "status": "answered",
+      "answer": "比亚迪2023年整车销量为3,024,417辆，同比增长67.79%[证据3]。该数据为合并口径的本报告期销售量，单位为辆[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00019",
+        "002594_2023_baseline_00000",
+        "002594_2023_baseline_00029",
+        "002594_2023_baseline_00016"
+      ],
+      "citation_pages": [
+        1,
+        2,
+        13,
+        14,
+        17,
+        18
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3024417",
+        "67.79%"
+      ],
+      "answer_numbers": [
+        "2023",
+        "3",
+        "3024417",
+        "67.79%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.113,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q05",
+      "question": "公司2023年投入了多少研发资金，占营收比例是多少？",
+      "question_type": "rd_fact",
+      "difficulty": "medium",
+      "reference_answer": "研发投入39917743000元占营业收入6.63%",
+      "gold_evidence_pages": [
+        27
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，公司2023年研发投入金额为39,917,743,000.00元，占营业收入比例为6.63%[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00054"
+      ],
+      "citation_pages": [
+        27,
+        28
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "39917743000",
+        "6.63%"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "39917743000",
+        "6.63%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.998,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q06",
+      "question": "比亚迪有多少研发人员，研发人员占员工比例多少？",
+      "question_type": "rd_fact",
+      "difficulty": "medium",
+      "reference_answer": "研发人员102844人占比14.62%",
+      "gold_evidence_pages": [
+        27
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪2023年研发人员数量为102,844人，研发人员数量占比为14.62%[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00054",
+        "002594_2023_baseline_00404",
+        "002594_2023_baseline_00053"
+      ],
+      "citation_pages": [
+        27,
+        28,
+        248
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "102844",
+        "14.62%"
+      ],
+      "answer_numbers": [
+        "102844",
+        "14.62%",
+        "2023",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.712,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q07",
+      "question": "前五大客户贡献了多少销售额，占年度销售额比例多少？",
+      "question_type": "customer_fact",
+      "difficulty": "hard",
+      "reference_answer": "前五名客户销售额104482886000元占年度销售总额17.34%",
+      "gold_evidence_pages": [
+        21,
+        22
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪股份有限公司2023年度前五名客户合计销售金额为104,482,886,000.00元，占年度销售总额比例为17.34%[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00036",
+        "002594_2023_baseline_00037",
+        "002594_2023_baseline_00328",
+        "002594_2023_baseline_00387",
+        "002594_2023_baseline_00386"
+      ],
+      "citation_pages": [
+        21,
+        22,
+        183,
+        233,
+        234,
+        235
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "104482886000",
+        "17.34%"
+      ],
+      "answer_numbers": [
+        "1",
+        "104482886000",
+        "17.34%",
+        "2",
+        "2023"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.117,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q08",
+      "question": "比亚迪2023年境外收入是多少，占总收入多少？",
+      "question_type": "business_fact",
+      "difficulty": "hard",
+      "reference_answer": "境外收入160221500000元占营业收入26.60%",
+      "gold_evidence_pages": [
+        20
+      ],
+      "status": "answered",
+      "answer": "比亚迪2023年境外收入为160,221,500,000.00元，占总收入比重为26.60%[证据2]。该数据为合并口径的营业收入构成，单位为元，年度为2023年[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00032",
+        "002594_2023_baseline_00033",
+        "002594_2023_baseline_00034",
+        "002594_2023_baseline_00054",
+        "002594_2023_baseline_00257"
+      ],
+      "citation_pages": [
+        19,
+        20,
+        21,
+        27,
+        28,
+        133,
+        134
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "160221500000",
+        "26.6%"
+      ],
+      "answer_numbers": [
+        "160221500000",
+        "2",
+        "2023",
+        "26.6%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.351,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q09",
+      "question": "公司2023年末一共有多少名在职员工？",
+      "question_type": "workforce_fact",
+      "difficulty": "easy",
+      "reference_answer": "报告期末在职员工703504人",
+      "gold_evidence_pages": [
+        63
+      ],
+      "status": "answered",
+      "answer": "公司2023年末在职员工数量合计为703,504人[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00122",
+        "002594_2023_baseline_00121"
+      ],
+      "citation_pages": [
+        61,
+        62,
+        63,
+        64
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "703504"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2023",
+        "703504"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.683,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q10",
+      "question": "审计机构对比亚迪2023年财务报表出具了什么意见？",
+      "question_type": "audit_fact",
+      "difficulty": "medium",
+      "reference_answer": "标准无保留意见",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "根据证据，审计机构对比亚迪2023年财务报表出具了“标准的无保留意见”[证据1]。审计机构为安永华明会计师事务所（特殊普通合伙），审计报告签署日期为2024年03月26日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00255",
+        "002594_2023_baseline_00131",
+        "002594_2023_baseline_00261",
+        "002594_2023_baseline_00260",
+        "002594_2023_baseline_00256"
+      ],
+      "citation_pages": [
+        68,
+        69,
+        129,
+        130,
+        131,
+        132,
+        133,
+        135,
+        136,
+        137
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "2024",
+        "26",
+        "3"
+      ],
+      "reference_number_recall": null,
+      "reference_text_match": false,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.87,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q11",
+      "question": "比亚迪2023年末合并口径存货账面价值是多少？",
+      "question_type": "balance_sheet_fact",
+      "difficulty": "medium",
+      "reference_answer": "存货账面价值87676748000元",
+      "gold_evidence_pages": [
+        29,
+        138,
+        183
+      ],
+      "status": "answered",
+      "answer": "比亚迪2023年末合并口径存货账面价值为87,676,748千元[证据1][证据5]。该数值为合并资产负债表中的列报金额，即扣除存货跌价准备后的账面价值[证据1][证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00329",
+        "002594_2023_baseline_00331",
+        "002594_2023_baseline_00328",
+        "002594_2023_baseline_00298",
+        "002594_2023_baseline_00262"
+      ],
+      "citation_pages": [
+        136,
+        137,
+        138,
+        162,
+        163,
+        183,
+        184,
+        185
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "87676748000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "5",
+        "87676748"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.88,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q12",
+      "question": "汽车相关业务和手机部件业务分别贡献了多少收入？",
+      "question_type": "segment_fact",
+      "difficulty": "hard",
+      "reference_answer": "汽车相关业务收入483453318000元手机部件业务收入118576910000元",
+      "gold_evidence_pages": [
+        3,
+        19,
+        20
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，比亚迪股份有限公司2023年度汽车相关业务和手机部件业务的收入如下：\n\n- 汽车、汽车相关产品及其他产品业务的收入约为人民币483,453百万元，同比增长48.90%，占本集团总收入的比例为80.27%[证据3]。\n- 手机部件、组装及其他产品业务的收入约为人民币118,577百万元，同比增长20.00%，占本集团总收入的比例为19.68%[证据3]。\n\n注：上述数据为合并口径的营业收入发生额，单位为百万元，年度为2023年[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00035",
+        "002594_2023_baseline_00033",
+        "002594_2023_baseline_00019",
+        "002594_2023_baseline_00034",
+        "002594_2023_baseline_00257"
+      ],
+      "citation_pages": [
+        14,
+        19,
+        20,
+        21,
+        133,
+        134
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "483453318000",
+        "118576910000"
+      ],
+      "answer_numbers": [
+        "118577",
+        "19.68%",
+        "20%",
+        "2023",
+        "3",
+        "48.9%",
+        "483453",
+        "80.27%"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 3.079,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q13",
+      "question": "2023年与日常活动相关的政府补助金额是多少？",
+      "question_type": "financial_note_fact",
+      "difficulty": "hard",
+      "reference_answer": "4619187000元",
+      "gold_evidence_pages": [
+        215
+      ],
+      "status": "answered",
+      "answer": "2023年与日常活动相关的政府补助金额为4,619,187千元[证据1]。该金额为比亚迪股份有限公司2023年合并利润表中“其他收益”项下“与日常活动相关的政府补助”的发生额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00367",
+        "002594_2023_baseline_00384",
+        "002594_2023_baseline_00304",
+        "002594_2023_baseline_00423",
+        "002594_2023_baseline_00422"
+      ],
+      "citation_pages": [
+        166,
+        215,
+        216,
+        230,
+        231,
+        232,
+        264,
+        265,
+        266
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "4619187000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "4619187"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 2.459,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q14",
+      "question": "2023年末公司为子公司实际提供的担保金额是多少？",
+      "question_type": "contingency_fact",
+      "difficulty": "hard",
+      "reference_answer": "43872398000元",
+      "gold_evidence_pages": [
+        250
+      ],
+      "status": "answered",
+      "answer": "2023年末，公司为子公司实际提供的担保金额为人民币43,872,398千元[证据1]。该金额为合并口径下本公司为其子公司实际提供的担保[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00407",
+        "002594_2023_baseline_00210",
+        "002594_2023_baseline_00212",
+        "002594_2023_baseline_00213",
+        "002594_2023_baseline_00406"
+      ],
+      "citation_pages": [
+        109,
+        110,
+        111,
+        112,
+        249,
+        250
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "43872398000"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "43872398"
+      ],
+      "reference_number_recall": 0.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": false,
+      "elapsed_seconds": 1.803,
+      "error": null
+    },
+    {
+      "question_id": "BYD2023_Q15",
+      "question": "2023年经营活动产生的现金流量净额同比增长多少？",
+      "question_type": "cashflow_fact",
+      "difficulty": "hard",
+      "reference_answer": "经营活动现金流量净额169725025000元同比增长20.51%",
+      "gold_evidence_pages": [
+        11,
+        28,
+        144,
+        220
+      ],
+      "status": "answered",
+      "answer": "2023年经营活动产生的现金流量净额同比增长20.51%[证据1][证据4]。该数据为比亚迪股份有限公司2023年合并口径数据，2023年发生额为169,725,025,000.00元，2022年发生额为140,837,657,000.00元，单位均为元[证据1][证据3][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "002594_2023_baseline_00055",
+        "002594_2023_baseline_00277",
+        "002594_2023_baseline_00270",
+        "002594_2023_baseline_00054",
+        "002594_2023_baseline_00373"
+      ],
+      "citation_pages": [
+        27,
+        28,
+        144,
+        145,
+        150,
+        151,
+        220,
+        221
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "169725025000",
+        "20.51%"
+      ],
+      "answer_numbers": [
+        "1",
+        "140837657000",
+        "169725025000",
+        "20.51%",
+        "2022",
+        "2023",
+        "3",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.054,
+      "error": null
+    }
+  ]
+}

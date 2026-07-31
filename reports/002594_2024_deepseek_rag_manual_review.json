@@ -1,0 +1,33 @@
+{
+  "document_id": "002594_2024",
+  "evaluation_set_sha256": "3ff85ad178d625a55869ee25f01fddcf80e47d5ed375b2000404b3b52f7ec955",
+  "machine_report": "reports/002594_2024_deepseek_rag_evaluation.json",
+  "review_scope": "15道冻结题的答案事实、单位、统计口径和引用页",
+  "summary": {
+    "reviewed_questions": 15,
+    "fully_correct": 15,
+    "incorrect": 0,
+    "refused": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0
+  },
+  "machine_proxy_notes": [
+    "Q10为无数字文本答案，人工确认“标准的无保留意见”语义完全一致",
+    "Q11、Q13和Q14以千元回答，和参考答案中的元为等价单位换算",
+    "Q12依据年报原文使用百万元近似披露，与精确金额口径一致",
+    "Q15问题直接询问同比下降多少，答案21.37%完整回答问题；机器代理因参考答案还包含现金流净额而记为数字召回0.5"
+  ],
+  "generic_fixes_after_first_run": [
+    {
+      "issue": "正确的整车销量表格证据排第4，但生成阶段只保留前三条引用",
+      "change": "将生成引用上限与Top-5检索验收口径对齐为5条",
+      "result": "Q04引用PDF第22至23页并准确回答销量和同比增幅"
+    },
+    {
+      "issue": "模型把“同比下降多少”误解为必须计算绝对下降额",
+      "change": "Prompt明确该措辞默认询问同比变动比例，证据直接给出比例时应回答",
+      "result": "Q15准确回答同比下降21.37%"
+    }
+  ],
+  "conclusion": "比亚迪2024冻结15题检索和受证据约束RAG均通过本轮人工验收；该结论证明当前规则可从2025泛化到同公司2024，但尚不代表跨公司通过。"
+}

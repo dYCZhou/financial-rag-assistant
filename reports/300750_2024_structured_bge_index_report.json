@@ -1,0 +1,19 @@
+{
+  "document_id": "300750_2024",
+  "generated_at": "2026-07-31T08:08:37.582804+00:00",
+  "collection_name": "annual_reports_structured_bge_v1",
+  "strategy": "structured",
+  "embedding_model": "bge-small-zh-v1.5",
+  "embedding_type": "pretrained_chinese_semantic_embedding",
+  "embedding_backend": "bge",
+  "dimensions": 512,
+  "indexed_chunks": 372,
+  "collection_total_chunks": 1797,
+  "company": "宁德时代新能源科技股份有限公司",
+  "stock_code": "300750",
+  "report_year": 2024,
+  "db_path": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/chroma_db",
+  "limitations": [
+    "检索质量必须通过同题Top-K评估后再下结论"
+  ]
+}

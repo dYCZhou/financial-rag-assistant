@@ -1,0 +1,20 @@
+{
+  "document_id": "002594_2023",
+  "generated_at": "2026-07-31T07:54:08.605673+00:00",
+  "strategy": "chapter_paragraph",
+  "target_chars": 800,
+  "max_chars": 1000,
+  "overlap_chars": 150,
+  "max_unit_chars": 400,
+  "chunk_count": 488,
+  "source_page_count": 266,
+  "chunks_crossing_pages": 192,
+  "chunks_crossing_chapters": 0,
+  "chunks_ending_naturally": 118,
+  "natural_ending_rate": 0.2418,
+  "min_compact_char_count": 19,
+  "max_compact_char_count": 964,
+  "average_compact_char_count": 700.35,
+  "first_chunk_id": "002594_2023_structured_00000",
+  "last_chunk_id": "002594_2023_structured_00487"
+}
