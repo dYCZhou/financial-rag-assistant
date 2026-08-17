@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import html
+import os
 import sys
 import time
 from dataclasses import asdict
@@ -22,6 +23,7 @@ from app.ui_helpers import (  # noqa: E402
     result_message,
     verified_demo_questions,
 )
+from src.deployment.assets import DemoAssetError, ensure_demo_assets  # noqa: E402
 from src.generation.rag import RagPipeline  # noqa: E402
 
 
@@ -262,6 +264,25 @@ def get_pipeline() -> RagPipeline:
     return RagPipeline()
 
 
+@st.cache_resource(show_spinner=False)
+def prepare_runtime() -> None:
+    for key in (
+        "DEEPSEEK_API_KEY",
+        "LLM_API_KEY",
+        "LLM_BASE_URL",
+        "LLM_MODEL",
+        "DEMO_ASSETS_URL",
+        "DEMO_ASSETS_SHA256",
+    ):
+        try:
+            value = st.secrets.get(key)
+        except FileNotFoundError:
+            value = None
+        if value and not os.getenv(key):
+            os.environ[key] = str(value)
+    ensure_demo_assets()
+
+
 def initialize_state() -> None:
     defaults = {
         "current_result": None,
@@ -438,6 +459,14 @@ def main() -> None:
     st.markdown(APP_CSS, unsafe_allow_html=True)
     initialize_state()
     render_sidebar()
+
+    try:
+        with st.spinner("首次启动正在准备年报检索资产……"):
+            prepare_runtime()
+    except DemoAssetError as exc:
+        st.error(str(exc))
+        st.info("本地运行请先准备chroma_db、data/chunks和data/parsed；云端请检查部署Secrets。")
+        return
 
     documents = available_documents(
         ROOT / "data" / "manifests" / "annual_reports_manifest.csv"

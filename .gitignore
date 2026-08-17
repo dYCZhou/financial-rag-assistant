@@ -13,6 +13,8 @@ data/parsed/*
 data/chunks/*
 chroma_db/*
 logs/*
+dist/
+.demo-assets-ready
 
 !data/parsed/.gitkeep
 !data/chunks/.gitkeep

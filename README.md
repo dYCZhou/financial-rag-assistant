@@ -70,6 +70,13 @@ financial-rag-assistant/
 打开 `http://localhost:8501`。应用会从 `.env` 读取DeepSeek配置；未配置
 API密钥时自动进入仅证据模式，不会把原文摘录冒充模型答案。
 
+## 在线Demo部署
+
+GitHub Pages不能运行本项目的Python、ChromaDB和DeepSeek后端。项目采用
+“GitHub代码 + GitHub Release运行资产 + Streamlit Community Cloud”的部署方式。
+云端首次启动会下载并校验约103MB的只读索引资产；原始PDF和API密钥不进入资产包。
+完整配置、SHA-256和上线验收步骤见[`DEPLOYMENT.md`](DEPLOYMENT.md)。
+
 界面采用固定浅色主题，提供公司/年度联动、最近问题、答案与拒答状态、
 可展开引用卡片、PDF物理页码和原始年报链接。每份报告显示4个来自真实
 DeepSeek评测且经人工复核正确的“已验证示例”，不使用未经验证的通用兜底题。
