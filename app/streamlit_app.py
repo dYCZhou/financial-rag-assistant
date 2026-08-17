@@ -395,6 +395,22 @@ def select_document(
     return company, year, documents[company][year]
 
 
+def render_verified_questions(company: str, year: int, document_id: str) -> None:
+    questions = verified_demo_questions(ROOT / "reports", document_id)
+    if questions:
+        st.markdown('<div class="section-label">已验证问答示例</div>', unsafe_allow_html=True)
+        st.caption("以下问题均通过该报告冻结题集人工验收")
+    else:
+        st.caption("当前报告暂无已验证示例，请在下方输入问题。")
+        return
+    cols = st.columns(2)
+    for index, question in enumerate(questions[:4]):
+        with cols[index % 2]:
+            if st.button(question, key=f"suggest-{company}-{year}-{index}", use_container_width=True):
+                st.session_state.pending_question = question
+                st.rerun()
+
+
 def render_welcome(company: str, year: int, document_id: str) -> None:
     st.markdown(
         """
@@ -425,19 +441,7 @@ def render_welcome(company: str, year: int, document_id: str) -> None:
             st.session_state.pending_question = "梳理一下这份财报的结构"
             st.rerun()
 
-    questions = verified_demo_questions(ROOT / "reports", document_id)
-    if questions:
-        st.markdown('<div class="section-label">已验证问答示例</div>', unsafe_allow_html=True)
-        st.caption("以下问题均通过该报告冻结题集人工验收")
-    else:
-        st.caption("当前报告暂无已验证示例，请在下方输入问题。")
-        return
-    cols = st.columns(2)
-    for index, question in enumerate(questions[:4]):
-        with cols[index % 2]:
-            if st.button(question, key=f"suggest-{company}-{year}-{index}", use_container_width=True):
-                st.session_state.pending_question = question
-                st.rerun()
+    render_verified_questions(company, year, document_id)
 
 
 def render_result(question: str, result: dict[str, object]) -> None:
@@ -578,6 +582,8 @@ def main() -> None:
     result = st.session_state.current_result
     if result:
         render_result(st.session_state.current_question, result)
+        if result.get("status") == "guide":
+            render_verified_questions(company, year, document["document_id"])
     else:
         render_welcome(company, year, document["document_id"])
 
