@@ -32,7 +32,13 @@ def guide_intent(question: str) -> str | None:
         for term in ("你能回答什么", "你能回答我什么", "能问什么", "怎么提问", "如何提问")
     ):
         return "capabilities"
-    if any(term in compact for term in ("财报结构", "年报结构", "报告结构", "目录概览")):
+    if (
+        "目录概览" in compact
+        or (
+            any(document_term in compact for document_term in ("财报", "年报", "报告"))
+            and any(structure_term in compact for structure_term in ("结构", "目录"))
+        )
+    ):
         return "structure"
     return None
 

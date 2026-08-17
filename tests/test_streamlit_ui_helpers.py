@@ -23,6 +23,7 @@ def test_answer_for_display_hides_inline_citations_only() -> None:
 def test_guide_intent_routes_help_and_structure_questions() -> None:
     assert guide_intent("你能回答我什么？") == "capabilities"
     assert guide_intent("梳理一下财报结构") == "structure"
+    assert guide_intent("梳理一下这份财报的结构") == "structure"
     assert guide_intent("营业收入是多少？") is None
 
 
