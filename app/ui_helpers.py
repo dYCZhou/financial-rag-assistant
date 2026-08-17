@@ -11,12 +11,109 @@ from typing import Iterable
 
 ACCEPTED_STATUSES = {"retrieval_quality_accepted"}
 INLINE_CITATION_PATTERN = re.compile(r"(?:\[证据\s*\d+\]|【证据\s*\d+】)")
+TOP_LEVEL_SECTION_PATTERN = re.compile(
+    r"^(第[一二三四五六七八九十]+节)\s+([^\n]{2,32})$", re.MULTILINE
+)
+TOC_LINE_PATTERN = re.compile(
+    r"^\s*(.{2,48}?)\s*(?:\.{3,}|…{2,}|．{3,})\s*(\d+)\s*$"
+)
 
 
 def answer_for_display(answer: object) -> str:
     """Hide inline citation markers while preserving the stored RAG answer."""
     cleaned = INLINE_CITATION_PATTERN.sub("", str(answer))
     return re.sub(r"[ \t]+([，。；：！？])", r"\1", cleaned).strip()
+
+
+def guide_intent(question: str) -> str | None:
+    compact = re.sub(r"[\s，。！？?、]", "", question)
+    if any(
+        term in compact
+        for term in ("你能回答什么", "你能回答我什么", "能问什么", "怎么提问", "如何提问")
+    ):
+        return "capabilities"
+    if any(term in compact for term in ("财报结构", "年报结构", "报告结构", "目录概览")):
+        return "structure"
+    return None
+
+
+def capability_answer(company: str, year: int) -> str:
+    return (
+        f"我可以基于《{company}{year}年年度报告》回答以下问题：\n\n"
+        "• 财务指标：资产、负债、收入、利润和现金流\n"
+        "• 经营信息：主营业务、研发、客户和境外业务\n"
+        "• 报告事项：分红方案、审计意见和风险因素\n"
+        "• 证据追溯：展示年报原文、PDF物理页码和来源链接\n\n"
+        "你可以点击下方已验证示例，也可以直接输入问题。我不提供股价预测、估值或投资建议。"
+    )
+
+
+def report_structure(parsed_path: Path, limit: int = 12) -> list[tuple[str, int]]:
+    """Extract top-level annual-report sections and their first physical pages."""
+    try:
+        records = [
+            json.loads(line)
+            for line in parsed_path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+    except OSError:
+        return []
+    except json.JSONDecodeError:
+        return []
+
+    sections: list[tuple[str, int]] = []
+    seen: set[str] = set()
+    for page in records:
+        chapter = str(page.get("chapter", "")).strip()
+        match = TOP_LEVEL_SECTION_PATTERN.match(chapter)
+        if not match:
+            continue
+        title = f"{match.group(1)} {match.group(2).strip()}"
+        if title not in seen:
+            seen.add(title)
+            sections.append((title, int(page["pdf_page"])))
+    if len(sections) >= 6:
+        return sections[:limit]
+
+    # Some SSE/red-chip reports do not use numbered top-level chapter metadata.
+    # Recover their actual table of contents and map printed pages to PDF pages.
+    printed_to_pdf = {
+        int(page["printed_page"]): int(page["pdf_page"])
+        for page in records
+        if page.get("printed_page") is not None
+    }
+    toc_sections: list[tuple[str, int]] = []
+    seen.clear()
+    for page in records[:10]:
+        for line in str(page.get("text", "")).splitlines():
+            match = TOC_LINE_PATTERN.match(line)
+            if not match:
+                continue
+            title = re.sub(r"\s+", " ", match.group(1)).strip(" ·")
+            if title in seen or title in {"目录", "目 录"}:
+                continue
+            printed_page = int(match.group(2))
+            seen.add(title)
+            toc_sections.append(
+                (title, printed_to_pdf.get(printed_page, printed_page + 1))
+            )
+            if len(toc_sections) >= limit:
+                return toc_sections
+    return toc_sections or sections[:limit]
+
+
+def structure_answer(company: str, year: int, sections: list[tuple[str, int]]) -> str:
+    if not sections:
+        return f"暂时无法读取《{company}{year}年年度报告》的章节结构。"
+    lines = [f"《{company}{year}年年度报告》主要由以下章节构成：", ""]
+    lines.extend(f"{index}. {title}（PDF第{page}页起）" for index, (title, page) in enumerate(sections, 1))
+    lines.extend(
+        [
+            "",
+            "阅读建议：经营表现优先查看“管理层讨论与分析”；具体财务数字及会计口径优先查看“财务报告”和报表附注。",
+        ]
+    )
+    return "\n".join(lines)
 
 def available_documents(
     manifest_path: Path,

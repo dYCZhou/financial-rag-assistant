@@ -4,6 +4,10 @@
 
 > 项目边界：这是知识检索与信息整理工具，不提供股票预测、估值、选股或投资建议。
 
+**[立即体验在线Demo](https://financial-rag-assistant-cspk5yuoqjq9a5mf6zx9hg.streamlit.app)**
+
+无需登录。请选择公司与年度，点击“已验证问答示例”即可查看带年报原文和PDF物理页码的回答。
+
 ## 当前状态
 
 - 阶段 0：设计确认完成
@@ -76,6 +80,12 @@ GitHub Pages不能运行本项目的Python、ChromaDB和DeepSeek后端。项目�
 “GitHub代码 + GitHub Release运行资产 + Streamlit Community Cloud”的部署方式。
 云端首次启动会下载并校验约103MB的只读索引资产；原始PDF和API密钥不进入资产包。
 完整配置、SHA-256和上线验收步骤见[`DEPLOYMENT.md`](DEPLOYMENT.md)。
+
+当前公开地址：
+
+```text
+https://financial-rag-assistant-cspk5yuoqjq9a5mf6zx9hg.streamlit.app
+```
 
 界面采用固定浅色主题，提供公司/年度联动、最近问题、答案与拒答状态、
 可展开引用卡片、PDF物理页码和原始年报链接。每份报告显示4个来自真实

@@ -4,9 +4,13 @@ from pathlib import Path
 from app.ui_helpers import (
     answer_for_display,
     available_documents,
+    capability_answer,
     citation_page_label,
     friendly_error,
+    guide_intent,
+    report_structure,
     result_message,
+    structure_answer,
     verified_demo_questions,
 )
 
@@ -14,6 +18,70 @@ from app.ui_helpers import (
 def test_answer_for_display_hides_inline_citations_only() -> None:
     answer = "货币资金为26,430万元[证据1]。单位为万元【证据 2】。"
     assert answer_for_display(answer) == "货币资金为26,430万元。单位为万元。"
+
+
+def test_guide_intent_routes_help_and_structure_questions() -> None:
+    assert guide_intent("你能回答我什么？") == "capabilities"
+    assert guide_intent("梳理一下财报结构") == "structure"
+    assert guide_intent("营业收入是多少？") is None
+
+
+def test_capability_answer_is_document_specific() -> None:
+    answer = capability_answer("宁德时代", 2023)
+    assert "宁德时代2023年年度报告" in answer
+    assert "PDF物理页码" in answer
+    assert "投资建议" in answer
+
+
+def test_report_structure_extracts_unique_top_level_sections(tmp_path: Path) -> None:
+    parsed = tmp_path / "pages.jsonl"
+    parsed.write_text(
+        '\n'.join(
+            [
+                json.dumps({"pdf_page": 2, "chapter": "第一节 重要提示"}, ensure_ascii=False),
+                json.dumps({"pdf_page": 3, "chapter": "第一节 重要提示"}, ensure_ascii=False),
+                json.dumps({"pdf_page": 6, "chapter": "第二节 公司简介和主要财务指标"}, ensure_ascii=False),
+                json.dumps({"pdf_page": 7, "chapter": "五、主要会计数据和财务指标"}, ensure_ascii=False),
+            ]
+        ) + '\n',
+        encoding="utf-8",
+    )
+
+    sections = report_structure(parsed)
+
+    assert sections == [("第一节 重要提示", 2), ("第二节 公司简介和主要财务指标", 6)]
+    assert "PDF第2页起" in structure_answer("示例公司", 2025, sections)
+
+
+def test_report_structure_falls_back_to_unnumbered_toc(tmp_path: Path) -> None:
+    parsed = tmp_path / "pages.jsonl"
+    parsed.write_text(
+        "\n".join(
+            [
+                json.dumps(
+                    {
+                        "pdf_page": 3,
+                        "printed_page": 2,
+                        "chapter": "unknown",
+                        "text": "目录\n公司简介 ........ 3\n业务概览 ........ 18\n财务报告 ........ 80",
+                    },
+                    ensure_ascii=False,
+                ),
+                json.dumps(
+                    {"pdf_page": 4, "printed_page": 3, "chapter": "unknown", "text": "公司简介"},
+                    ensure_ascii=False,
+                ),
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    assert report_structure(parsed) == [
+        ("公司简介", 4),
+        ("业务概览", 19),
+        ("财务报告", 81),
+    ]
 
 
 def test_available_documents_only_exposes_accepted_reports(tmp_path: Path) -> None:

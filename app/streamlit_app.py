@@ -18,9 +18,13 @@ if str(ROOT) not in sys.path:
 from app.ui_helpers import (  # noqa: E402
     answer_for_display,
     available_documents,
+    capability_answer,
     citation_page_label,
     friendly_error,
+    guide_intent,
+    report_structure,
     result_message,
+    structure_answer,
     verified_demo_questions,
 )
 from src.deployment.assets import DemoAssetError, ensure_demo_assets  # noqa: E402
@@ -111,7 +115,7 @@ APP_CSS = """
     }
     .hero {
         text-align: center;
-        padding: 11vh 0 1.3rem;
+        padding: 4.5vh 0 1.35rem;
     }
     .hero-mark {
         width: 48px;
@@ -135,6 +139,40 @@ APP_CSS = """
         color: var(--muted);
         margin: 0;
         font-size: .94rem;
+    }
+    .eyebrow {
+        color: #6873db;
+        font-size: .75rem;
+        font-weight: 700;
+        letter-spacing: .08em;
+        margin-bottom: .7rem;
+    }
+    .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: .6rem;
+        margin: .4rem 0 1.35rem;
+    }
+    .proof-card {
+        background: #f8f8fb;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: .72rem .35rem;
+        text-align: center;
+    }
+    .proof-value {font-size: 1.08rem; font-weight: 750; color: #34343b;}
+    .proof-label {font-size: .7rem; color: #92929c; margin-top: .12rem;}
+    .flow-line {
+        text-align: center;
+        color: #777783;
+        font-size: .76rem;
+        margin: 0 0 1.25rem;
+    }
+    .section-label {
+        color: #777783;
+        font-size: .78rem;
+        font-weight: 650;
+        margin: .85rem 0 .5rem;
     }
     .user-row {
         display: flex;
@@ -170,6 +208,7 @@ APP_CSS = """
         font-size: .98rem;
         line-height: 1.85;
         margin-bottom: 1rem;
+        white-space: pre-line;
     }
     .answer-note {
         color: #9999a2;
@@ -253,6 +292,7 @@ APP_CSS = """
     @media (max-width: 760px) {
         .block-container {padding: .8rem 1rem 6rem;}
         .hero {padding-top: 6vh;}
+        .proof-grid {grid-template-columns: repeat(2, 1fr);}
         .user-bubble {max-width: 88%;}
     }
 </style>
@@ -360,15 +400,35 @@ def render_welcome(company: str, year: int, document_id: str) -> None:
         """
         <div class="hero">
             <div class="hero-mark">◉</div>
+            <div class="eyebrow">上市公司年报 · 证据约束 RAG</div>
             <h1>财报问题，直接问</h1>
-            <p>回答均基于已收录的年度报告原文</p>
+            <p>每个答案均可追溯至年度报告原文与PDF物理页</p>
         </div>
+        <div class="proof-grid">
+            <div class="proof-card"><div class="proof-value">5家</div><div class="proof-label">上市公司</div></div>
+            <div class="proof-card"><div class="proof-value">15份</div><div class="proof-label">2023—2025年报</div></div>
+            <div class="proof-card"><div class="proof-value">225题</div><div class="proof-label">逐报告冻结评测</div></div>
+            <div class="proof-card"><div class="proof-value">可追溯</div><div class="proof-label">原文与PDF页码</div></div>
+        </div>
+        <div class="flow-line">PDF质量审计　→　BGE + BM25混合检索　→　财务口径重排　→　证据约束回答</div>
         """,
         unsafe_allow_html=True,
     )
+    st.markdown('<div class="section-label">快速了解</div>', unsafe_allow_html=True)
+    guide_left, guide_right = st.columns(2)
+    with guide_left:
+        if st.button("我能问什么？", key=f"guide-capabilities-{document_id}", use_container_width=True):
+            st.session_state.pending_question = "你能回答我什么？"
+            st.rerun()
+    with guide_right:
+        if st.button("查看这份财报的结构", key=f"guide-structure-{document_id}", use_container_width=True):
+            st.session_state.pending_question = "梳理一下这份财报的结构"
+            st.rerun()
+
     questions = verified_demo_questions(ROOT / "reports", document_id)
     if questions:
-        st.caption("已验证示例 · 均通过该报告冻结题集人工验收")
+        st.markdown('<div class="section-label">已验证问答示例</div>', unsafe_allow_html=True)
+        st.caption("以下问题均通过该报告冻结题集人工验收")
     else:
         st.caption("当前报告暂无已验证示例，请在下方输入问题。")
         return
@@ -432,6 +492,28 @@ def submit_question(question: str, document: dict[str, str], year: int) -> None:
     if not clean_question:
         return
     started = time.perf_counter()
+    intent = guide_intent(clean_question)
+    if intent:
+        if intent == "capabilities":
+            answer = capability_answer(document["company"], year)
+        else:
+            sections = report_structure(
+                ROOT / "data" / "parsed" / f"{document['document_id']}_pages.jsonl"
+            )
+            answer = structure_answer(document["company"], year, sections)
+        st.session_state.current_result = {
+            "status": "guide",
+            "answer": answer,
+            "citations": [],
+        }
+        st.session_state.elapsed_seconds = time.perf_counter() - started
+        st.session_state.current_question = clean_question
+        recent = [
+            clean_question,
+            *[item for item in st.session_state.recent_questions if item != clean_question],
+        ]
+        st.session_state.recent_questions = recent[:6]
+        return
     try:
         answer = get_pipeline().answer(
             clean_question,

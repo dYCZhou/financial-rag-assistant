@@ -2,6 +2,8 @@
 
 当前部署方案：GitHub托管代码，GitHub Release托管只读运行资产，Streamlit Community Cloud运行应用。
 
+公开Demo：<https://financial-rag-assistant-cspk5yuoqjq9a5mf6zx9hg.streamlit.app>
+
 ## 架构与资产
 
 Release `demo-assets-v1`中的`financial-rag-demo-assets-v1.tar.gz`包含：
