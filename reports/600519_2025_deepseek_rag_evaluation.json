@@ -1,0 +1,766 @@
+{
+  "document_id": "600519_2025",
+  "generated_at": "2026-08-17T17:59:26.432996+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/600519_2025_evaluation_questions.csv",
+  "question_count": 15,
+  "retrieval_strategy": "structured",
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.703,
+    "median_latency_seconds": 2.038,
+    "max_latency_seconds": 12.402,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "6005192025_Q01",
+      "question": "贵州茅台2025年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：51,690,610,946.50",
+      "gold_evidence_pages": [
+        56
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的货币资金为51,690,610,946.50元，单位：元，币种：人民币[证据2][证据3]。该数值为合并资产负债表中的期末余额[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_baseline_00088",
+        "600519_2025_baseline_00083",
+        "600519_2025_baseline_00084"
+      ],
+      "citation_pages": [
+        56,
+        57,
+        59,
+        60
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "51690610946.5"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "3",
+        "51690610946.5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 12.402,
+      "error": null
+    },
+    {
+      "question_id": "6005192025_Q02",
+      "question": "贵州茅台2025年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：1,984,407,967.50",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "现有证据不足，无法回答该问题。\n\n理由：问题询问“贵州茅台2025年末合并口径的应收票据”，但证据1为合并资产负债表，其中“应收票据”项目未列示金额（该项目后直接为“应收账款”1,11,895,319,134.75元）[证据1]；证据2和证据3为母公司资产负债表，其中“应收票据”2025年12月31日余额为1,984,407,967.50元[证据2][证据3]，但未明确该金额是否属于合并口径。因此，无法确认合并口径的应收票据金额。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_baseline_00088",
+        "600519_2025_baseline_00019",
+        "600519_2025_baseline_00084",
+        "600519_2025_baseline_00177"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57,
+        59,
+        60,
+        110,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "1984407967.5"
+      ],
+      "answer_numbers": [
+        "1",
+        "111895319134.75",
+        "12",
+        "1984407967.5",
+        "2",
+        "2025",
+        "3",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.68,
+      "error": null
+    },
+    {
+      "question_id": "6005192025_Q03",
+      "question": "贵州茅台2025年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：2,609,048.49",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，无法直接回答贵州茅台2025年末合并口径的应收账款金额。\n\n证据1显示的是合并资产负债表，其中“应收账款”项目2025年12月31日金额为11,895,319,134.75元[证据1]，但该证据未明确标注为“合并”或“母公司”口径。证据3显示的是母公司资产负债表，其中“应收账款”2025年12月31日金额为2,609,048.49元[证据3]。证据2为母公司口径的财务数据，其中“应收账款”2025年金额为2,609,048.49元[证据2]。\n\n由于证据1未明确标注为合并口径，且证据2和证据3均为母公司口径，现有证据不足以确认合并口径的应收账款金额。因此，现有证据不足，无法回答该问题。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_baseline_00088",
+        "600519_2025_baseline_00019",
+        "600519_2025_baseline_00084",
+        "600519_2025_baseline_00177"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57,
+        59,
+        60,
+        110,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2609048.49"
+      ],
+      "answer_numbers": [
+        "1",
+        "11895319134.75",
+        "12",
+        "2",
+        "2025",
+        "2609048.49",
+        "3",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.811,
+      "error": null
+    },
+    {
+      "question_id": "6005192025_Q04",
+      "question": "贵州茅台2025年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：6,637,314.31",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的预付款项为6,637,314.31元，单位：元，币种：人民币[证据1][证据2][证据3]。该数据为合并资产负债表中的期末余额[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00021",
+        "600519_2025_structured_00102"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "6637314.31"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "3",
+        "6637314.31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.261,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q05",
+      "question": "贵州茅台2025年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：36,281,302.94",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的其他应收款为36,281,302.94元，币种为人民币，单位为元[证据1][证据2]。该数据为合并资产负债表中的期末余额，属于合并口径的列报金额。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00102",
+        "600519_2025_structured_00208"
+      ],
+      "citation_pages": [
+        56,
+        57,
+        110,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "36281302.94"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "36281302.94"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.228,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q06",
+      "question": "贵州茅台2025年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：61,427,421,796.18",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的存货为61,427,421,796.18元（单位：元，币种：人民币）[证据1]。该数值为合并资产负债表期末余额，且与资产及负债状况分析中的本期期末数一致[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00021"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "61427421796.18"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "61427421796.18"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.0,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q07",
+      "question": "贵州茅台2025年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：51,027,010.56",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的其他流动资产为51,027,010.56元[证据3]。该数据来自合并资产负债表，单位：元，币种：人民币[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_baseline_00088",
+        "600519_2025_baseline_00019",
+        "600519_2025_baseline_00084",
+        "600519_2025_baseline_00146"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57,
+        59,
+        60,
+        92,
+        93
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "51027010.56"
+      ],
+      "answer_numbers": [
+        "2025",
+        "3",
+        "51027010.56"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.388,
+      "error": null
+    },
+    {
+      "question_id": "6005192025_Q08",
+      "question": "贵州茅台2025年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "流动资产合计：252,518,662,398.57",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的流动资产合计为252,518,662,398.57元，单位为人民币元[证据1][证据2]。该数据为合并资产负债表中的期末余额[证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00103",
+        "600519_2025_structured_00102",
+        "600519_2025_structured_00104",
+        "600519_2025_structured_00109",
+        "600519_2025_structured_00101"
+      ],
+      "citation_pages": [
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "252518662398.57"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "252518662398.57",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.385,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q09",
+      "question": "贵州茅台2025年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：147,181,873.67",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的长期股权投资期末余额（账面价值）为147,181,873.67元[证据1][证据2][证据3]。该数据来自合并资产负债表，单位为元，币种为人民币[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00102",
+        "600519_2025_structured_00103",
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00021",
+        "600519_2025_structured_00273"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57,
+        140,
+        141
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "147181873.67"
+      ],
+      "answer_numbers": [
+        "1",
+        "147181873.67",
+        "2",
+        "2025",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.73,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q10",
+      "question": "贵州茅台2025年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：22,488,122,304.35",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的固定资产为22,488,122,304.35元，该数值为合并资产负债表中的期末余额，单位是元，币种为人民币[证据3][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00208",
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00102",
+        "600519_2025_structured_00103",
+        "600519_2025_structured_00109"
+      ],
+      "citation_pages": [
+        56,
+        57,
+        59,
+        60,
+        110,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "22488122304.35"
+      ],
+      "answer_numbers": [
+        "2025",
+        "22488122304.35",
+        "3",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.749,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q11",
+      "question": "贵州茅台2025年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：2,471,886,030.58",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的在建工程期末账面价值为2,471,886,030.58元[证据1][证据2][证据4]。该数据来自合并资产负债表，单位为元，币种为人民币[证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00102",
+        "600519_2025_structured_00103",
+        "600519_2025_structured_00109",
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00021"
+      ],
+      "citation_pages": [
+        14,
+        56,
+        57,
+        59,
+        60
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2471886030.58"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "2471886030.58",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.566,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q12",
+      "question": "贵州茅台2025年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：221,738,227.51",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的使用权资产为221,738,227.51元，单位为元，币种为人民币[证据1][证据2]。该数值为合并资产负债表中的期末余额，对应2025年12月31日[证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00103",
+        "600519_2025_structured_00104",
+        "600519_2025_structured_00109",
+        "600519_2025_structured_00208",
+        "600519_2025_structured_00101"
+      ],
+      "citation_pages": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        110,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "221738227.51"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2",
+        "2025",
+        "221738227.51",
+        "31",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.027,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q13",
+      "question": "贵州茅台2025年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：8,685,618,688.56",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的无形资产为8,685,618,688.56元，该数值为合并资产负债表中的期末余额，单位以年报列示为元[证据2][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_structured_00101",
+        "600519_2025_structured_00104",
+        "600519_2025_structured_00208",
+        "600519_2025_structured_00103",
+        "600519_2025_structured_00109"
+      ],
+      "citation_pages": [
+        56,
+        57,
+        58,
+        59,
+        60,
+        110,
+        111
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "8685618688.56"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "4",
+        "8685618688.56"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.137,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "6005192025_Q14",
+      "question": "贵州茅台2025年末合并口径的开发支出是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "开发支出：117,009,982.85",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的开发支出为117,009,982.85元[证据1][证据2]。该数值为合并资产负债表中的期末余额，单位与年报一致为元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_baseline_00088",
+        "600519_2025_baseline_00089",
+        "600519_2025_baseline_00085"
+      ],
+      "citation_pages": [
+        57,
+        58,
+        59,
+        60
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "117009982.85"
+      ],
+      "answer_numbers": [
+        "1",
+        "117009982.85",
+        "2",
+        "2025"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.038,
+      "error": null
+    },
+    {
+      "question_id": "6005192025_Q15",
+      "question": "贵州茅台2025年末合并口径的递延所得税资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "递延所得税资产：6,602,469,151.22",
+      "gold_evidence_pages": [
+        57
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2025年末合并口径的递延所得税资产为6,602,469,151.22元（单位：元，币种：人民币）[证据2][证据3]。该数值为合并资产负债表中的期末余额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2025_baseline_00089",
+        "600519_2025_baseline_00085",
+        "600519_2025_baseline_00162",
+        "600519_2025_baseline_00088",
+        "600519_2025_baseline_00161"
+      ],
+      "citation_pages": [
+        57,
+        58,
+        59,
+        60,
+        101,
+        102
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "6602469151.22"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "3",
+        "6602469151.22"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.146,
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "document_id": "000333_2024",
+  "generated_at": "2026-08-17T15:19:27.824314+00:00",
+  "source_file": "000333_美的集团_2024_annual_report.pdf",
+  "page_count": 295,
+  "manifest_page_count": 295,
+  "total_char_count": 241950,
+  "average_chars_per_page": 820.17,
+  "pages_with_printed_page": 294,
+  "pages_with_known_chapter": 292,
+  "repeated_margin_lines_removed": [
+    "(除特别注明外，金额单位为人民币千元)",
+    "2024 年度财务报表附注",
+    "美的集团股份有限公司"
+  ],
+  "quality_flag_counts": {
+    "short_page": 3
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 16
+    },
+    {
+      "pdf_page": 135,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 24
+    },
+    {
+      "pdf_page": 144,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 34
+    }
+  ]
+}

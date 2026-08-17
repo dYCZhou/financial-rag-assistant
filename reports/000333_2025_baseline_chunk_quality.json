@@ -1,0 +1,17 @@
+{
+  "document_id": "000333_2025",
+  "generated_at": "2026-08-17T16:59:22.572150+00:00",
+  "strategy": "fixed_char",
+  "chunk_size": 800,
+  "chunk_overlap": 150,
+  "chunk_count": 378,
+  "source_page_count": 276,
+  "source_nonempty_page_count": 276,
+  "chunks_crossing_pages": 299,
+  "chunks_crossing_chapters": 37,
+  "min_compact_char_count": 419,
+  "max_compact_char_count": 783,
+  "average_compact_char_count": 720.93,
+  "first_chunk_id": "000333_2025_baseline_00000",
+  "last_chunk_id": "000333_2025_baseline_00377"
+}

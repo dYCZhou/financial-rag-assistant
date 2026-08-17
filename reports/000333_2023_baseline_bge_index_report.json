@@ -1,0 +1,19 @@
+{
+  "document_id": "000333_2023",
+  "generated_at": "2026-08-17T17:05:27.533717+00:00",
+  "collection_name": "annual_reports_baseline_bge_v1",
+  "strategy": "baseline",
+  "embedding_model": "bge-small-zh-v1.5",
+  "embedding_type": "pretrained_chinese_semantic_embedding",
+  "embedding_backend": "bge",
+  "dimensions": 512,
+  "indexed_chunks": 405,
+  "collection_total_chunks": 3326,
+  "company": "美的集团股份有限公司",
+  "stock_code": "000333",
+  "report_year": 2023,
+  "db_path": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/chroma_db",
+  "limitations": [
+    "检索质量必须通过同题Top-K评估后再下结论"
+  ]
+}

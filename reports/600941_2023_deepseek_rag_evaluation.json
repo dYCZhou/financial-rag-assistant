@@ -1,0 +1,640 @@
+{
+  "document_id": "600941_2023",
+  "generated_at": "2026-08-17T18:01:39.121814+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/600941_2023_evaluation_questions.csv",
+  "question_count": 15,
+  "retrieval_strategy": "baseline",
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.607,
+    "median_latency_seconds": 1.861,
+    "max_latency_seconds": 12.987,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "6009412023_Q01",
+      "question": "中国移动2023年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：178,772",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的货币资金为178,772（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，且为列报金额（扣除减值准备后的账面价值）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131",
+        "600941_2023_baseline_00242",
+        "600941_2023_baseline_00123"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        94,
+        95,
+        204,
+        205,
+        206
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "178772"
+      ],
+      "answer_numbers": [
+        "1",
+        "178772",
+        "2023"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 12.987,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q02",
+      "question": "中国移动2023年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：1,205",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的应收票据为1,205（单位：人民币百万元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131"
+      ],
+      "citation_pages": [
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "1205"
+      ],
+      "answer_numbers": [
+        "1",
+        "1205",
+        "2023"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.856,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q03",
+      "question": "中国移动2023年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：54,881",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的应收账款为54,881（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，对应2023年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131",
+        "600941_2023_baseline_00242"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        204,
+        205,
+        206
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "54881"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2023",
+        "31",
+        "54881"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.936,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q04",
+      "question": "中国移动2023年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：7,516",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的预付款项为7,516（单位：人民币百万元）[证据1]。该数值为合并资产负债表中“预付款项”项目的期末余额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131",
+        "600941_2023_baseline_00242"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        204,
+        205,
+        206
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "7516"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "7516"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.054,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q05",
+      "question": "中国移动2023年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：44,362",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的其他应收款为44,362（单位：人民币百万元），该数值为合并资产负债表中的期末余额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131",
+        "600941_2023_baseline_00242"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        204,
+        205,
+        206
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "44362"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "44362"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.666,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q06",
+      "question": "中国移动2023年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：12,026",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的存货为12,026（单位：人民币百万元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131"
+      ],
+      "citation_pages": [
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "12026"
+      ],
+      "answer_numbers": [
+        "1",
+        "12026",
+        "2023"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.898,
+      "error": null,
+      "retrieval_strategy": "baseline"
+    },
+    {
+      "question_id": "6009412023_Q07",
+      "question": "中国移动2023年末合并口径的合同资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "合同资产：19,407",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的合同资产为19,407（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，对应2023年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131"
+      ],
+      "citation_pages": [
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "19407"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "19407",
+        "2023",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.974,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q08",
+      "question": "中国移动2023年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：23,917",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的其他流动资产为23,917（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，单位以年报列示为准。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131",
+        "600941_2023_baseline_00132"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        96
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "23917"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "23917"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.206,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q09",
+      "question": "中国移动2023年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "流动资产合计：498,104",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的流动资产合计为498,104（单位：人民币百万元）[证据2]。该数值为合并资产负债表中的期末列报金额，未明确扣除减值准备，但按年报原单位列示[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00132",
+        "600941_2023_baseline_00131"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        96
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "498104"
+      ],
+      "answer_numbers": [
+        "2",
+        "2023",
+        "498104"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.861,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q10",
+      "question": "中国移动2023年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：181,715",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的长期股权投资为181,715（单位：人民币百万元），该数值为合并资产负债表中的期末余额[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00132",
+        "600941_2023_baseline_00131"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        96
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "181715"
+      ],
+      "answer_numbers": [
+        "1",
+        "181715",
+        "2",
+        "2023"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.644,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q11",
+      "question": "中国移动2023年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：714,663",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的固定资产为714,663（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，金额单位为人民币百万元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00131",
+        "600941_2023_baseline_00132"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        96
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "714663"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2023",
+        "714663"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.835,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q12",
+      "question": "中国移动2023年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：74,496",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的在建工程期末账面价值为74,496（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的列报金额，即扣除减值准备后的期末账面价值[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00132"
+      ],
+      "citation_pages": [
+        95,
+        96
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "74496"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "74496"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.855,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q13",
+      "question": "中国移动2023年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：94,753",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的使用权资产为94,753（单位：人民币百万元），该数值为合并资产负债表的期末余额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00132",
+        "600941_2023_baseline_00242"
+      ],
+      "citation_pages": [
+        95,
+        96,
+        204,
+        205,
+        206
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "94753"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "94753"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.601,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q14",
+      "question": "中国移动2023年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：47,597",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的无形资产为47,597（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末列报金额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00132",
+        "600941_2023_baseline_00158"
+      ],
+      "citation_pages": [
+        95,
+        96,
+        118,
+        119
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "47597"
+      ],
+      "answer_numbers": [
+        "1",
+        "2023",
+        "47597"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.833,
+      "error": null
+    },
+    {
+      "question_id": "6009412023_Q15",
+      "question": "中国移动2023年末合并口径的开发支出是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "开发支出：2,279",
+      "gold_evidence_pages": [
+        95
+      ],
+      "status": "answered",
+      "answer": "中国移动2023年末合并口径的开发支出为2,279（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，对应2023年12月31日，单位为人民币百万元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2023_baseline_00132"
+      ],
+      "citation_pages": [
+        95,
+        96
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2279"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2023",
+        "2279",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.894,
+      "error": null
+    }
+  ]
+}

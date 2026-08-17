@@ -231,6 +231,46 @@ def _intent_alignment_score(query: str, text: str) -> float:
     return sum(signals) / len(signals)
 
 
+def _balance_sheet_row_score(query: str, text: str) -> float:
+    """Prefer the consolidated statement row over notes sharing the same label."""
+    if "合并口径" not in query or "年末" not in query:
+        return 0.0
+    match = re.search(r"合并口径的(.+?)是多少", query)
+    if not match:
+        return 0.0
+    label = match.group(1).strip()
+    target_year = re.search(r"(20\d{2})年", query)
+    statement_labels = (
+        "货币资金", "应收票据", "应收账款", "预付款项", "其他应收款",
+        "存货", "合同资产", "其他流动资产", "流动资产合计", "长期股权投资",
+        "固定资产", "在建工程", "使用权资产", "无形资产", "商誉",
+        "递延所得税资产", "其他非流动资产", "非流动资产合计", "资产总计",
+    )
+    label_with_value = bool(
+        re.search(rf"{re.escape(label)}.{{0,80}}\d[\d,.]*", text, re.S)
+    )
+    row_density = sum(item in text for item in statement_labels)
+    score = (
+        0.35 * float(label_with_value)
+        + 0.35 * float(row_density >= 5)
+        + 0.20 * float(
+            bool(re.search(r"合并(?:及公司)?资产负债表|流动资产|非流动资产|资产总计", text))
+        )
+        + 0.10 * float(bool(target_year and target_year.group(1) in text))
+    )
+    if re.search(r"重大变动说明|占总资产比例", text):
+        score -= 0.5
+    if re.search(r"资产权利受限|受限类型|受限原因", text):
+        score -= 0.8
+    if re.search(r"母公司资产负债表|公司资产负债表", text) and not re.search(
+        r"合并及公司资产负债表", text
+    ):
+        return -1.0
+    if re.search(r"财务报表项目附注|合并财务报表附注", text):
+        score -= 0.6
+    return max(score, -1.0)
+
+
 def rerank_hits(
     query: str,
     hits: list[dict[str, object]],
@@ -257,6 +297,7 @@ def rerank_hits(
         numeric_score = _metric_value_score(query, text) if wants_numeric else 0.0
         multi_metric_score = _multi_metric_score(query, text)
         intent_alignment_score = _intent_alignment_score(query, text)
+        balance_sheet_row_score = _balance_sheet_row_score(query, text)
         rerank_score = (
             rrf_weight * float(item.get("rrf_score", item.get("score", 0.0)))
             + coverage_weight * coverage
@@ -264,6 +305,7 @@ def rerank_hits(
             + numeric_weight * numeric_score
             + phrase_weight * multi_metric_score
             + phrase_weight * intent_alignment_score
+            + 0.60 * balance_sheet_row_score
         )
         item["pre_rerank_rank"] = int(item.get("rank", original_rank))
         item["term_coverage"] = round(coverage, 6)
@@ -271,8 +313,28 @@ def rerank_hits(
         item["numeric_score"] = numeric_score
         item["multi_metric_score"] = round(multi_metric_score, 6)
         item["intent_alignment_score"] = round(intent_alignment_score, 6)
+        item["balance_sheet_row_score"] = round(balance_sheet_row_score, 6)
         item["rerank_score"] = round(rerank_score, 8)
         reranked.append(item)
+    if "合并口径" in query and "年末" in query:
+        statement_candidates = [
+            item
+            for item in reranked
+            if float(item.get("balance_sheet_row_score", 0.0)) >= 0.8
+            and item.get("pdf_pages")
+        ]
+        if statement_candidates:
+            first_statement_page = min(
+                min(int(page) for page in item["pdf_pages"])
+                for item in statement_candidates
+            )
+            for item in statement_candidates:
+                page = min(int(value) for value in item["pdf_pages"])
+                order_score = 1.0 / (1.0 + max(page - first_statement_page, 0))
+                item["statement_order_score"] = round(order_score, 6)
+                item["rerank_score"] = round(
+                    float(item["rerank_score"]) + 0.4 * order_score, 8
+                )
     reranked.sort(
         key=lambda hit: (-float(hit["rerank_score"]), str(hit["chunk_id"]))
     )
@@ -320,6 +382,31 @@ def search_hybrid(
         k1=float(config["bm25_k1"]),
         b=float(config["bm25_b"]),
     )
+    row_match = re.search(r"合并口径的(.+?)是多少", query)
+    if row_match:
+        row_hits = search_bm25(
+            row_match.group(1).strip(),
+            strategy=strategy,
+            chunks_dir=chunks_dir,
+            top_k=candidate_pool,
+            stock_code=stock_code,
+            report_year=report_year,
+            k1=float(config["bm25_k1"]),
+            b=float(config["bm25_b"]),
+        )
+        combined: list[dict[str, object]] = []
+        seen: set[str] = set()
+        for hit in [*row_hits, *bm25_hits]:
+            chunk_id = str(hit["chunk_id"])
+            if chunk_id in seen:
+                continue
+            seen.add(chunk_id)
+            item = dict(hit)
+            item["rank"] = len(combined) + 1
+            combined.append(item)
+            if len(combined) >= candidate_pool:
+                break
+        bm25_hits = combined
     hits = reciprocal_rank_fusion(
         vector_hits,
         bm25_hits,

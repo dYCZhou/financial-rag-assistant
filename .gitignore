@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 .DS_Store
+.Rhistory
 __pycache__/
 *.py[cod]
 .pytest_cache/

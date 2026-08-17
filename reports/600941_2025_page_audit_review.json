@@ -1,0 +1,14 @@
+{
+  "document_id": "600941_2025",
+  "review_status": "accepted",
+  "reviewed_samples": 8,
+  "reviewed_on": "2026-08-17",
+  "conclusion": "封面、目录、正文、财务表格和全部自动标记短页均与PDF图像一致；正文顺序可读，合并资产负债表的单位、比较列和关键数字可对应。",
+  "short_page_findings": [
+    "PDF第1页为正常封面",
+    "PDF第25页为可持续发展报告承接短页",
+    "PDF第53页为董事长签署页",
+    "PDF第78页为财务报告章节扉页",
+    "PDF第79页为财务报表期间扉页"
+  ]
+}

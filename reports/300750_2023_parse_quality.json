@@ -1,0 +1,40 @@
+{
+  "document_id": "300750_2023",
+  "generated_at": "2026-08-17T15:17:36.963689+00:00",
+  "source_file": "300750_宁德时代_2023_annual_report.pdf",
+  "page_count": 231,
+  "manifest_page_count": 231,
+  "total_char_count": 196052,
+  "average_chars_per_page": 848.71,
+  "pages_with_printed_page": 230,
+  "pages_with_known_chapter": 230,
+  "repeated_margin_lines_removed": [
+    "宁德时代新能源科技股份有限公司2023 年年度报告全文"
+  ],
+  "quality_flag_counts": {
+    "short_page": 3
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 32
+    },
+    {
+      "pdf_page": 104,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 10
+    },
+    {
+      "pdf_page": 105,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 32
+    }
+  ]
+}

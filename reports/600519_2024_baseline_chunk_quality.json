@@ -1,0 +1,17 @@
+{
+  "document_id": "600519_2024",
+  "generated_at": "2026-08-17T16:59:20.408591+00:00",
+  "strategy": "fixed_char",
+  "chunk_size": 800,
+  "chunk_overlap": 150,
+  "chunk_count": 235,
+  "source_page_count": 143,
+  "source_nonempty_page_count": 143,
+  "chunks_crossing_pages": 160,
+  "chunks_crossing_chapters": 33,
+  "min_compact_char_count": 584,
+  "max_compact_char_count": 779,
+  "average_compact_char_count": 722.85,
+  "first_chunk_id": "600519_2024_baseline_00000",
+  "last_chunk_id": "600519_2024_baseline_00234"
+}

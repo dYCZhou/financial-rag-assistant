@@ -1,0 +1,57 @@
+{
+  "document_id": "600941_2025",
+  "generated_at": "2026-08-17T15:19:58.280485+00:00",
+  "source_file": "600941_中国移动_2025_annual_report.pdf",
+  "page_count": 214,
+  "manifest_page_count": 214,
+  "total_char_count": 137605,
+  "average_chars_per_page": 643.01,
+  "pages_with_printed_page": 213,
+  "pages_with_known_chapter": 135,
+  "repeated_margin_lines_removed": [
+    "2025 年年度报告",
+    "中国移动有限公司",
+    "合并财务报表附注",
+    "截至2025 年12 月31 日止年度财务报表"
+  ],
+  "quality_flag_counts": {
+    "short_page": 5
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 30
+    },
+    {
+      "pdf_page": 25,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 18
+    },
+    {
+      "pdf_page": 53,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 18
+    },
+    {
+      "pdf_page": 78,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 6
+    },
+    {
+      "pdf_page": 79,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 31
+    }
+  ]
+}

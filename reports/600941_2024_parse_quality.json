@@ -1,0 +1,43 @@
+{
+  "document_id": "600941_2024",
+  "generated_at": "2026-08-17T15:19:54.854916+00:00",
+  "source_file": "600941_中国移动_2024_annual_report.pdf",
+  "page_count": 222,
+  "manifest_page_count": 222,
+  "total_char_count": 148832,
+  "average_chars_per_page": 670.41,
+  "pages_with_printed_page": 221,
+  "pages_with_known_chapter": 135,
+  "repeated_margin_lines_removed": [
+    "2024 年年度报告",
+    "中国移动有限公司",
+    "合并财务报表附注",
+    "截至2024 年12 月31 日止年度财务报表"
+  ],
+  "quality_flag_counts": {
+    "short_page": 3
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 29
+    },
+    {
+      "pdf_page": 86,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 6
+    },
+    {
+      "pdf_page": 87,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 31
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+{
+  "document_id": "600519_2024",
+  "generated_at": "2026-08-17T17:54:31.885686+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/600519_2024_evaluation_questions.csv",
+  "question_count": 15,
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.759,
+    "median_latency_seconds": 1.952,
+    "max_latency_seconds": 14.836,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "6005192024_Q01",
+      "question": "贵州茅台2024年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：59,295,822,956.89",
+      "gold_evidence_pages": [
+        58
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的货币资金为59,295,822,956.89元，单位：元，币种：人民币[证据1]。该数值为合并资产负债表中的期末余额，且与证据2中列示的货币资金金额一致[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00019"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "59295822956.89"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "59295822956.89"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 14.836,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q02",
+      "question": "贵州茅台2024年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：1,984,407,967.50",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的应收票据为1,984,407,967.50元，单位：元，币种：人民币[证据1]。该数据为合并资产负债表中的期末余额，属于合并口径的列报金额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00019"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "1984407967.5"
+      ],
+      "answer_numbers": [
+        "1",
+        "1984407967.5",
+        "2024"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.244,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q03",
+      "question": "贵州茅台2024年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：18,974,192.75",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的应收账款为18,974,192.75元，单位为人民币元[证据1][证据2]。该数值为合并资产负债表中的期末余额，且证据2显示其较2023年末下降68.57%[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00019"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "18974192.75"
+      ],
+      "answer_numbers": [
+        "1",
+        "18974192.75",
+        "2",
+        "2023",
+        "2024",
+        "68.57%"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.789,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q04",
+      "question": "贵州茅台2024年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：26,975,033.20",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的预付款项为26,975,033.20元，单位：元，币种：人民币[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094"
+      ],
+      "citation_pages": [
+        58,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "26975033.2"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "26975033.2"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.59,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q05",
+      "question": "贵州茅台2024年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：29,955,673.47",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的其他应收款为29,955,673.47元，单位为人民币元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094"
+      ],
+      "citation_pages": [
+        58,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "29955673.47"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "29955673.47"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.357,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q06",
+      "question": "贵州茅台2024年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：54,343,285,157.47",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径存货为54,343,285,157.47元（单位：人民币元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，且证据中未明确扣除减值准备，故按列报金额口径回答。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00019"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "54343285157.47"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "54343285157.47"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.172,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q07",
+      "question": "贵州茅台2024年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：160,176,582.69",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的其他流动资产为160,176,582.69元（单位：元，币种：人民币）[证据3][证据4]。该金额为合并资产负债表的期末余额[证据3]，其构成包括期末未抵扣增值税118,880,044.87元、待取得抵扣凭证的进项税额20,854,972.83元、预缴所得税19,749,723.00元及其他691,841.99元[证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00019",
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00154"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "160176582.69"
+      ],
+      "answer_numbers": [
+        "118880044.87",
+        "160176582.69",
+        "19749723",
+        "2024",
+        "20854972.83",
+        "3",
+        "4",
+        "691841.99"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.349,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q08",
+      "question": "贵州茅台2024年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "流动资产合计：251,726,674,636.66",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的流动资产合计为251,726,674,636.66元，单位为元（币种：人民币）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00096",
+        "600519_2024_baseline_00094"
+      ],
+      "citation_pages": [
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "251726674636.66"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "251726674636.66"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.997,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q09",
+      "question": "贵州茅台2024年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：21,871,446,747.14",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的固定资产为21,871,446,747.14元，该数值为合并资产负债表中的期末余额，单位是元[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00019",
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00157"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59,
+        61,
+        62,
+        96,
+        97
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "21871446747.14"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "21871446747.14"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.571,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q10",
+      "question": "贵州茅台2024年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：2,149,619,937.05",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的在建工程为2,149,619,937.05元，单位是元，币种为人民币[证据1][证据5]。该数值为合并资产负债表的期末余额，且为账面价值（扣除减值准备后的列报金额），因为证据显示在建工程的账面余额与账面价值均为2,149,619,937.05元，减值准备为0[证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00157",
+        "600519_2024_baseline_00162"
+      ],
+      "citation_pages": [
+        58,
+        59,
+        61,
+        62,
+        96,
+        97,
+        99
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2149619937.05"
+      ],
+      "answer_numbers": [
+        "0",
+        "1",
+        "2024",
+        "2149619937.05",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.952,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q11",
+      "question": "贵州茅台2024年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：410,594,173.53",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的使用权资产为410,594,173.53元，该数值为合并资产负债表中的期末账面价值（扣除减值准备后的列报金额），单位为人民币元[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00020",
+        "600519_2024_baseline_00164"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59,
+        61,
+        62,
+        100
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "410594173.53"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "3",
+        "410594173.53"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.64,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q12",
+      "question": "贵州茅台2024年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：8,850,205,831.00",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的无形资产为8,850,205,831.00元，该数值为合并资产负债表中的期末账面价值（扣除减值准备后的列报金额）[证据1][证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00167",
+        "600519_2024_baseline_00166"
+      ],
+      "citation_pages": [
+        58,
+        59,
+        61,
+        62,
+        101,
+        102
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "8850205831"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "5",
+        "8850205831"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.716,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q13",
+      "question": "贵州茅台2024年末合并口径的开发支出是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "开发支出：98,522,878.42",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的开发支出为98,522,878.42元[证据1][证据3][证据5]。该数值为合并资产负债表中的期末余额，单位与年报一致为元[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00020",
+        "600519_2024_baseline_00167"
+      ],
+      "citation_pages": [
+        13,
+        58,
+        59,
+        61,
+        62,
+        101,
+        102
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "98522878.42"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "3",
+        "5",
+        "98522878.42"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.877,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q14",
+      "question": "贵州茅台2024年末合并口径的递延所得税资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "递延所得税资产：5,520,006,868.83",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的递延所得税资产为5,520,006,868.83元（单位：元，币种：人民币）[证据1][证据3]。该数值为合并资产负债表的期末余额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00096",
+        "600519_2024_baseline_00169",
+        "600519_2024_baseline_00094"
+      ],
+      "citation_pages": [
+        58,
+        59,
+        60,
+        61,
+        62,
+        102,
+        103
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "5520006868.83"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "3",
+        "5520006868.83"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.099,
+      "error": null
+    },
+    {
+      "question_id": "6005192024_Q15",
+      "question": "贵州茅台2024年末合并口径的其他非流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "其他非流动资产：232,395,817.46",
+      "gold_evidence_pages": [
+        59
+      ],
+      "status": "answered",
+      "answer": "贵州茅台2024年末合并口径的其他非流动资产为232,395,817.46元，单位为人民币元[证据1][证据3]。该数值为合并资产负债表中的期末余额，属于合并口径的列报金额[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600519_2024_baseline_00095",
+        "600519_2024_baseline_00099",
+        "600519_2024_baseline_00096",
+        "600519_2024_baseline_00094",
+        "600519_2024_baseline_00169"
+      ],
+      "citation_pages": [
+        58,
+        59,
+        60,
+        61,
+        62,
+        102,
+        103
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "232395817.46"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "232395817.46",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.195,
+      "error": null
+    }
+  ]
+}

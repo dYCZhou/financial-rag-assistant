@@ -1,0 +1,17 @@
+{
+  "document_id": "600941_2023",
+  "evaluation_set": "data/evaluation/600941_2023_evaluation_questions.csv",
+  "frozen_before_first_retrieval_run": true,
+  "frozen_on": "2026-08-17",
+  "question_count": 15,
+  "sha256": "18e18d356be3261c878092cfefd743cc90a16e64505e4dbd777d0b8f5c48395c",
+  "labeling_method": "从人工核验通过的合并资产负债表抽取候选事实，并逐项保留PDF物理页、原始单位和证据原文；未使用检索结果调题",
+  "coverage": {
+    "balance_sheet_facts": 15
+  },
+  "constraints": [
+    "冻结后不得为提高检索指标修改问题、参考答案或标准证据页",
+    "检索与重排代码不得读取question_id、reference_answer或evidence_pages",
+    "新增有效替代证据页只能在独立人工审计报告中记录，不回写冻结集"
+  ]
+}

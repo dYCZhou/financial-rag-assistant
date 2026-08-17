@@ -1,0 +1,33 @@
+{
+  "document_id": "600519_2025",
+  "generated_at": "2026-08-17T15:19:14.257955+00:00",
+  "source_file": "600519_贵州茅台_2025_annual_report.pdf",
+  "page_count": 143,
+  "manifest_page_count": 143,
+  "total_char_count": 137930,
+  "average_chars_per_page": 964.55,
+  "pages_with_printed_page": 0,
+  "pages_with_known_chapter": 142,
+  "repeated_margin_lines_removed": [
+    "贵州茅台酒股份有限公司2025 年年度报告"
+  ],
+  "quality_flag_counts": {
+    "short_page": 2
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 45
+    },
+    {
+      "pdf_page": 46,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 46
+    }
+  ]
+}

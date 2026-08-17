@@ -130,16 +130,18 @@ def quote_around_query(text: str, question: str, max_chars: int) -> str:
     compact = re.sub(r"\s+", " ", text).strip()
     if len(compact) <= max_chars:
         return compact
+    requested_row = re.search(r"合并口径的(.+?)是多少", question)
+    requested_label = requested_row.group(1).strip() if requested_row else ""
+    requested_position = compact.find(requested_label) if requested_label else -1
     matched_terms = [
         (term, compact.find(term))
         for term in _salient_terms(question)
         if compact.find(term) >= 0
     ]
     # Generic period words often occur before the requested table row.
-    center = (
+    center = requested_position if requested_position >= 0 else (
         sorted(matched_terms, key=lambda item: (-len(item[0]), item[1]))[0][1]
-        if matched_terms
-        else 0
+        if matched_terms else 0
     )
     start = max(0, center - max_chars // 4)
     end = min(len(compact), start + max_chars)
@@ -339,11 +341,18 @@ class RagPipeline:
             (float(hit.get("term_coverage", 0.0)) for hit in hits),
             default=0.0,
         )
+        has_balance_sheet_row = any(
+            float(hit.get("balance_sheet_row_score", 0.0)) >= 0.8
+            for hit in hits
+        )
         if (
             bool(self.config["refuse_without_evidence"])
             and (
                 not hits
-                or max_coverage < float(self.config["min_term_coverage"])
+                or (
+                    max_coverage < float(self.config["min_term_coverage"])
+                    and not has_balance_sheet_row
+                )
             )
         ):
             return RagAnswer(

@@ -15,11 +15,12 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.ui_helpers import (  # noqa: E402
-    DEFAULT_QUESTIONS,
+    answer_for_display,
     available_documents,
     citation_page_label,
     friendly_error,
     result_message,
+    verified_demo_questions,
 )
 from src.generation.rag import RagPipeline  # noqa: E402
 
@@ -47,8 +48,17 @@ APP_CSS = """
         background: #fff;
         color: var(--ink);
     }
+    [data-testid="stAppViewContainer"] p,
+    [data-testid="stAppViewContainer"] label,
+    [data-testid="stAppViewContainer"] h1,
+    [data-testid="stAppViewContainer"] h2,
+    [data-testid="stAppViewContainer"] h3,
+    [data-testid="stAppViewContainer"] span {
+        color: inherit;
+    }
     [data-testid="stSidebar"] {
         background: #f6f6f8;
+        color: var(--ink);
         border-right: 1px solid #eeeeF2;
     }
     [data-testid="stSidebar"] > div:first-child {
@@ -182,13 +192,20 @@ APP_CSS = """
     div[data-testid="stExpander"] details summary {
         padding: .75rem .9rem;
         font-size: .88rem;
+        color: var(--ink);
     }
     div[data-testid="stButton"] button {
         border-radius: 12px;
         border: 1px solid var(--line);
         background: #fff;
+        color: var(--ink);
         min-height: 2.65rem;
         box-shadow: none;
+    }
+    div[data-testid="stButton"] button p,
+    div[data-testid="stPopover"] button p,
+    div[data-testid="stLinkButton"] a p {
+        color: inherit;
     }
     div[data-testid="stButton"] button:hover {
         border-color: #cfd3ff;
@@ -199,6 +216,11 @@ APP_CSS = """
         border-radius: 12px;
         border-color: var(--line);
         background: #fafafd;
+        color: var(--ink);
+    }
+    div[data-testid="stSelectbox"] input,
+    div[data-testid="stSelectbox"] [data-baseweb="select"] * {
+        color: var(--ink);
     }
     [data-testid="stChatInput"] {
         max-width: 820px;
@@ -209,6 +231,16 @@ APP_CSS = """
         border: 1px solid #e6e6eb;
         box-shadow: 0 8px 30px rgba(22, 25, 45, .08);
         background: white;
+    }
+    [data-testid="stChatInput"] textarea {
+        color: var(--ink);
+        caret-color: var(--ink);
+        -webkit-text-fill-color: var(--ink);
+    }
+    [data-testid="stChatInput"] textarea::placeholder {
+        color: #8b8b95;
+        -webkit-text-fill-color: #8b8b95;
+        opacity: 1;
     }
     .boundary {
         text-align: center;
@@ -302,7 +334,7 @@ def select_document(
     return company, year, documents[company][year]
 
 
-def render_welcome(company: str, year: int) -> None:
+def render_welcome(company: str, year: int, document_id: str) -> None:
     st.markdown(
         """
         <div class="hero">
@@ -313,7 +345,12 @@ def render_welcome(company: str, year: int) -> None:
         """,
         unsafe_allow_html=True,
     )
-    questions = DEFAULT_QUESTIONS.get((company, year), DEFAULT_QUESTIONS["default"])
+    questions = verified_demo_questions(ROOT / "reports", document_id)
+    if questions:
+        st.caption("已验证示例 · 均通过该报告冻结题集人工验收")
+    else:
+        st.caption("当前报告暂无已验证示例，请在下方输入问题。")
+        return
     cols = st.columns(2)
     for index, question in enumerate(questions[:4]):
         with cols[index % 2]:
@@ -339,7 +376,7 @@ def render_result(question: str, result: dict[str, object]) -> None:
             unsafe_allow_html=True,
         )
 
-    answer = str(result.get("answer", ""))
+    answer = answer_for_display(result.get("answer", ""))
     if result.get("status") == "evidence_only":
         answer = ""
     if answer:
@@ -431,7 +468,7 @@ def main() -> None:
     if result:
         render_result(st.session_state.current_question, result)
     else:
-        render_welcome(company, year)
+        render_welcome(company, year, document["document_id"])
 
     question = st.chat_input("问问这份年报……")
     if question:

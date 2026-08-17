@@ -1,0 +1,33 @@
+{
+  "document_id": "600519_2023",
+  "generated_at": "2026-08-17T15:17:46.641804+00:00",
+  "source_file": "600519_贵州茅台_2023_annual_report.pdf",
+  "page_count": 143,
+  "manifest_page_count": 143,
+  "total_char_count": 133510,
+  "average_chars_per_page": 933.64,
+  "pages_with_printed_page": 0,
+  "pages_with_known_chapter": 142,
+  "repeated_margin_lines_removed": [
+    "2023 年年度报告"
+  ],
+  "quality_flag_counts": {
+    "short_page": 2
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 36
+    },
+    {
+      "pdf_page": 23,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 49
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "document_id": "000333_2023",
+  "reviewed_on": "2026-08-18",
+  "evaluation_set_sha256": "5d1a90ca6b9c0a04b6b81d1692d5c0f49814dd4f9d328dace7ca0323fdd552f6",
+  "machine_report": "reports/000333_2023_deepseek_rag_evaluation.json",
+  "review_scope": "15道冻结题的答案事实、单位、合并口径、年度和引用证据",
+  "summary": {
+    "reviewed_questions": 15,
+    "fully_correct": 15,
+    "incorrect": 0,
+    "refused": 0,
+    "api_or_pipeline_errors": 0,
+    "frozen_citation_page_hits": 14,
+    "valid_alternative_evidence": 1
+  },
+  "review_notes": [
+    "Q07答案47,339,255千元与冻结答案一致；引用PDF第168—169页的存货分类/账面价值属于有效替代证据，原冻结页159未回写"
+  ],
+  "conclusion": "15道冻结题答案、单位、年度和合并口径均通过人工复核；检索与受证据约束RAG达到本报告验收要求。"
+}

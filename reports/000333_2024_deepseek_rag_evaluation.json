@@ -1,0 +1,710 @@
+{
+  "document_id": "000333_2024",
+  "generated_at": "2026-08-17T17:59:28.875945+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/000333_2024_evaluation_questions.csv",
+  "question_count": 15,
+  "retrieval_strategy": "structured",
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.908,
+    "median_latency_seconds": 2.193,
+    "max_latency_seconds": 13.367,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "0003332024_Q01",
+      "question": "美的集团2024年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：140,410,308",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，美的集团2024年末合并口径的货币资金为140,410,308（单位未在证据中明确，无法补充）[证据1]。该数值为合并资产负债表中的期末余额，对应2024年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00241",
+        "000333_2024_baseline_00405",
+        "000333_2024_baseline_00389"
+      ],
+      "citation_pages": [
+        155,
+        156,
+        273,
+        274,
+        287,
+        288
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "140410308"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "140410308",
+        "2024",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 13.367,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q02",
+      "question": "美的集团2024年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：6,718,575",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的应收票据为6,718,575[证据1]。该数值为合并资产负债表中的期末余额，单位与年报原表一致（千元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00241",
+        "000333_2024_baseline_00389"
+      ],
+      "citation_pages": [
+        155,
+        156,
+        273,
+        274
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "6718575"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "6718575"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.444,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q03",
+      "question": "美的集团2024年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：35,798,974",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径应收账款为35,798,974千元（单位：千元人民币）[证据2]。该数值为合并资产负债表中的期末余额，对应2024年12月31日[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00405",
+        "000333_2024_baseline_00241",
+        "000333_2024_baseline_00389"
+      ],
+      "citation_pages": [
+        155,
+        156,
+        273,
+        274,
+        287,
+        288
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "35798974"
+      ],
+      "answer_numbers": [
+        "12",
+        "2",
+        "2024",
+        "31",
+        "35798974"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.217,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q04",
+      "question": "美的集团2024年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：3,686,494",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的预付款项为3,686,494（单位按年报原单位，即千元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，对应2024年12月31日[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00241",
+        "000333_2024_baseline_00242"
+      ],
+      "citation_pages": [
+        155,
+        156
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3686494"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2",
+        "2024",
+        "31",
+        "3686494"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.116,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q05",
+      "question": "美的集团2024年末合并口径的合同资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "合同资产：3,499,556",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的合同资产为3,499,556（单位：千元人民币，按年报原单位）[证据2][证据4]。该数值为合并资产负债表中的期末余额，属于合并口径[证据2][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00405",
+        "000333_2024_baseline_00241",
+        "000333_2024_baseline_00260",
+        "000333_2024_baseline_00242"
+      ],
+      "citation_pages": [
+        155,
+        156,
+        165,
+        166,
+        287,
+        288
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3499556"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "3499556",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.13,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q06",
+      "question": "美的集团2024年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：2,077,412",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年12月31日合并口径的其他应收款期末余额为2,077,412千元（单位：千元）[证据2][证据3]。该数值为合并资产负债表中的列报金额，属于期末余额口径。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00405",
+        "000333_2024_baseline_00241",
+        "000333_2024_baseline_00242"
+      ],
+      "citation_pages": [
+        155,
+        156,
+        287,
+        288
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2077412"
+      ],
+      "answer_numbers": [
+        "12",
+        "2",
+        "2024",
+        "2077412",
+        "3",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.193,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q07",
+      "question": "美的集团2024年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：63,339,188",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的存货为63,339,188（单位：千元，按年报原单位）[证据1]。该数值为合并资产负债表中的期末余额，属于合并口径的列报金额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_structured_00291",
+        "000333_2024_structured_00315",
+        "000333_2024_structured_00471"
+      ],
+      "citation_pages": [
+        156,
+        165,
+        281,
+        282
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "63339188"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "63339188"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.43,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "0003332024_Q08",
+      "question": "美的集团2024年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：39,981,584",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的其他流动资产为39,981,584（单位按年报原单位，即人民币千元）[证据2]。该数值为合并资产负债表中的期末余额[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00405",
+        "000333_2024_baseline_00242",
+        "000333_2024_baseline_00400",
+        "000333_2024_baseline_00243"
+      ],
+      "citation_pages": [
+        156,
+        157,
+        283,
+        284,
+        287,
+        288
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "39981584"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "39981584"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.972,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q09",
+      "question": "美的集团2024年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "流动资产合计：389,063,786",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的流动资产合计为389,063,786[证据2]。该数值来自合并资产负债表，单位为千元（年报原单位）[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00243",
+        "000333_2024_baseline_00242",
+        "000333_2024_baseline_00405"
+      ],
+      "citation_pages": [
+        156,
+        157,
+        287,
+        288
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "389063786"
+      ],
+      "answer_numbers": [
+        "2",
+        "2024",
+        "389063786"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.209,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q10",
+      "question": "美的集团2024年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：5,223,478",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的长期股权投资为5,223,478（单位未在证据中明确，按年报原单位应为千元）[证据1][证据3]。该数值为合并资产负债表的期末余额，对应“对联营企业和合营企业的长期股权投资”合计金额[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00242",
+        "000333_2024_baseline_00412",
+        "000333_2024_baseline_00384",
+        "000333_2024_baseline_00387",
+        "000333_2024_baseline_00405"
+      ],
+      "citation_pages": [
+        156,
+        269,
+        270,
+        271,
+        272,
+        287,
+        288,
+        292,
+        293,
+        294
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "5223478"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "3",
+        "5223478"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.359,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q11",
+      "question": "美的集团2024年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：33,528,908",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的固定资产为33,528,908，单位为千元（按年报原单位）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00243",
+        "000333_2024_baseline_00260",
+        "000333_2024_baseline_00242"
+      ],
+      "citation_pages": [
+        156,
+        157,
+        165,
+        166
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "33528908"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "33528908"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.019,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q12",
+      "question": "美的集团2024年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：5,363,977",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的在建工程期末账面价值为5,363,977（单位按年报原单位，即千元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00243",
+        "000333_2024_baseline_00242"
+      ],
+      "citation_pages": [
+        156,
+        157
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "5363977"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "5363977"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.815,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q13",
+      "question": "美的集团2024年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：2,771,967",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的使用权资产为2,771,967（单位按年报原单位，证据未明确具体单位）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00243",
+        "000333_2024_baseline_00260",
+        "000333_2024_baseline_00242"
+      ],
+      "citation_pages": [
+        156,
+        157,
+        165,
+        166
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2771967"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "2771967"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.151,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q14",
+      "question": "美的集团2024年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：17,008,978",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，美的集团2024年末合并口径的无形资产为17,008,978千元（单位：千元）[证据1]。该数值为合并资产负债表中的期末余额，对应2024年12月31日。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00243",
+        "000333_2024_baseline_00260"
+      ],
+      "citation_pages": [
+        156,
+        157,
+        165,
+        166
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "17008978"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "17008978",
+        "2024",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.879,
+      "error": null
+    },
+    {
+      "question_id": "0003332024_Q15",
+      "question": "美的集团2024年末合并口径的商誉是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "商誉：29,581,014",
+      "gold_evidence_pages": [
+        156
+      ],
+      "status": "answered",
+      "answer": "美的集团2024年末合并口径的商誉账面价值为29,581,014千元[证据1][证据5]。该数值为合并资产负债表中的期末列报金额，即扣除减值准备后的账面价值[证据1][证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2024_baseline_00243",
+        "000333_2024_baseline_00387",
+        "000333_2024_baseline_00238",
+        "000333_2024_baseline_00236",
+        "000333_2024_baseline_00237"
+      ],
+      "citation_pages": [
+        151,
+        152,
+        153,
+        156,
+        157,
+        270,
+        271,
+        272
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "29581014"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "29581014",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.315,
+      "error": null
+    }
+  ]
+}

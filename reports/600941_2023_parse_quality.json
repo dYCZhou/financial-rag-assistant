@@ -1,0 +1,43 @@
+{
+  "document_id": "600941_2023",
+  "generated_at": "2026-08-17T15:19:51.243832+00:00",
+  "source_file": "600941_中国移动_2023_annual_report.pdf",
+  "page_count": 220,
+  "manifest_page_count": 220,
+  "total_char_count": 151505,
+  "average_chars_per_page": 688.66,
+  "pages_with_printed_page": 219,
+  "pages_with_known_chapter": 132,
+  "repeated_margin_lines_removed": [
+    "2023 年年度报告",
+    "中国移动有限公司",
+    "合并财务报表附注",
+    "截至 2023 年12 月31 日止年度财务报表"
+  ],
+  "quality_flag_counts": {
+    "short_page": 3
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 30
+    },
+    {
+      "pdf_page": 87,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 6
+    },
+    {
+      "pdf_page": 88,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 31
+    }
+  ]
+}

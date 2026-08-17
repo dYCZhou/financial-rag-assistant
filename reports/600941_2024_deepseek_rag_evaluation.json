@@ -1,0 +1,698 @@
+{
+  "document_id": "600941_2024",
+  "generated_at": "2026-08-17T17:55:58.520493+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/600941_2024_evaluation_questions.csv",
+  "question_count": 15,
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.865,
+    "median_latency_seconds": 2.227,
+    "max_latency_seconds": 13.084,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "6009412024_Q01",
+      "question": "中国移动2024年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：242,275",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的货币资金为242,275（单位：人民币百万元），该数据为合并资产负债表中的期末余额，属于合并口径的列报金额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00127",
+        "600941_2024_baseline_00238",
+        "600941_2024_baseline_00221",
+        "600941_2024_baseline_00118",
+        "600941_2024_baseline_00239"
+      ],
+      "citation_pages": [
+        82,
+        83,
+        84,
+        92,
+        93,
+        94,
+        192,
+        193,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "242275"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "242275"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 13.084,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q02",
+      "question": "中国移动2024年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：1,103",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的应收票据为1,103（单位：人民币百万元）[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00127"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "1103"
+      ],
+      "answer_numbers": [
+        "1",
+        "1103",
+        "2",
+        "2024"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.958,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q03",
+      "question": "中国移动2024年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：75,741",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的应收账款为75,741（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，口径为合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00127",
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00238",
+        "600941_2024_baseline_00221",
+        "600941_2024_baseline_00239"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95,
+        192,
+        193,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "75741"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "75741"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.286,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q04",
+      "question": "中国移动2024年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：8,315",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的预付款项为8,315（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，且证据中明确标注单位为人民币百万元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00127",
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00238",
+        "600941_2024_baseline_00239"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "8315"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "8315"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.152,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q05",
+      "question": "中国移动2024年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：27,817",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的其他应收款为27,817（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，单位以年报列示为准。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00127",
+        "600941_2024_baseline_00238",
+        "600941_2024_baseline_00239"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "27817"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "27817"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.227,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q06",
+      "question": "中国移动2024年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：11,229",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的存货为11,229（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，金额单位为人民币百万元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00127",
+        "600941_2024_baseline_00128"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "11229"
+      ],
+      "answer_numbers": [
+        "1",
+        "11229",
+        "2",
+        "2024"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.265,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q07",
+      "question": "中国移动2024年末合并口径的合同资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "合同资产：20,665",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的合同资产为20,665（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，金额单位为人民币百万元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00127",
+        "600941_2024_baseline_00128"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "20665"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2024",
+        "20665"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.98,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q08",
+      "question": "中国移动2024年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：28,220",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的其他流动资产为28,220（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，年报原单位为人民币百万元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00221",
+        "600941_2024_baseline_00127"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95,
+        192,
+        193
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "28220"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "28220"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.733,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q09",
+      "question": "中国移动2024年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "流动资产合计：568,559",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的流动资产合计为568,559（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末列报金额，对应2024年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00127"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "568559"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2024",
+        "31",
+        "568559"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.725,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q10",
+      "question": "中国移动2024年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：198,563",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的长期股权投资为198,563（单位：人民币百万元），该数值为合并资产负债表中的期末余额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128"
+      ],
+      "citation_pages": [
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "198563"
+      ],
+      "answer_numbers": [
+        "1",
+        "198563",
+        "2024"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.62,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q11",
+      "question": "中国移动2024年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：714,494",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的固定资产为714,494（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末列报金额，口径为合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00127"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "714494"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "714494"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 3.335,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q12",
+      "question": "中国移动2024年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：74,271",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的在建工程为74,271（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，单位以年报列示为准。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128"
+      ],
+      "citation_pages": [
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "74271"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "74271"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.74,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q13",
+      "question": "中国移动2024年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：80,625",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的使用权资产为80,625（单位：人民币百万元），该数值为合并资产负债表中的期末余额，对应2024年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00238",
+        "600941_2024_baseline_00239"
+      ],
+      "citation_pages": [
+        94,
+        95,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "80625"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2024",
+        "31",
+        "80625"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.234,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q14",
+      "question": "中国移动2024年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：50,804",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的无形资产为50,804（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末列报金额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128",
+        "600941_2024_baseline_00127"
+      ],
+      "citation_pages": [
+        92,
+        93,
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "50804"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "50804"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.262,
+      "error": null
+    },
+    {
+      "question_id": "6009412024_Q15",
+      "question": "中国移动2024年末合并口径的开发支出是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "开发支出：2,157",
+      "gold_evidence_pages": [
+        94
+      ],
+      "status": "answered",
+      "answer": "中国移动2024年末合并口径的开发支出为2,157（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，年报原单位为人民币百万元。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2024_baseline_00128"
+      ],
+      "citation_pages": [
+        94,
+        95
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2157"
+      ],
+      "answer_numbers": [
+        "1",
+        "2024",
+        "2157"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.367,
+      "error": null
+    }
+  ]
+}

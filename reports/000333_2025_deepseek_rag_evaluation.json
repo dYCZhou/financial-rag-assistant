@@ -1,0 +1,752 @@
+{
+  "document_id": "000333_2025",
+  "generated_at": "2026-08-17T18:01:37.213574+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/000333_2025_evaluation_questions.csv",
+  "question_count": 15,
+  "retrieval_strategy": "structured",
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.237,
+    "median_latency_seconds": 2.146,
+    "max_latency_seconds": 2.908,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "0003332025_Q01",
+      "question": "美的集团2025年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：85,247,150",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，美的集团2025年12月31日合并口径的货币资金为85,247,150（单位未在证据中明确，按年报原单位列示）[证据1][证据5]。该数值为合并资产负债表中的期末余额，属于合并口径的期末账面价值（列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_structured_00236",
+        "000333_2025_structured_00416",
+        "000333_2025_structured_00433",
+        "000333_2025_structured_00432",
+        "000333_2025_structured_00235"
+      ],
+      "citation_pages": [
+        130,
+        131,
+        132,
+        255,
+        256,
+        268,
+        269,
+        270
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "85247150"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "31",
+        "5",
+        "85247150"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.575,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "0003332025_Q02",
+      "question": "美的集团2025年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：5,246,763",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的应收票据为5,246,763[证据3][证据5]。该数值取自合并资产负债表，为2025年12月31日余额，年报原单位为千元[证据3][证据5]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00353",
+        "000333_2025_baseline_00222",
+        "000333_2025_baseline_00197",
+        "000333_2025_baseline_00352",
+        "000333_2025_baseline_00196"
+      ],
+      "citation_pages": [
+        130,
+        131,
+        132,
+        148,
+        149,
+        253,
+        254,
+        255,
+        256
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "5246763"
+      ],
+      "answer_numbers": [
+        "12",
+        "2025",
+        "3",
+        "31",
+        "5",
+        "5246763"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.025,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q03",
+      "question": "美的集团2025年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：40,450,097",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的应收账款为40,450,097[证据1]。该数值取自合并资产负债表，为2025年12月31日合并口径的期末余额[证据1]。证据未明确该数值的单位，因此无法补充单位[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_structured_00236",
+        "000333_2025_structured_00416",
+        "000333_2025_structured_00433",
+        "000333_2025_structured_00265",
+        "000333_2025_structured_00432"
+      ],
+      "citation_pages": [
+        132,
+        148,
+        149,
+        255,
+        256,
+        268,
+        269,
+        270
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "40450097"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "31",
+        "40450097"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.117,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "0003332025_Q04",
+      "question": "美的集团2025年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：2,987,292",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的预付款项为2,987,292（单位未在证据中明确给出，按年报原单位应为千元）[证据2]。该数值为合并资产负债表中的期末余额，对应2025年12月31日[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00353",
+        "000333_2025_baseline_00197",
+        "000333_2025_baseline_00196"
+      ],
+      "citation_pages": [
+        130,
+        131,
+        132,
+        255,
+        256
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2987292"
+      ],
+      "answer_numbers": [
+        "12",
+        "2",
+        "2025",
+        "2987292",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.44,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q05",
+      "question": "美的集团2025年末合并口径的合同资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "合同资产：4,268,501",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的合同资产为4,268,501（单位：千元人民币，按年报原单位）[证据1][证据5]。该数值为合并资产负债表中的期末余额，属于合并口径[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_structured_00236",
+        "000333_2025_structured_00433",
+        "000333_2025_structured_00259",
+        "000333_2025_structured_00432",
+        "000333_2025_structured_00237"
+      ],
+      "citation_pages": [
+        132,
+        143,
+        144,
+        268,
+        269,
+        270
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "4268501"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "4268501",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.46,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "0003332025_Q06",
+      "question": "美的集团2025年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：3,190,591",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "根据证据，美的集团2025年末合并口径的其他应收款为3,190,591（单位未在证据中明确，按年报原表列示）[证据1][证据5]。该数值为合并资产负债表中的期末列报金额，属于合并口径的期末余额[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_structured_00236",
+        "000333_2025_structured_00416",
+        "000333_2025_structured_00433",
+        "000333_2025_structured_00432",
+        "000333_2025_structured_00237"
+      ],
+      "citation_pages": [
+        132,
+        255,
+        256,
+        268,
+        269,
+        270
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3190591"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "3190591",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.382,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "0003332025_Q07",
+      "question": "美的集团2025年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：64,628,834",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年12月31日合并口径存货为64,628,834，单位未在证据中明确给出，因此无法补充单位[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_structured_00236"
+      ],
+      "citation_pages": [
+        132
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "64628834"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "31",
+        "64628834"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.908,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "0003332025_Q08",
+      "question": "美的集团2025年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：25,376,475",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的其他流动资产为25,376,475[证据2]。该数值取自合并资产负债表，单位为千元人民币[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00368",
+        "000333_2025_baseline_00197",
+        "000333_2025_baseline_00353",
+        "000333_2025_baseline_00363",
+        "000333_2025_baseline_00198"
+      ],
+      "citation_pages": [
+        132,
+        133,
+        255,
+        256,
+        264,
+        265,
+        268,
+        269
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "25376475"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "25376475"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.749,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q09",
+      "question": "美的集团2025年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "流动资产合计：416,662,341",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的流动资产合计为416,662,341（单位：千元，按年报原单位）[证据2]。该数值为合并资产负债表中的期末余额，对应2025年12月31日[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00198",
+        "000333_2025_baseline_00197",
+        "000333_2025_baseline_00353"
+      ],
+      "citation_pages": [
+        132,
+        133,
+        255,
+        256
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "416662341"
+      ],
+      "answer_numbers": [
+        "12",
+        "2",
+        "2025",
+        "31",
+        "416662341"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.592,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q10",
+      "question": "美的集团2025年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：4,775,044",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的长期股权投资为4,775,044（单位未在证据中明确给出，按年报原单位应为千元）[证据2]。该数值为合并资产负债表中的期末账面价值，对应2025年12月31日[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00350",
+        "000333_2025_baseline_00197",
+        "000333_2025_baseline_00375",
+        "000333_2025_baseline_00372",
+        "000333_2025_baseline_00359"
+      ],
+      "citation_pages": [
+        132,
+        251,
+        252,
+        261,
+        262,
+        272,
+        273,
+        274,
+        275
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "4775044"
+      ],
+      "answer_numbers": [
+        "12",
+        "2",
+        "2025",
+        "31",
+        "4775044"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.354,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q11",
+      "question": "美的集团2025年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：44,983,394",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的固定资产为44,983,394（单位：千元，按年报原单位）[证据1]。该数值为合并资产负债表中的期末余额，对应2025年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00198",
+        "000333_2025_baseline_00215",
+        "000333_2025_baseline_00197"
+      ],
+      "citation_pages": [
+        132,
+        133,
+        143,
+        144
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "44983394"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "31",
+        "44983394"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.146,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q12",
+      "question": "美的集团2025年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：3,054,828",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的在建工程期末账面价值为3,054,828[证据1]。该数值来自合并资产负债表，单位为千元（年报原单位）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00198"
+      ],
+      "citation_pages": [
+        132,
+        133
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3054828"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "3054828"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.794,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q13",
+      "question": "美的集团2025年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：3,170,163",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的使用权资产为3,170,163（单位按年报原单位，证据未明确具体单位）[证据1]。该数值为合并资产负债表中的期末余额，对应2025年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00198",
+        "000333_2025_baseline_00215"
+      ],
+      "citation_pages": [
+        132,
+        133,
+        143,
+        144
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3170163"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "31",
+        "3170163"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.966,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q14",
+      "question": "美的集团2025年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：21,618,860",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的无形资产为21,618,860，单位为千元（按年报原单位）[证据1]。该数值为合并资产负债表中的期末余额，对应2025年12月31日[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00198",
+        "000333_2025_baseline_00215"
+      ],
+      "citation_pages": [
+        132,
+        133,
+        143,
+        144
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "21618860"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "21618860",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.946,
+      "error": null
+    },
+    {
+      "question_id": "0003332025_Q15",
+      "question": "美的集团2025年末合并口径的商誉是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "商誉：34,256,859",
+      "gold_evidence_pages": [
+        132
+      ],
+      "status": "answered",
+      "answer": "美的集团2025年末合并口径的商誉账面价值为人民币34,256,859千元[证据1][证据2]。该数值为合并资产负债表中的期末账面价值（扣除减值准备后的列报金额）[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "000333_2025_baseline_00198",
+        "000333_2025_baseline_00192",
+        "000333_2025_baseline_00350",
+        "000333_2025_baseline_00353",
+        "000333_2025_baseline_00191"
+      ],
+      "citation_pages": [
+        127,
+        128,
+        132,
+        133,
+        251,
+        252,
+        255,
+        256
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "34256859"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "34256859"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.1,
+      "error": null
+    }
+  ]
+}

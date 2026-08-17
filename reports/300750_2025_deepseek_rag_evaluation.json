@@ -1,0 +1,775 @@
+{
+  "document_id": "300750_2025",
+  "generated_at": "2026-08-17T18:06:42.405831+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/300750_2025_evaluation_questions.csv",
+  "question_count": 15,
+  "retrieval_strategy": "baseline",
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.926,
+    "median_latency_seconds": 2.035,
+    "max_latency_seconds": 12.966,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "3007502025_Q01",
+      "question": "宁德时代2025年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：333,512,927",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的货币资金为333,512,927千元[证据1]。该数值为合并资产负债表中的期末余额，单位为千元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00261"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        185
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "333512927"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "333512927"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 12.966,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q02",
+      "question": "宁德时代2025年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：1,380,016",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的应收票据期末余额为1,380,016千元[证据1][证据3]。该数值来自合并资产负债表，单位为千元[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00261",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00165"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        185
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "1380016"
+      ],
+      "answer_numbers": [
+        "1",
+        "1380016",
+        "2025",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.717,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q03",
+      "question": "宁德时代2025年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：76,403,264",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的应收账款期末余额为76,403,264千元[证据1][证据3]。该数值来自合并资产负债表，单位为千元[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00306",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00165"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        218,
+        219
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "76403264"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "3",
+        "76403264"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.663,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q04",
+      "question": "宁德时代2025年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：14,282,335",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的预付款项为14,282,335千元[证据1][证据4]。该数值为合并资产负债表的期末余额，单位与年报财务附注报表单位一致，为千元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00306",
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00162"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        218,
+        219
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "14282335"
+      ],
+      "answer_numbers": [
+        "1",
+        "14282335",
+        "2025",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.515,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q05",
+      "question": "宁德时代2025年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：2,119,770",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的其他应收款期末余额为2,119,770千元[证据1][证据3]。该数值为合并资产负债表的期末余额，报表单位为千元[证据1][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00306",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00165"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        218,
+        219
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "2119770"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "2119770",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 3.44,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q06",
+      "question": "宁德时代2025年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：94,526,239",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，宁德时代2025年末合并口径的存货为94,526,239千元[证据2][证据3]。该数值为合并资产负债表中的期末余额，单位为千元[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00280",
+        "300750_2025_baseline_00276"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        196,
+        197,
+        198,
+        200,
+        201
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "94526239"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "3",
+        "94526239"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.035,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q07",
+      "question": "宁德时代2025年末合并口径的合同资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "合同资产：375,468",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的合同资产为375,468千元[证据3]。该数值来自合并资产负债表，为期末余额，单位与年报财务附注报表单位一致（千元）[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00306",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00165"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        218,
+        219
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "375468"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "3",
+        "375468"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.701,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q08",
+      "question": "宁德时代2025年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：12,379,304",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的其他流动资产为12,379,304千元[证据3][证据4]。该数值为合并资产负债表期末余额，单位与年报附注一致为千元[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00244",
+        "300750_2025_baseline_00306"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        172,
+        173,
+        218,
+        219
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "12379304"
+      ],
+      "answer_numbers": [
+        "12379304",
+        "2025",
+        "3",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 3.217,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q09",
+      "question": "宁德时代2025年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "流动资产合计：638,481,543",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的流动资产合计为638,481,543千元[证据2][证据4]。该数值为合并资产负债表中的期末余额，单位为千元[证据2][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00163",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00306"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        218,
+        219
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "638481543"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "4",
+        "638481543"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.412,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q10",
+      "question": "宁德时代2025年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：64,884,321",
+      "gold_evidence_pages": [
+        111
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，宁德时代2025年末合并口径的长期股权投资为64,884,321千元[证据1]。该数据来自合并资产负债表，单位明确为千元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_structured_00186",
+        "300750_2025_structured_00214",
+        "300750_2025_structured_00190",
+        "300750_2025_structured_00187"
+      ],
+      "citation_pages": [
+        111,
+        112,
+        114,
+        134,
+        135
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "64884321"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "64884321"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.023,
+      "error": null,
+      "retrieval_strategy": "structured"
+    },
+    {
+      "question_id": "3007502025_Q11",
+      "question": "宁德时代2025年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：146,400,592",
+      "gold_evidence_pages": [
+        112
+      ],
+      "status": "answered",
+      "answer": "根据现有证据，宁德时代2025年末合并口径的固定资产为146,400,592千元[证据4][证据5]。该数值为合并资产负债表中的期末余额，且证据5明确其为“固定资产账面价值”，即扣除减值准备后的列报金额[证据5]。年报财务附注报表单位为千元[证据2][证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00261",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00157"
+      ],
+      "citation_pages": [
+        107,
+        108,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        185
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "146400592"
+      ],
+      "answer_numbers": [
+        "146400592",
+        "2",
+        "2025",
+        "4",
+        "5"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.578,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q12",
+      "question": "宁德时代2025年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：29,733,108",
+      "gold_evidence_pages": [
+        112
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的在建工程期末余额为29,733,108千元[证据3][证据2]。该数值来自合并资产负债表，单位为千元[证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00312",
+        "300750_2025_baseline_00186"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        133,
+        134,
+        135,
+        223,
+        224
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "29733108"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "29733108",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.81,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q13",
+      "question": "宁德时代2025年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：3,268,966",
+      "gold_evidence_pages": [
+        112
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的使用权资产为3,268,966千元（单位：千元）[证据1]。该数值为合并资产负债表中的期末余额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00165"
+      ],
+      "citation_pages": [
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3268966"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "3268966"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.262,
+      "error": null,
+      "retrieval_strategy": "baseline"
+    },
+    {
+      "question_id": "3007502025_Q14",
+      "question": "宁德时代2025年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：15,263,875",
+      "gold_evidence_pages": [
+        112
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的无形资产为15,263,875千元（即按年报原单位千元列报）[证据4]。该数据来自合并资产负债表，属于期末余额，且为扣除减值准备后的列报金额[证据4]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00261",
+        "300750_2025_baseline_00165",
+        "300750_2025_baseline_00161",
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00280"
+      ],
+      "citation_pages": [
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        185,
+        200,
+        201
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "15263875"
+      ],
+      "answer_numbers": [
+        "15263875",
+        "2025",
+        "4"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.549,
+      "error": null
+    },
+    {
+      "question_id": "3007502025_Q15",
+      "question": "宁德时代2025年末合并口径的商誉是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "商誉：837,328",
+      "gold_evidence_pages": [
+        112
+      ],
+      "status": "answered",
+      "answer": "宁德时代2025年末合并口径的商誉期末账面价值为837,328千元[证据1]。该数值来自合并资产负债表，属于期末余额，单位为千元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "300750_2025_baseline_00162",
+        "300750_2025_baseline_00165"
+      ],
+      "citation_pages": [
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "837328"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "837328"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.003,
+      "error": null,
+      "retrieval_strategy": "baseline"
+    }
+  ]
+}

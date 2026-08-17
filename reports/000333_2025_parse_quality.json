@@ -1,0 +1,50 @@
+{
+  "document_id": "000333_2025",
+  "generated_at": "2026-08-17T15:19:34.110920+00:00",
+  "source_file": "000333_美的集团_2025_annual_report.pdf",
+  "page_count": 276,
+  "manifest_page_count": 276,
+  "total_char_count": 221530,
+  "average_chars_per_page": 802.64,
+  "pages_with_printed_page": 275,
+  "pages_with_known_chapter": 273,
+  "repeated_margin_lines_removed": [
+    "(除特别注明外，金额单位为人民币千元)",
+    "2025 年度财务报表附注",
+    "美的集团股份有限公司",
+    "美的集团股份有限公司2025 年年度报告全文"
+  ],
+  "quality_flag_counts": {
+    "short_page": 4
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 16
+    },
+    {
+      "pdf_page": 12,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 20
+    },
+    {
+      "pdf_page": 134,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 27
+    },
+    {
+      "pdf_page": 138,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 27
+    }
+  ]
+}

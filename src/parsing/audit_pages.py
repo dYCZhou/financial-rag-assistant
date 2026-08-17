@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -58,8 +59,11 @@ def select_samples(
     toc = first_matching_page(
         records,
         lambda item: (
-            str(item.get("text", "")).lstrip().startswith("目录")
-            and str(item.get("text", "")).count("第") >= 4
+            str(item.get("text", "")).lstrip().replace(" ", "", 1).startswith("目录")
+            and (
+                str(item.get("text", "")).count("第") >= 4
+                or str(item.get("text", "")).count("...") >= 4
+            )
         ),
     )
     if toc:
@@ -69,9 +73,14 @@ def select_samples(
 
     financial = first_matching_page(
         records,
-        lambda item: any(
-            keyword in str(item.get("text", ""))
-            for keyword in ("合并资产负债表", "合并利润表", "合并现金流量表")
+        lambda item: (
+            re.search(
+                r"^(?:\d+[、.]\s*)?(?:\d{4}\s*年度)?"
+                r"(?:合并|合并及公司)(?:资产负债表|利润表|现金流量表)",
+                str(item.get("text", "")),
+                re.MULTILINE,
+            )
+            and len(re.findall(r"\d[\d,.]*", str(item.get("text", "")))) >= 10
         ),
     )
     if financial:
@@ -96,6 +105,27 @@ def select_samples(
             for keyword in ("资产负债表", "利润表", "现金流量表", "目录")
         )
     ]
+    if not body_candidates:
+        # SSE reports do not always use the SZSE-style chapter title
+        # "管理层讨论与分析". Fall back to a clean, narrative-looking page
+        # while keeping the stricter selection as the first choice.
+        body_candidates = [
+            item
+            for item in records
+            if item.get("quality_flags") == []
+            and int(item.get("pdf_page", 0)) not in excluded
+            and 700 <= int(item.get("char_count", 0)) <= 2000
+            and not any(
+                keyword in str(item.get("text", ""))
+                for keyword in (
+                    "资产负债表",
+                    "利润表",
+                    "现金流量表",
+                    "目录",
+                    "股东持股情况",
+                )
+            )
+        ]
     if body_candidates:
         # Narrative pages tend to have longer lines than dense tables or item lists.
         midpoint = max(

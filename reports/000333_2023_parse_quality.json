@@ -1,0 +1,43 @@
+{
+  "document_id": "000333_2023",
+  "generated_at": "2026-08-17T15:19:20.812303+00:00",
+  "source_file": "000333_美的集团_2023_annual_report.pdf",
+  "page_count": 291,
+  "manifest_page_count": 291,
+  "total_char_count": 237451,
+  "average_chars_per_page": 815.98,
+  "pages_with_printed_page": 290,
+  "pages_with_known_chapter": 287,
+  "repeated_margin_lines_removed": [
+    "(除特别注明外，金额单位为人民币千元)",
+    "2023 年度财务报表附注",
+    "美的集团股份有限公司",
+    "美的集团股份有限公司2023 年年度报告全文"
+  ],
+  "quality_flag_counts": {
+    "short_page": 3
+  },
+  "flagged_pages": [
+    {
+      "pdf_page": 1,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 17
+    },
+    {
+      "pdf_page": 69,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 24
+    },
+    {
+      "pdf_page": 148,
+      "flags": [
+        "short_page"
+      ],
+      "char_count": 32
+    }
+  ]
+}

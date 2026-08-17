@@ -143,6 +143,7 @@ def _write_checkpoint(
     *,
     questions_path: Path,
     cases: list[dict[str, object]],
+    strategy: str = "baseline",
 ) -> dict[str, object]:
     questions = load_questions(questions_path)
     document_ids = {
@@ -158,6 +159,7 @@ def _write_checkpoint(
         "model": "deepseek-v4-flash",
         "evaluation_set": str(questions_path),
         "question_count": len(cases),
+        "retrieval_strategy": strategy,
         "metrics_are_proxy": True,
         "metric_notes": [
             "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
@@ -178,9 +180,14 @@ def evaluate(
     report_path: Path = DEFAULT_REPORT,
     resume: bool = True,
     retry_question_ids: set[str] | None = None,
+    strategy: str | None = None,
 ) -> dict[str, object]:
     questions = load_questions(questions_path)
     pipeline = RagPipeline()
+    if strategy is not None:
+        if strategy not in {"baseline", "structured"}:
+            raise ValueError("strategy必须是baseline或structured")
+        pipeline.config["strategy"] = strategy
     previous: dict[str, dict[str, object]] = {}
     if resume and report_path.exists():
         saved = json.loads(report_path.read_text(encoding="utf-8"))
@@ -209,6 +216,7 @@ def evaluate(
                 report_year=int(row["target_year"]),
             )
             case = evaluate_case(row, result, time.perf_counter() - started)
+            case["retrieval_strategy"] = str(pipeline.config["strategy"])
         except Exception as exc:
             case = {
                 "question_id": row["question_id"],
@@ -226,6 +234,7 @@ def evaluate(
             report_path,
             questions_path=questions_path,
             cases=cases,
+            strategy=str(pipeline.config["strategy"]),
         )
         print(
             f"[{index}/{len(questions)}] {row['question_id']}: "
@@ -237,6 +246,7 @@ def evaluate(
         report_path,
         questions_path=questions_path,
         cases=cases,
+        strategy=str(pipeline.config["strategy"]),
     )
 
 
@@ -255,6 +265,7 @@ def main() -> int:
         default=[],
         help="即使已有成功检查点也重新调用指定question_id，可重复传入",
     )
+    parser.add_argument("--strategy", choices=["baseline", "structured"])
     args = parser.parse_args()
     try:
         report = evaluate(
@@ -262,6 +273,7 @@ def main() -> int:
             report_path=args.report.resolve(),
             resume=not args.no_resume,
             retry_question_ids=set(args.retry_id),
+            strategy=args.strategy,
         )
     except (OSError, ValueError, RuntimeError) as exc:
         print(f"RAG评估失败：{exc}", file=sys.stderr)

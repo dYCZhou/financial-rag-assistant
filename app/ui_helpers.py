@@ -3,45 +3,20 @@
 from __future__ import annotations
 
 import csv
+import json
+import re
 from pathlib import Path
 from typing import Iterable
 
 
 ACCEPTED_STATUSES = {"retrieval_quality_accepted"}
+INLINE_CITATION_PATTERN = re.compile(r"(?:\[证据\s*\d+\]|【证据\s*\d+】)")
 
-DEFAULT_QUESTIONS: dict[object, list[str]] = {
-    "default": [
-        "营业收入是多少？",
-        "研发投入情况如何？",
-        "境外业务表现如何？",
-        "利润分配预案是什么？",
-    ],
-    ("比亚迪", 2025): [
-        "营业收入是多少？",
-        "研发投入金额及占比是多少？",
-        "境外地区收入是多少？",
-        "利润分配预案是什么？",
-    ],
-    ("比亚迪", 2024): [
-        "营业收入同比增长多少？",
-        "研发投入金额是多少？",
-        "经营现金流情况如何？",
-        "利润分配预案是什么？",
-    ],
-    ("比亚迪", 2023): [
-        "营业收入是多少？",
-        "研发投入情况如何？",
-        "新能源汽车销量是多少？",
-        "境外业务表现如何？",
-    ],
-    ("宁德时代", 2024): [
-        "营业收入是多少？",
-        "研发投入金额是多少？",
-        "动力电池系统收入是多少？",
-        "公司披露了哪些主要风险？",
-    ],
-}
 
+def answer_for_display(answer: object) -> str:
+    """Hide inline citation markers while preserving the stored RAG answer."""
+    cleaned = INLINE_CITATION_PATTERN.sub("", str(answer))
+    return re.sub(r"[ \t]+([，。；：！？])", r"\1", cleaned).strip()
 
 def available_documents(
     manifest_path: Path,
@@ -61,6 +36,61 @@ def available_documents(
                 "source_url": row.get("source_url", "").strip(),
             }
     return documents
+
+
+def verified_demo_questions(
+    reports_dir: Path,
+    document_id: str,
+    limit: int = 4,
+) -> list[str]:
+    """Load only questions accepted by the report's manual RAG review."""
+    if limit <= 0:
+        return []
+    review_path = reports_dir / f"{document_id}_deepseek_rag_manual_review.json"
+    evaluation_path = reports_dir / f"{document_id}_deepseek_rag_evaluation.json"
+    try:
+        review = json.loads(review_path.read_text(encoding="utf-8"))
+        evaluation = json.loads(evaluation_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return []
+
+    cases = evaluation.get("cases", evaluation.get("results", []))
+    accepted_ids = set(review.get("fully_correct_question_ids", []))
+    if not accepted_ids:
+        accepted_ids = {
+            item.get("question_id")
+            for item in review.get("cases", [])
+            if item.get("verdict") == "correct"
+        }
+    if not accepted_ids:
+        summary = review.get("summary", {})
+        reviewed_count = summary.get("reviewed_questions", summary.get("question_count"))
+        fully_correct = summary.get("fully_correct")
+        no_failures = all(
+            int(summary.get(key, 0)) == 0
+            for key in ("incorrect", "refused", "api_or_pipeline_errors")
+        )
+        if reviewed_count and fully_correct == reviewed_count and no_failures:
+            accepted_ids = {
+                item.get("question_id")
+                for item in cases
+                if item.get("status") == "answered"
+            }
+    if not accepted_ids:
+        return []
+    accepted = [
+        str(item.get("question", "")).strip()
+        for item in cases
+        if item.get("question_id") in accepted_ids
+        and item.get("status") == "answered"
+        and str(item.get("question", "")).strip()
+    ]
+    if len(accepted) <= limit:
+        return accepted
+
+    # Spread cards across the frozen set instead of showing four adjacent rows.
+    positions = [round(index * (len(accepted) - 1) / (limit - 1)) for index in range(limit)]
+    return [accepted[position] for position in positions]
 
 
 def citation_page_label(pages: Iterable[object]) -> str:

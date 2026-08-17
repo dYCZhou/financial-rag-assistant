@@ -1,0 +1,11 @@
+{
+  "document_id": "300750_2025",
+  "review_status": "accepted",
+  "reviewed_samples": 5,
+  "reviewed_on": "2026-08-17",
+  "conclusion": "封面、目录、正文、财务表格和全部自动标记短页均与PDF图像一致；正文顺序可读，合并资产负债表的单位、比较列和关键数字可对应。",
+  "short_page_findings": [
+    "PDF第1页为正常封面",
+    "PDF第69页为不适用章节短页"
+  ]
+}

@@ -130,6 +130,35 @@ def test_reranker_promotes_term_and_numeric_match() -> None:
     assert reranked[0]["pre_rerank_rank"] == 2
 
 
+def test_reranker_prefers_consolidated_balance_sheet_row_over_note() -> None:
+    hits = [
+        {
+            "rank": 1,
+            "chunk_id": "note",
+            "rrf_score": 0.1,
+            "score": 0.1,
+            "text": "货币资金附注说明了受限资金及银行存款政策。",
+        },
+        {
+            "rank": 2,
+            "chunk_id": "statement",
+            "rrf_score": 0.09,
+            "score": 0.09,
+            "text": (
+                "合并资产负债表 2025年12月31日 流动资产\n"
+                "货币资金 四(1) 171,094 242,275\n"
+                "应收账款 99,762 75,741\n存货 16,613 11,229"
+            ),
+        },
+    ]
+    reranked = rerank_hits(
+        "中国移动2025年末合并口径的货币资金是多少（按年报原单位）？",
+        hits,
+    )
+    assert reranked[0]["chunk_id"] == "statement"
+    assert reranked[0]["balance_sheet_row_score"] == 0.65
+
+
 def test_query_expansion_adds_table_semantics_for_balance() -> None:
     expanded = expand_query("2025年末存货余额是多少？")
     assert "账面价值" in expanded

@@ -1,0 +1,694 @@
+{
+  "document_id": "600941_2025",
+  "generated_at": "2026-08-17T17:55:55.840732+00:00",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "evaluation_set": "/Users/zhouyuncong/Desktop/financial-rag-assistant-2/data/evaluation/600941_2025_evaluation_questions.csv",
+  "question_count": 15,
+  "metrics_are_proxy": true,
+  "metric_notes": [
+    "答案正确率代理要求状态为answered、标准证据页被引用，且参考答案中的全部数字出现在答案中",
+    "无数字参考答案要求规范化后的参考答案全文出现在模型答案中",
+    "该代理指标不能替代人工事实一致性和逐句引用完整性评审"
+  ],
+  "summary": {
+    "requested_questions": 15,
+    "completed_questions": 15,
+    "answered_questions": 15,
+    "refused_questions": 0,
+    "api_or_pipeline_errors": 0,
+    "citation_page_hit_rate": 1.0,
+    "full_reference_number_recall_rate": 1.0,
+    "answer_accuracy_proxy": 1.0,
+    "average_latency_seconds": 2.549,
+    "median_latency_seconds": 1.995,
+    "max_latency_seconds": 10.836,
+    "failed_question_ids": []
+  },
+  "cases": [
+    {
+      "question_id": "6009412025_Q01",
+      "question": "中国移动2025年末合并口径的货币资金是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "货币资金：171,094",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的货币资金为171,094（单位：人民币百万元），该数值为合并资产负债表中的期末余额，属于合并口径的期末账面价值（扣除减值准备后的列报金额）[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00218",
+        "600941_2025_baseline_00108",
+        "600941_2025_baseline_00219",
+        "600941_2025_baseline_00102",
+        "600941_2025_baseline_00225"
+      ],
+      "citation_pages": [
+        77,
+        78,
+        79,
+        80,
+        84,
+        85,
+        86,
+        197,
+        198,
+        199,
+        203,
+        204,
+        205
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "171094"
+      ],
+      "answer_numbers": [
+        "171094",
+        "2",
+        "2025"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 10.836,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q02",
+      "question": "中国移动2025年末合并口径的应收票据是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收票据：1,177",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的应收票据为1,177（单位：人民币百万元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00108"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "1177"
+      ],
+      "answer_numbers": [
+        "1",
+        "1177",
+        "2025"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.107,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q03",
+      "question": "中国移动2025年末合并口径的应收账款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "应收账款：99,762",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年12月31日合并口径的应收账款为99,762（单位：人民币百万元）[证据2]。该数值为合并资产负债表中的期末列报金额，未明确是否扣除减值准备，但按问题要求采用合并口径的期末账面价值口径[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00218",
+        "600941_2025_baseline_00108",
+        "600941_2025_baseline_00219"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        197,
+        198,
+        199
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "99762"
+      ],
+      "answer_numbers": [
+        "12",
+        "2",
+        "2025",
+        "31",
+        "99762"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.809,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q04",
+      "question": "中国移动2025年末合并口径的预付款项是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "预付款项：7,755",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的预付款项为7,755（单位：人民币百万元）[证据2]。该数值为合并资产负债表中的期末余额，口径为合并口径的期末账面价值（扣除减值准备后的列报金额）[证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00218",
+        "600941_2025_baseline_00108",
+        "600941_2025_baseline_00219"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        197,
+        198,
+        199
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "7755"
+      ],
+      "answer_numbers": [
+        "2",
+        "2025",
+        "7755"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.821,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q05",
+      "question": "中国移动2025年末合并口径的其他应收款是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他应收款：15,887",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的其他应收款为15,887（单位：人民币百万元），该数值为合并资产负债表中列报的期末账面价值（扣除减值准备后的列报金额）[证据2][证据3]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00218",
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00108",
+        "600941_2025_baseline_00219"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        87,
+        197,
+        198,
+        199
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "15887"
+      ],
+      "answer_numbers": [
+        "15887",
+        "2",
+        "2025",
+        "3"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.28,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q06",
+      "question": "中国移动2025年末合并口径的存货是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "存货：16,613",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的存货为16,613（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，年报原单位为人民币百万元[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00108"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "16613"
+      ],
+      "answer_numbers": [
+        "1",
+        "16613",
+        "2",
+        "2025"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.995,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q07",
+      "question": "中国移动2025年末合并口径的合同资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "合同资产：20,178",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的合同资产为20,178（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，单位以年报列示为准（人民币百万元）[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00108"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "20178"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "20178",
+        "2025"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.592,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q08",
+      "question": "中国移动2025年末合并口径的其他流动资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "easy",
+      "reference_answer": "其他流动资产：30,630",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动有限公司2025年12月31日合并口径的其他流动资产为30,630（单位：人民币百万元）[证据1][证据2]。该数值为合并资产负债表中的期末余额，年报原单位为人民币百万元。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00108",
+        "600941_2025_baseline_00218",
+        "600941_2025_baseline_00219",
+        "600941_2025_baseline_00225"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        87,
+        197,
+        198,
+        199,
+        203,
+        204,
+        205
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "30630"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2",
+        "2025",
+        "30630",
+        "31"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.037,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q09",
+      "question": "中国移动2025年末合并口径的流动资产合计是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "流动资产合计：497,646",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的流动资产合计为497,646（单位：人民币百万元）[证据1][证据2]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00108",
+        "600941_2025_baseline_00230"
+      ],
+      "citation_pages": [
+        84,
+        85,
+        86,
+        87,
+        209,
+        210
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "497646"
+      ],
+      "answer_numbers": [
+        "1",
+        "2",
+        "2025",
+        "497646"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.508,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q10",
+      "question": "中国移动2025年末合并口径的长期股权投资是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "长期股权投资：214,353",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的长期股权投资为214,353（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，单位以证据中列示的“人民币百万元”为准。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109"
+      ],
+      "citation_pages": [
+        86,
+        87
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "214353"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "214353"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.889,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q11",
+      "question": "中国移动2025年末合并口径的固定资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "固定资产：707,116",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "根据证据1，中国移动有限公司2025年12月31日合并资产负债表中“固定资产”项目列示的金额为707,116（单位：人民币百万元）[证据1]。该金额为合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00230",
+        "600941_2025_baseline_00218"
+      ],
+      "citation_pages": [
+        86,
+        87,
+        197,
+        198,
+        209,
+        210
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "707116"
+      ],
+      "answer_numbers": [
+        "1",
+        "12",
+        "2025",
+        "31",
+        "707116"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.688,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q12",
+      "question": "中国移动2025年末合并口径的在建工程是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "在建工程：61,845",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的在建工程期末账面价值为61,845（单位：人民币百万元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109"
+      ],
+      "citation_pages": [
+        86,
+        87
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "61845"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "61845"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.131,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q13",
+      "question": "中国移动2025年末合并口径的使用权资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "使用权资产：77,662",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的使用权资产为77,662（人民币百万元），该数值为合并资产负债表中的期末余额，单位与年报原表一致（人民币百万元）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2,
+        3
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00218",
+        "600941_2025_baseline_00219"
+      ],
+      "citation_pages": [
+        86,
+        87,
+        197,
+        198,
+        199
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "77662"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "77662"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.505,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q14",
+      "question": "中国移动2025年末合并口径的无形资产是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "无形资产：59,748",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的无形资产为59,748（人民币百万元），该数值为合并资产负债表中的期末账面价值（扣除减值准备后的列报金额），年度为2025年，单位为人民币百万元[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109"
+      ],
+      "citation_pages": [
+        86,
+        87
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "59748"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "59748"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 1.896,
+      "error": null
+    },
+    {
+      "question_id": "6009412025_Q15",
+      "question": "中国移动2025年末合并口径的开发支出是多少（按年报原单位）？",
+      "question_type": "balance_sheet",
+      "difficulty": "medium",
+      "reference_answer": "开发支出：3,610",
+      "gold_evidence_pages": [
+        86
+      ],
+      "status": "answered",
+      "answer": "中国移动2025年末合并口径的开发支出为3,610（单位：人民币百万元）[证据1]。该数值为合并资产负债表中的期末余额，口径为合并口径的期末账面价值（扣除减值准备后的列报金额）[证据1]。",
+      "refusal_reason": null,
+      "citation_ids": [
+        1,
+        2
+      ],
+      "citation_chunk_ids": [
+        "600941_2025_baseline_00109",
+        "600941_2025_baseline_00218"
+      ],
+      "citation_pages": [
+        86,
+        87,
+        197,
+        198
+      ],
+      "citation_page_hit": true,
+      "reference_numbers": [
+        "3610"
+      ],
+      "answer_numbers": [
+        "1",
+        "2025",
+        "3610"
+      ],
+      "reference_number_recall": 1.0,
+      "reference_text_match": null,
+      "answer_accuracy_proxy": true,
+      "elapsed_seconds": 2.138,
+      "error": null
+    }
+  ]
+}

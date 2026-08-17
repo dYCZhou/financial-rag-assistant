@@ -1,0 +1,18 @@
+{
+  "document_id": "600941_2025",
+  "reviewed_on": "2026-08-18",
+  "evaluation_set_sha256": "dfa784ebd8216b7ede93699ecb6d701dc2bfa38e9c3f67cf287239a801780d52",
+  "machine_report": "reports/600941_2025_deepseek_rag_evaluation.json",
+  "review_scope": "15道冻结题的答案事实、单位、合并口径、年度和引用证据",
+  "summary": {
+    "reviewed_questions": 15,
+    "fully_correct": 15,
+    "incorrect": 0,
+    "refused": 0,
+    "api_or_pipeline_errors": 0,
+    "frozen_citation_page_hits": 15,
+    "valid_alternative_evidence": 0
+  },
+  "review_notes": [],
+  "conclusion": "15道冻结题答案、单位、年度和合并口径均通过人工复核；检索与受证据约束RAG达到本报告验收要求。"
+}
