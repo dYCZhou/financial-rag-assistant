@@ -6,6 +6,8 @@ from app.ui_helpers import (
     available_documents,
     capability_answer,
     citation_page_label,
+    comparison_capability_answer,
+    curated_demo_questions,
     friendly_error,
     guide_intent,
     report_structure,
@@ -25,6 +27,7 @@ def test_guide_intent_routes_help_and_structure_questions() -> None:
     assert guide_intent("梳理一下财报结构") == "structure"
     assert guide_intent("梳理一下这份财报的结构") == "structure"
     assert guide_intent("营业收入是多少？") is None
+    assert guide_intent("跨企业财务对比怎么用？") == "comparison_capabilities"
 
 
 def test_capability_answer_is_document_specific() -> None:
@@ -32,6 +35,12 @@ def test_capability_answer_is_document_specific() -> None:
     assert "宁德时代2023年年度报告" in answer
     assert "PDF物理页码" in answer
     assert "投资建议" in answer
+    assert "逐公司" in comparison_capability_answer()
+
+
+def test_curated_demo_questions_prefers_diverse_accepted_topics() -> None:
+    questions = ["存货是多少", "审计意见是什么", "境外业务如何", "货币资金是多少"]
+    assert curated_demo_questions(questions) == ["境外业务如何", "审计意见是什么", "货币资金是多少"]
 
 
 def test_report_structure_extracts_unique_top_level_sections(tmp_path: Path) -> None:

@@ -20,6 +20,8 @@ from app.ui_helpers import (  # noqa: E402
     available_documents,
     capability_answer,
     citation_page_label,
+    comparison_capability_answer,
+    curated_demo_questions,
     friendly_error,
     guide_intent,
     report_structure,
@@ -28,6 +30,10 @@ from app.ui_helpers import (  # noqa: E402
     verified_demo_questions,
 )
 from src.deployment.assets import DemoAssetError, ensure_demo_assets  # noqa: E402
+from src.generation.comparison import (  # noqa: E402
+    CrossCompanyComparator,
+    parse_comparison_request,
+)
 from src.generation.rag import RagPipeline  # noqa: E402
 
 
@@ -305,6 +311,11 @@ def get_pipeline() -> RagPipeline:
 
 
 @st.cache_resource(show_spinner=False)
+def get_comparator() -> CrossCompanyComparator:
+    return CrossCompanyComparator()
+
+
+@st.cache_resource(show_spinner=False)
 def prepare_runtime() -> None:
     for key in (
         "DEEPSEEK_API_KEY",
@@ -396,19 +407,39 @@ def select_document(
 
 
 def render_verified_questions(company: str, year: int, document_id: str) -> None:
-    questions = verified_demo_questions(ROOT / "reports", document_id)
+    questions = curated_demo_questions(
+        verified_demo_questions(ROOT / "reports", document_id, limit=15)
+    )
     if questions:
-        st.markdown('<div class="section-label">已验证问答示例</div>', unsafe_allow_html=True)
-        st.caption("以下问题均通过该报告冻结题集人工验收")
+        st.markdown('<div class="section-label">精选演示问题</div>', unsafe_allow_html=True)
+        st.caption("单报告问题来自人工验收冻结题；跨企业问题提供逐公司原文证据")
     else:
         st.caption("当前报告暂无已验证示例，请在下方输入问题。")
         return
     cols = st.columns(2)
-    for index, question in enumerate(questions[:4]):
+    demo_questions = [
+        *questions[:3],
+        "比较所有公司2025年末的货币资金，哪家最高？",
+    ]
+    for index, question in enumerate(demo_questions):
         with cols[index % 2]:
             if st.button(question, key=f"suggest-{company}-{year}-{index}", use_container_width=True):
                 st.session_state.pending_question = question
                 st.rerun()
+
+
+def render_comparison_questions() -> None:
+    st.markdown('<div class="section-label">跨企业对比示例</div>', unsafe_allow_html=True)
+    st.caption("当前支持同一年、2—5家公司和同一资产负债表指标")
+    questions = (
+        "比较所有公司2025年末的货币资金，哪家最高？",
+        "比较比亚迪和宁德时代2025年末的存货",
+        "贵州茅台、美的集团和中国移动2024年末的资产总计哪家最高？",
+    )
+    for index, question in enumerate(questions):
+        if st.button(question, key=f"comparison-demo-{index}", use_container_width=True):
+            st.session_state.pending_question = question
+            st.rerun()
 
 
 def render_welcome(company: str, year: int, document_id: str) -> None:
@@ -431,14 +462,18 @@ def render_welcome(company: str, year: int, document_id: str) -> None:
         unsafe_allow_html=True,
     )
     st.markdown('<div class="section-label">快速了解</div>', unsafe_allow_html=True)
-    guide_left, guide_right = st.columns(2)
+    guide_left, guide_middle, guide_right = st.columns(3)
     with guide_left:
         if st.button("我能问什么？", key=f"guide-capabilities-{document_id}", use_container_width=True):
             st.session_state.pending_question = "你能回答我什么？"
             st.rerun()
-    with guide_right:
+    with guide_middle:
         if st.button("查看这份财报的结构", key=f"guide-structure-{document_id}", use_container_width=True):
             st.session_state.pending_question = "梳理一下这份财报的结构"
+            st.rerun()
+    with guide_right:
+        if st.button("跨企业财务对比", key=f"guide-comparison-{document_id}", use_container_width=True):
+            st.session_state.pending_question = "跨企业财务对比怎么用？"
             st.rerun()
 
     render_verified_questions(company, year, document_id)
@@ -467,6 +502,24 @@ def render_result(question: str, result: dict[str, object]) -> None:
     if answer:
         st.markdown(f'<div class="answer-copy">{html.escape(answer)}</div>', unsafe_allow_html=True)
 
+    comparison_rows = result.get("comparison_rows", [])
+    if isinstance(comparison_rows, list) and comparison_rows:
+        st.dataframe(
+            [
+                {
+                    "公司": row.get("company", ""),
+                    "年度": row.get("year", ""),
+                    "指标": row.get("metric", ""),
+                    "统一口径（亿元）": row.get("value_yi", ""),
+                    "年报原值": row.get("raw_value", ""),
+                    "原始单位": row.get("unit", ""),
+                }
+                for row in comparison_rows
+            ],
+            hide_index=True,
+            use_container_width=True,
+        )
+
     citations = result.get("citations", [])
     if isinstance(citations, list):
         for citation in citations:
@@ -484,22 +537,51 @@ def render_result(question: str, result: dict[str, object]) -> None:
                 if source_url:
                     st.link_button("查看原始年度报告 ↗", source_url)
 
-    if result.get("status") == "answered":
+    if result.get("status") in {"answered", "comparison", "comparison_partial"}:
         st.markdown(
             '<div class="answer-note">内容由AI基于年报原文整理，请核对引用。</div>',
             unsafe_allow_html=True,
         )
 
 
-def submit_question(question: str, document: dict[str, str], year: int) -> None:
+def submit_question(
+    question: str,
+    document: dict[str, str],
+    year: int,
+    documents: dict[str, dict[int, dict[str, str]]],
+) -> None:
     clean_question = question.strip()
     if not clean_question:
         return
     started = time.perf_counter()
+    comparison = parse_comparison_request(
+        clean_question, documents, default_year=year
+    )
+    if comparison:
+        try:
+            st.session_state.current_result = get_comparator().answer(
+                clean_question, comparison, documents
+            ).to_dict()
+        except Exception as exc:
+            st.session_state.current_result = {
+                "status": "error",
+                "answer": "",
+                "citations": [],
+                "error_message": friendly_error(exc),
+            }
+        st.session_state.elapsed_seconds = time.perf_counter() - started
+        st.session_state.current_question = clean_question
+        st.session_state.recent_questions = [
+            clean_question,
+            *[item for item in st.session_state.recent_questions if item != clean_question],
+        ][:6]
+        return
     intent = guide_intent(clean_question)
     if intent:
         if intent == "capabilities":
             answer = capability_answer(document["company"], year)
+        elif intent == "comparison_capabilities":
+            answer = comparison_capability_answer()
         else:
             sections = report_structure(
                 ROOT / "data" / "parsed" / f"{document['document_id']}_pages.jsonl"
@@ -507,6 +589,7 @@ def submit_question(question: str, document: dict[str, str], year: int) -> None:
             answer = structure_answer(document["company"], year, sections)
         st.session_state.current_result = {
             "status": "guide",
+            "guide_type": intent,
             "answer": answer,
             "citations": [],
         }
@@ -577,20 +660,23 @@ def main() -> None:
     if pending:
         st.session_state.pending_question = None
         with st.spinner("正在检索年报并核对证据……"):
-            submit_question(str(pending), document, year)
+            submit_question(str(pending), document, year, documents)
 
     result = st.session_state.current_result
     if result:
         render_result(st.session_state.current_question, result)
         if result.get("status") == "guide":
-            render_verified_questions(company, year, document["document_id"])
+            if result.get("guide_type") == "comparison_capabilities":
+                render_comparison_questions()
+            else:
+                render_verified_questions(company, year, document["document_id"])
     else:
         render_welcome(company, year, document["document_id"])
 
-    question = st.chat_input("问问这份年报……")
+    question = st.chat_input("问财报，也可比较多家公司……")
     if question:
         with st.spinner("正在检索年报并核对证据……"):
-            submit_question(question, document, year)
+            submit_question(question, document, year, documents)
         st.rerun()
 
     st.markdown(

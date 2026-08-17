@@ -27,6 +27,8 @@ def answer_for_display(answer: object) -> str:
 
 def guide_intent(question: str) -> str | None:
     compact = re.sub(r"[\s，。！？?、]", "", question)
+    if "跨企业" in compact and any(term in compact for term in ("对比", "比较", "怎么用")):
+        return "comparison_capabilities"
     if any(
         term in compact
         for term in ("你能回答什么", "你能回答我什么", "能问什么", "怎么提问", "如何提问")
@@ -49,9 +51,43 @@ def capability_answer(company: str, year: int) -> str:
         "• 财务指标：资产、负债、收入、利润和现金流\n"
         "• 经营信息：主营业务、研发、客户和境外业务\n"
         "• 报告事项：分红方案、审计意见和风险因素\n"
+        "• 跨企业比较：同一年2—5家公司之间的资产负债表指标\n"
         "• 证据追溯：展示年报原文、PDF物理页码和来源链接\n\n"
-        "你可以点击下方已验证示例，也可以直接输入问题。我不提供股价预测、估值或投资建议。"
+        "你可以直接输入问题；例如“比较比亚迪和宁德时代2025年末的货币资金”。我不提供股价预测、估值或投资建议。"
     )
+
+
+def comparison_capability_answer() -> str:
+    return (
+        "跨企业财务对比支持同一年、2—5家公司，以及货币资金、存货、总资产等资产负债表指标。\n\n"
+        "系统会逐公司独立检索年报，展示年报原值和单位，再统一折算为亿元并排序；每家公司都保留独立的原文、PDF页码和来源链接。"
+        "如果任一家公司证据不足，系统不会生成完整排名。"
+    )
+
+
+def curated_demo_questions(questions: list[str], limit: int = 3) -> list[str]:
+    """Select diverse, accepted questions without inventing unreviewed demos."""
+    priorities = (
+        ("营业收入", "归母净利润"),
+        ("境外", "出海"),
+        ("审计",),
+        ("货币资金",),
+        ("存货",),
+        ("固定资产",),
+        ("流动资产合计",),
+    )
+    selected: list[str] = []
+    for terms in priorities:
+        match = next(
+            (question for question in questions if question not in selected and any(term in question for term in terms)),
+            None,
+        )
+        if match:
+            selected.append(match)
+        if len(selected) >= limit:
+            return selected
+    selected.extend(question for question in questions if question not in selected)
+    return selected[:limit]
 
 
 def report_structure(parsed_path: Path, limit: int = 12) -> list[tuple[str, int]]:
