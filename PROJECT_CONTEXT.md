@@ -16,7 +16,7 @@
 | BGE共享索引与过滤 | 15/15完成 | `reports/*_bge_index_report.json` |
 | 独立冻结检索题 | 15套×15题 | `data/evaluation/`、`reports/*_evaluation_set_freeze.json` |
 | DeepSeek真实问答与人工复核 | 225题 | `reports/*_deepseek_rag_evaluation.json`、`*_manual_review.json` |
-| Streamlit产品界面 | 桌面主路径可用 | `app/streamlit_app.py`、UI测试 |
+| Streamlit产品界面 | 公开Demo已部署 | `app/streamlit_app.py`、`DEPLOYMENT.md`、UI测试 |
 
 Manifest中15份报告均为`retrieval_quality_accepted`。新增11份报告共人工查看64个页面样本，覆盖封面、目录、正文、合并资产负债表和全部自动异常短页。
 
@@ -80,24 +80,28 @@ Manifest中15份报告均为`retrieval_quality_accepted`。新增11份报告共�
 
 页面固定浅色主题。每份报告展示4个从真实RAG评测与人工复核记录中筛选的已验证示例；没有验收记录时不回退到通用问题。正文展示层隐藏`[证据N]`，后端答案和证据卡片仍保留引用关系。修改已导入模块后需要完整重启，以避免Streamlit热重载缓存旧符号。
 
+首屏展示5家公司、15份年报、225题和技术链路。“我能问什么”返回当前公司/年度的能力边界；“查看这份财报的结构”从当前报告真实章节元数据或目录回退提取8—12个栏目。两类导览不调用LLM，回答后继续展示当前报告4个已验证示例。
+
+公开地址：<https://financial-rag-assistant-cspk5yuoqjq9a5mf6zx9hg.streamlit.app>。云端通过GitHub Release `demo-assets-v1`下载约103MB的Chroma、Chunk和页面资产，并校验SHA-256。
+
 ## 当前边界与技术债
 
 - 新增11套题型以资产负债表事实为主，题型多样性有限。
 - 缺少完全独立、未参与规则开发的跨公司/跨年度综合holdout。
 - PyMuPDF输出是线性文本，不代表二维表格结构被完整恢复。
 - 尚无系统P50/P95延迟、成本、并发和容量压测。
-- 尚无正式公网部署、Docker与CI/CD验收。
-- 尚未实现“你能回答什么”、真实目录概览和跨年度聚合的专用意图路由。
+- 已有公开体验地址，但尚无生产级SLA、Docker与CI/CD验收，也未实现应用层全局额度和用户级限流。
+- “你能回答什么”和真实目录概览已实现；跨年度/跨公司聚合仍未实现。
 - 浏览器人工验收覆盖当前桌面主路径，移动端、无障碍和多浏览器尚未形成记录。
 
 ## 当前验证基线
 
-2026-08-18执行`.venv/bin/python -m pytest -q`：55项通过，5条SWIG弃用警告。测试数会随功能增长而变化，应以最新实际输出为准。
+2026-08-18执行`.venv/bin/python -m pytest -q`：62项通过，5条SWIG弃用警告。测试数会随功能增长而变化，应以最新实际输出为准。
 
 ## 推荐下一步
 
-1. 干净机器或容器一键启动，并保存固定演示录屏。
+1. 为公开Demo增加额度保护、错误监控，并保存固定演示录屏。
 2. 建立综合holdout、不可答集和错误分类报告。
 3. 补充响应延迟、API成本、并发和索引规模指标。
-4. 增加能力咨询、目录概览和跨年度比较意图。
+4. 增加跨年度与跨公司比较意图。
 5. 再决定是否公开部署。

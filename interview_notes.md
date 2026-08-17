@@ -6,6 +6,8 @@
 
 完成覆盖5家公司、3个年度、15份真实年报的证据约束RAG系统；每份报告有独立15题冻结集，新增11份Recall@5为86.67%—100%，165题真实DeepSeek问答经人工复核全部正确。
 
+在线Demo：<https://financial-rag-assistant-cspk5yuoqjq9a5mf6zx9hg.streamlit.app>
+
 ## 架构
 
 ```text
@@ -33,6 +35,7 @@ PDF验真与Manifest -> 逐页解析/人工抽查 -> 双策略Chunk
 ## 面试前检查
 
 - 使用`.venv/bin/streamlit run app/streamlit_app.py`，不要用全局Streamlit。
+- 线上Demo首屏应显示5家/15份/225题、两个导览入口和4个已验证示例；导览回答后示例仍需保留。
 - 提前点击至少两家公司各一个已验证示例。
 - 检查DeepSeek密钥、网络和索引。
 - 准备录屏与静态结果报告作为备份。
