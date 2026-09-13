@@ -18,8 +18,8 @@
 
 ## Issue #3 基线补充（2026-09-14）
 
-- 当前 Manifest 共 15 份 `retrieval_quality_accepted` 报告；其中 14 份拥有完整评测题集和冻结记录。
-- `002594_2025` 的评测题集 CSV 与冻结 JSON 均缺失，因此不将其历史结论补写或推测为已验收；缺失状态记录在 `reports/issue-3_evaluation_asset_inventory.json`。
+- 当前 Manifest 共 15 份 `retrieval_quality_accepted` 报告；现已恢复全部 15 份评测题集和冻结记录。
+- `002594_2025` 题集依据既有检索评测与人工复核记录恢复；原始 PDF/解析页面仍缺失，因此其 CSV 的 `evidence_text` 明确标记为历史评测记录摘要，不冒充原文摘录。
 - 冻结题哈希统一按 UTF-8 文本、LF 换行规范化后的字节计算，Windows CRLF 与 Linux LF 对同一语义文件得到一致结果。
 
 ## 建议验收步骤

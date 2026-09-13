@@ -7,8 +7,8 @@
     "002594_2023": {"status": "available"},
     "002594_2024": {"status": "available"},
     "002594_2025": {
-      "status": "missing",
-      "reason": "Manifest 标记为 retrieval_quality_accepted，但题集 CSV 与 evaluation_set_freeze.json 均不存在；本基线不重建或推测历史冻结题。"
+      "status": "available",
+      "reconstruction": "从 reports/002594_2025_deepseek_rag_evaluation.json 和 reports/002594_2025_deepseek_rag_manual_review.json 恢复；原始 PDF/解析页面仍缺失，证据文本为历史评测记录摘要。"
     },
     "300750_2023": {"status": "available"},
     "300750_2024": {"status": "available"},
