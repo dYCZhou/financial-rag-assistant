@@ -1,0 +1,26 @@
+{
+  "issue": 3,
+  "generated_on": "2026-09-14",
+  "source_manifest": "data/manifests/annual_reports_manifest.csv",
+  "hash_rule": "读取 UTF-8 文本，移除 BOM，将 CRLF/CR 规范化为 LF，再计算 SHA-256；不改变题目语义内容。",
+  "documents": {
+    "002594_2023": {"status": "available"},
+    "002594_2024": {"status": "available"},
+    "002594_2025": {
+      "status": "available",
+      "reconstruction": "从 reports/002594_2025_deepseek_rag_evaluation.json 和 reports/002594_2025_deepseek_rag_manual_review.json 恢复；原始 PDF/解析页面仍缺失，证据文本为历史评测记录摘要。"
+    },
+    "300750_2023": {"status": "available"},
+    "300750_2024": {"status": "available"},
+    "300750_2025": {"status": "available"},
+    "600519_2023": {"status": "available"},
+    "600519_2024": {"status": "available"},
+    "600519_2025": {"status": "available"},
+    "000333_2023": {"status": "available"},
+    "000333_2024": {"status": "available"},
+    "000333_2025": {"status": "available"},
+    "600941_2023": {"status": "available"},
+    "600941_2024": {"status": "available"},
+    "600941_2025": {"status": "available"}
+  }
+}

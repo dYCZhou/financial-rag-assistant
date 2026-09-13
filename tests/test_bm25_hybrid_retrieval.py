@@ -1,5 +1,4 @@
 import json
-import hashlib
 from pathlib import Path
 
 import pytest
@@ -12,6 +11,7 @@ from src.retrieval.hybrid import (
     rerank_hits,
 )
 from src.parsing.parse_report import ROOT
+from src.evaluation.frozen_sets import frozen_sha256
 
 
 def _write_chunks(directory: Path) -> None:
@@ -195,9 +195,8 @@ def test_retrieval_config_validation(tmp_path: Path) -> None:
 
 
 def test_frozen_evaluation_set_has_not_changed() -> None:
-    contents = (
+    assert frozen_sha256(
         ROOT / "data" / "evaluation" / "evaluation_questions_template.csv"
-    ).read_bytes()
-    assert hashlib.sha256(contents).hexdigest() == (
+    ) == (
         "3ba8632e46d54915ccf8ee2ab52e10dfd93c6045cfc8d012391ebb72918e676a"
     )
