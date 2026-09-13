@@ -1,0 +1,26 @@
+{
+  "issue": 3,
+  "generated_on": "2026-09-14",
+  "source_manifest": "data/manifests/annual_reports_manifest.csv",
+  "hash_rule": "读取 UTF-8 文本，移除 BOM，将 CRLF/CR 规范化为 LF，再计算 SHA-256；不改变题目语义内容。",
+  "documents": {
+    "002594_2023": {"status": "available"},
+    "002594_2024": {"status": "available"},
+    "002594_2025": {
+      "status": "missing",
+      "reason": "Manifest 标记为 retrieval_quality_accepted，但题集 CSV 与 evaluation_set_freeze.json 均不存在；本基线不重建或推测历史冻结题。"
+    },
+    "300750_2023": {"status": "available"},
+    "300750_2024": {"status": "available"},
+    "300750_2025": {"status": "available"},
+    "600519_2023": {"status": "available"},
+    "600519_2024": {"status": "available"},
+    "600519_2025": {"status": "available"},
+    "000333_2023": {"status": "available"},
+    "000333_2024": {"status": "available"},
+    "000333_2025": {"status": "available"},
+    "600941_2023": {"status": "available"},
+    "600941_2024": {"status": "available"},
+    "600941_2025": {"status": "available"}
+  }
+}
